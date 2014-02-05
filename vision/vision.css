@@ -1,0 +1,12 @@
+body {
+  padding-top: 50px;
+}
+
+.cams {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+#helper {
+    opacity: 0;
+}
