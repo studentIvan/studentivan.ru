@@ -27,7 +27,7 @@ $(document).ready(function()
                 rebuild = setInterval(function() {
                     j = (j == 15) ? 1 : j + 1;
                     $container.html('<img src="data/' + camId + '/' + j + '.jpg">');
-                }, 600);
+                }, 400);
             }, 5000);
         }
     }
