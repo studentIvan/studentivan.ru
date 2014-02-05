@@ -55,17 +55,7 @@ $(document).ready(function()
         else if (cam == '#cam2')
         {
             $header.html('EP-3208#Коридор 1');
-            //startVision('c2');
-            if (/Firefox/.test(navigator.userAgent))
-            {
-                rebuild3 = setTimeout(function() {
-                    $container.html('Error: could not connect to camera. Please check charge and connection!');
-                }, 1856);
-            }
-            else
-            {
-                $container.html('You need latest version of Mozilla Firefox browser');
-            }
+            startVision('c2');
         }
         else if (cam == '#cam3')
         {
