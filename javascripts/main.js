@@ -1,4 +1,4 @@
-var debug = true;
+var debug = false;
 
 $(document).ready(function() {
     if (!debug) {
