@@ -15,10 +15,10 @@ function modalClose() {
 }
 
 function about() {
-    var about = '<iframe width="640" height="360" '
-    + 'src="//www.youtube.com/embed/O9R72cjxjIU?rel=0&autoplay=1" '
+    var about = '<iframe width="853" height="480" '
+    + 'src="//www.youtube.com/embed/O9R72cjxjIU?rel=0&autoplay=1&hd=1" '
     + 'frameborder="0" allowfullscreen></iframe>';
-    modalShow(642, 362, about);
+    modalShow(855, 482, about);
 }
 
 function where() {
