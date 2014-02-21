@@ -23,12 +23,9 @@ function about() {
     modalShow(500, 500, 'hello world');
 }
 
-function partnerships() {
-    modalShow(500, 500, 'hello world');
-}
-
 function where() {
-    modalShow(500, 500, 'hello world');
+    var where = '<script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=fjToQwj-b_KDNns_ey-iR2V_z_TEv4Dz&width=600&height=450"></script>';
+    modalShow(602, 452, where);
 }
 
 function media() {
