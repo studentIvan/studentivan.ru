@@ -12,6 +12,7 @@ function modalShow(width, height, html) {
 function modalClose() {
     $('#modal').fadeOut(0);
     $('#mask').fadeOut(300);
+    $('#modal').html('');
 }
 
 function about() {
