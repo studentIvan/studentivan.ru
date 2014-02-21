@@ -1,0 +1,174 @@
+@import url(http://fonts.googleapis.com/css?family=Lobster|Comfortaa:400,700,300&subset=latin,cyrillic);
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url('../images/night-work.jpg') no-repeat center center fixed;
+    background-color: black;
+    background-size: cover;
+    font-family: 'Comfortaa', cursive;
+}
+
+header {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: rgba(11, 11, 11, 1);
+}
+
+header nav {
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+header nav a {
+    font-size: 26px;
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+}
+
+header h1 {
+    color: rgb(255, 248, 0);
+    font-family: 'Lobster', cursive;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    text-shadow: 1px 1px 10px rgba(210, 3, 93, 1);
+    display: inline-block;
+    font-size: 40px;
+}
+
+header h1 sup {
+    margin-left: 6px;
+    font-size: 22px;
+}
+
+section {
+    color: white;
+    padding: 50px;
+    padding-top: 20px;
+}
+
+section p {
+    margin-top: 15px;
+    font-size: 22px;
+    max-width: 500px;
+}
+
+div[role="date"] {
+    font-size: 50px;
+}
+
+div[role="register"] {
+    position: fixed;
+    bottom: 80px;
+}
+
+div[role="register"] button {
+    border: none;
+    font-family: inherit;
+    font-size: 40px;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    padding: 25px 60px;
+    display: inline-block;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    transition: all 0.3s;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-shadow: 1px 1px 10px rgba(0, 128, 211, 1);
+    overflow: hidden;
+    border-radius: 10px;
+    
+}
+
+div[role="register"] button:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s;
+
+    width: 101%;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    background: linear-gradient(to bottom, rgba(0, 128, 211, 0.5) 0%, rgba(0, 128, 211, 0.1) 100%);
+    opacity: 0;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+div[role="register"] button:hover,
+div[role="register"] button:active {
+    box-shadow: 1px 1px 50px 5px rgba(255, 255, 255, 0.2);
+    /*color: rgb(11, 11, 11);*/
+    /*color: rgb(0, 108, 191);*/
+    /*text-shadow: none;*/
+    /*text-shadow: 1px 1px 10px rgba(255, 248, 0, 1);*/
+    text-shadow: 1px 1px 10px rgba(0, 128, 211, 1);
+    border: 1px solid rgba(0, 128, 211, 1);
+}
+
+div[role="register"] button:active:after {
+    height: 130%;
+    opacity: 1;
+}
+
+div[role="register"] button:hover:after {
+    height: 73%;
+    opacity: 1;
+}
+
+div[role="register"] button:before {
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+nav[role="partnerships"] {
+    display: table;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    height: auto;
+    background-color: rgba(11, 11, 11, 0.5);
+    text-align: center;
+    padding: 5px;
+    padding-top: 8px;
+}
+
+nav[role="partnerships"] div[role="row"] {
+    display: table-row;
+}
+
+nav[role="partnerships"] a {
+    height: auto;
+    display: table-cell;
+    width: auto;
+    opacity: 0.05;
+    transition: 0.3s;
+}
+
+nav[role="partnerships"] a:hover {
+    opacity: 1;
+}
+
+nav[role="partnerships"] img {
+    height: 30px;
+}
