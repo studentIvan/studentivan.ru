@@ -13,20 +13,20 @@
     <header>
         <h1>Ночь Карьеры <sup>2014</sup></h1>
         <nav>
-            <a href="#">Что это?</a>
-            <a href="#">Где это?</a>
-            <a href="#">Для СМИ</a>
-            <a href="#">Aiesec Izhevsk</a>
+            <a href="#" onclick="about(); return false;">Что это?</a>
+            <a href="#" onclick="where(); return false;">Где это?</a>
+            <a href="#" onclick="media(); return false;">Для СМИ</a>
+            <a href="http://aiesec-izhevsk.ru" target="_blank">Aiesec Izhevsk</a>
         </nav>
     </header>
     <section>
         <div role="date">28 марта в Ижевске</div>
         <p>Работодатели и молодые перспективные специалисты найдут друг друга.</p>
-        <div role="register" title="перейти к регистрации через google forms">
+        <div role="register">
             <button>Принять участие бесплатно</button>
         </div>
         <div role="vk" title="группа вконтакте">
-            <a href="https://vk.com/career_night_izh"><img src="images/vk.png" alt=""></a>
+            <a href="https://vk.com/career_night_izh" target="_blank"><img src="images/vk.png" alt=""></a>
         </div>
     </section>
     <nav role="partnerships">
@@ -48,14 +48,9 @@
             <a href="#"><img src="images/partnerships/funkuhni.jpg" alt=""></a>
         </div>
     </nav>
+    <div id="mask"></div>
+    <div id="modal"></div>
     <script type="text/javascript">
-    var links = document.getElementsByTagName('a');
-    for (var i = links.length - 1; i >= 0; i--) {
-        links[i].onclick = function() {
-            alert('Пока тут ничего нет =(');
-        }
-    }
-
     var buttons = document.getElementsByTagName('button');
     for (var i = buttons.length - 1; i >= 0; i--) {
         buttons[i].onclick = function() {
