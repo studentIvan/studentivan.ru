@@ -16,7 +16,7 @@ function modalClose() {
 
 function about() {
     var about = '<iframe width="640" height="360" '
-    + 'src="//www.youtube.com/embed/O9R72cjxjIU?rel=0" '
+    + 'src="//www.youtube.com/embed/O9R72cjxjIU?rel=0&autoplay=1" '
     + 'frameborder="0" allowfullscreen></iframe>';
     modalShow(642, 362, about);
 }
