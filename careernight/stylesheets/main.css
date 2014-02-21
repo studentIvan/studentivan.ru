@@ -68,6 +68,22 @@ div[role="register"] {
     bottom: 80px;
 }
 
+div[role="vk"] {
+    position: fixed;
+    bottom: 65px;
+    right: 20px;
+}
+
+div[role="vk"] a img {
+    transition: 0.3s;
+    opacity: 0.4;
+    height: 64px;
+}
+
+div[role="vk"] a:hover img {
+    opacity: 1;
+}
+
 div[role="register"] button {
     border: none;
     font-family: inherit;
@@ -175,4 +191,17 @@ nav[role="partnerships"] img {
 
 .loading {
     opacity: 0.001;
+}
+
+#tooltip {
+    position: absolute;
+    z-index: 3000;
+    border: 1px solid #111;
+    background-color: #eee;
+    padding: 5px;
+    opacity: 0.85;
+}
+
+#tooltip h3, #tooltip div {
+    margin: 0;
 }
