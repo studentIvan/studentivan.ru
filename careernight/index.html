@@ -1,38 +1,61 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru-RU">
 <head>
     <meta charset="UTF-8">
     <title>Ночь Карьеры 2014</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/sections.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/header-nav-effects.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/jquery.flipcountdown.css">
     <script src="http://yandex.st/jquery/2.1.0/jquery.min.js" type="text/javascript"></script>
+    <script src="javascripts/jquery.scrollTo-1.4.3.1-min.js" type="text/javascript"></script>
+    <script src="javascripts/jquery.flipcountdown.js" type="text/javascript"></script>
     <script src="javascripts/main.js" type="text/javascript"></script>
     <link rel="shortcut icon" href="images/favicon.ico">
 </head>
 <body class="loading">
+    <div id="mask-teta" role="fullscreen">
+        <!--Уникальная возможность попасть на одно из крупнейших мероприятий Ижевска, абсолютно бесплатно, воспользуйтесь этим уникальным моментом!-->
+        <span>&rarr;</span>
+    </div>
     <header>
-        <h1>Ночь Карьеры <sup>2014</sup></h1>
+        <h1 onclick="$.scrollTo('#welcome', 800); return false;">Ночь Карьеры <sup>2014</sup></h1>
         <nav>
-            <a href="#" onclick="about(); return false;">Что это?</a>
-            <a href="#" onclick="where(); return false;">Как добраться?</a>
-            <a href="#" onclick="media(); return false;">Для СМИ</a>
-            <a href="http://aiesec-izhevsk.ru" target="_blank">Aiesec Izhevsk</a>
+            <a href="#info" onclick="$.scrollTo('#info', 800); return false;">О мероприятии</a>
+            <a href="#program" onclick="$.scrollTo('#program', 800); return false;">Программа</a>
+            <a href="#speakers" onclick="$.scrollTo('#speakers', 800); return false;">Спикеры</a>
+            <a href="#contacts" onclick="$.scrollTo('#contacts', 800); return false;">Контакты</a>
+            <a href="#partnerships" onclick="$.scrollTo('#partnerships', 800); return false;">Партнеры</a>
         </nav>
     </header>
-    <section>
-        <div role="date">28 марта в Ижевске</div>
+    <div role="aiesec-logo"></div>
+    <div role="register">
+        <button onclick="showRegistrationForm();">Зарегистрироваться</button>
+    </div>
+    <section id="welcome" role="fullscreen">
+        <div role="career-logo"></div>
+        <div role="timer">
+            <div id="flipcountdownbox1"></div>
+            <div role="timer-description">Осталось немного...</div>
+        </div>
+        <div role="welcome-back-omega fullscreen"></div>
+        <div role="date">28 марта в ДС &quot;Интеграл&quot;</div>
         <p>Работодатели и молодые перспективные специалисты найдут друг друга.</p>
-        <div role="register">
-            <button>Принять участие бесплатно</button>
-        </div>
-        <div role="vk" title="группа вконтакте">
+        
+
+        <!--<div role="vk" title="группа вконтакте">
             <a href="https://vk.com/career_night_izh" target="_blank"><img src="images/vk.png" alt=""></a>
-        </div>
+        </div>-->
+        <div id="background-alpha" role="fullscreen"></div>
+        <div id="background-beta" role="fullscreen"></div>
     </section>
+    <section id="info" role="fullscreen"></section>
+    <section id="program" role="fullscreen"></section>
+    <section id="speakers" role="fullscreen"></section>
+    <section id="contacts" role="fullscreen"></section>
+    <section id="partnerships" role="fullscreen"></section>
     <nav role="partnerships">
         <div role="row">
-            <a href="#"><img src="images/partnerships/tele2.jpg" alt=""></a>
-            <a href="#"><img src="images/partnerships/argo18.jpg" alt=""></a>
             <a href="#"><img src="images/partnerships/funkuhni.jpg" alt=""></a>
             <a href="#"><img src="images/partnerships/optima.jpg" alt=""></a>
             <a href="#"><img src="images/partnerships/tele2.jpg" alt=""></a>
@@ -48,15 +71,34 @@
             <a href="#"><img src="images/partnerships/funkuhni.jpg" alt=""></a>
         </div>
     </nav>
-    <div id="mask"></div>
+    <div id="mask" role="fullscreen"></div>
     <div id="modal"></div>
+    <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
-    var buttons = document.getElementsByTagName('button');
-    for (var i = buttons.length - 1; i >= 0; i--) {
-        buttons[i].onclick = function() {
-            alert('Пока тут ничего нет =(');
-        }
-    }
+    /*(function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter24150949 = new Ya.Metrika({id:24150949,
+                        webvisor:true,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true});
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");*/
     </script>
+    <noscript><div><img src="//mc.yandex.ru/watch/24150949" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 </body>
 </html>
