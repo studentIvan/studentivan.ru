@@ -24,7 +24,7 @@ function showRegistrationForm() {
     /*var width = $(window).width() - 100, height = window.innerHeight - 100;
     var html = '<iframe src="https://docs.google.com/forms/d/1zpC5nH7gUFxqRHLcgsaskGWxgMgdJy8jS28IK_TXndU/viewform?embedded=true" width="' + width + '" height="' + height + '" frameborder="0" marginheight="0" marginwidth="0">Загрузка...</iframe>';
     modalShow(width + 2, height + 2, html);*/
-    window.open('https://docs.google.com/forms/d/1zpC5nH7gUFxqRHLcgsaskGWxgMgdJy8jS28IK_TXndU/viewform');
+    window.open('/register/');
 }
 
 function resetInfoBG() {
@@ -75,17 +75,24 @@ function initActivity() {
         nextInfoBG();
     }, 6500);
 
-    setTimeout(function() {
-        $('div[role="register"] button').css('border', '1px solid rgba(0, 128, 211, 1)');
-        $('#mask-teta').fadeTo(1000, 0.9, function() {
-            setTimeout(function() {
-                $('div[role="register"] button').css('border', '1px solid rgba(255, 255, 255, 0.1)');
-                $('#mask-teta').fadeOut(1000);
-            }, 1000);
-        });
-    }, 2500);
+    var firstTime = localStorage.getItem('first_time');
 
-    var CareerNightPartyDate = Math.round((new Date(2014, 5, 28, 17, 0, 0)).getTime()/1000);
+    if (!debug && !firstTime) {
+        localStorage.setItem('first_time', true);
+        setTimeout(function() {
+            $('div[role="register"] button').css('border', '1px solid rgba(0, 128, 211, 1)');
+            $('#mask-teta').fadeTo(1000, 0.9, function() {
+                setTimeout(function() {
+                    $('div[role="register"] button').css('border', '1px solid rgba(255, 255, 255, 0.1)');
+                    $('#mask-teta').fadeOut(1000);
+                }, 1000);
+            });
+        }, 2500);
+    } else {
+        $('#mask-teta').remove();
+    }
+
+    var CareerNightPartyDate = Math.round((new Date(2014, 2, 28, 17, 0, 0)).getTime()/1000);
 
     $('#flipcountdownbox1').flipcountdown({
         speedFlip: 60,
@@ -120,6 +127,27 @@ $(document).ready(function() {
         $('*[role~="fullscreen"]').each(function() {
             $(this).css('height', window.innerHeight + 'px');
         });
+
+        /*if (window.innerWidth < 1366) {
+            $('header > h1').fadeOut(0);
+        } else {
+            $('header > h1').fadeIn(0);
+        }*/
+
+        var error = 0;
+
+        if (/msie/i.test(navigator.userAgent)) {
+            error = 20;
+        }
+
+        if (/firefox/i.test(navigator.userAgent)) {
+            error = 20;
+            $('nav[role="partnerships"]').width(window.innerWidth - 335);
+            $('nav[role="partnerships"]').css('overflow', 'hidden');
+            $('div[role="vk"]').css('bottom', '250px');
+        }
+
+        $('#program > table').width(window.innerWidth - 125 + error);
     });
 
     $(window).resize();
