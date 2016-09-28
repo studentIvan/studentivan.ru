@@ -43,10 +43,10 @@
         
             
             
-            <li class="hidden-sm-down nav-item active">
+            <li class="hidden-sm-down nav-item">
                 <a class="nav-link" href="/">
                     Home
-                    <span class="sr-only">(current)</span>
+                    
                 </a>
             </li>
         
@@ -241,33 +241,105 @@
                   
                 </div>
             </div>
-            <div class="col-lg-9"><div class="home">
+            <div class="col-lg-9"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1>Latest Blog Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Yandex share problems</h1>
+    <p class="post-meta"><time datetime="2016-09-01T15:15:27+04:00" itemprop="datePublished">Sep 1, 2016</time></p>
+  </header>
 
-  <ul class="post-list">
+  <div class="post-content" itemprop="articleBody">
+    <h3 id="introduction">Introduction</h3>
+<p>Quite convenient to use plug-in software for sharing - <a href="https://tech.yandex.ru/share/">https://tech.yandex.ru/share/</a></p>
+
+<p>Past time I’ve faced with some problems and some of them I’ll show now.</p>
+
+<p>Sometimes You need to change the data that are substituted in the dialog box after sharing. But as Facebook and VK.com are using meta-cache, the changes in the plugin settings and meta-tags (og tags) are not automatically picked up. For manual cleaning You can use these tools: <a href="https://developers.facebook.com/tools/debug/">Facebook share debug</a>, <a href="https://vk.com/dev/pages.clearCache">VK.com pages clear cache</a> and <a href="https://cards-dev.twitter.com/validator">Twitter cards validator</a>.</p>
+
+<h3 id="solutions-of-common-problems">Solutions of common problems</h3>
+
+<ol>
+  <li>To work with yandex-share is better to use <a href="https://tech.yandex.ru/share/doc/dg/api-docpage/">API yandex share</a>.</li>
+</ol>
+
+<p>Below is an example code:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Ya</span><span class="p">.</span><span class="nx">share2</span><span class="p">(</span><span class="s1">'&lt;block id&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">content</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'&lt;full share url&gt;'</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s1">'&lt;share title&gt;'</span><span class="p">,</span>
+    <span class="na">description</span><span class="p">:</span> <span class="s1">'&lt;share description&gt;'</span><span class="p">,</span>
+    <span class="na">image</span><span class="p">:</span> <span class="s1">'&lt;share image&gt;'</span>
+  <span class="p">},</span>
+  <span class="na">contentByService</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">twitter</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">url</span><span class="p">:</span> <span class="s1">'&lt;url for twitter&gt;'</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">:</span> <span class="s1">'&lt;title for twitter&gt;'</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">theme</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">services</span><span class="p">:</span> <span class="s1">'twitter,vkontakte,facebook,odnoklassniki'</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<ol>
+  <li>
+    <p>Yandex-share doesn’t create full URLs for odnoklassniki (ok) and a facebook and maybe plus few more social networks (doesn’t add params like image, description, so on). In this case the networks pull the information from og-tags. One solution is - write an hack for replace result of ya-share work. It is also possible to properly set a backend, to give the correct og-tags. <a href="http://stackoverflow.com/questions/11616697/how-to-use-og-meta-tag-for-facebook-share">Follow this link for more information</a>.</p>
+  </li>
+  <li>
+    <p>It’s better to assign the result object into a variable - it will allow You to control objects without recreating.</p>
+  </li>
+</ol>
+
+<p>The example dirty yandex share hack for links replacement on Frontend:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// $ is a jQuery. For AngularJS use angular.element instead.</span>
+
+<span class="c1">// facebook example</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'.ya-share2__item_service_facebook a'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'href'</span><span class="p">,</span> 
+  <span class="s1">'https://www.facebook.com/sharer.php?'</span> <span class="o">+</span>
+  <span class="s1">'u='</span> <span class="o">+</span> <span class="s1">'&lt;full share url&gt;'</span> <span class="o">+</span>
+  <span class="s1">'&amp;picture='</span> <span class="o">+</span> <span class="s1">'&lt;share image url&gt;'</span>  <span class="o">+</span>
+  <span class="s1">'&amp;title='</span> <span class="o">+</span> <span class="s1">'&lt;share title&gt;'</span> <span class="o">+</span>
+  <span class="s1">'&amp;description='</span> <span class="o">+</span> <span class="s1">'&lt;share description&gt;'</span><span class="p">);</span>
+
+<span class="c1">// odnoklassniki aka ok example</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'.ya-share2__item_service_odnoklassniki a'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'href'</span><span class="p">,</span> 
+  <span class="s1">'http://connect.ok.ru/dk?st.cmd=WidgetSharePreview'</span> <span class="o">+</span>
+  <span class="s1">'&amp;st.shareUrl='</span> <span class="o">+</span> <span class="s1">'&lt;full share url&gt;'</span> <span class="o">+</span>
+  <span class="s1">'&amp;st.title='</span> <span class="o">+</span> <span class="s1">'&lt;share title&gt;'</span> <span class="o">+</span>
+  <span class="s1">'&amp;st.description='</span> <span class="o">+</span> <span class="s1">'&lt;share description&gt;'</span> <span class="o">+</span>
+  <span class="s1">'&amp;st.imageUrl='</span> <span class="o">+</span> <span class="s1">'&lt;share image url&gt;'</span><span class="p">);</span></code></pre></figure>
+
+<p>Hope that I saved a little bit of your time.</p>
+
+  </div>
+
+  
     
-      <li>
-        <span class="post-meta">Sep 27, 2016</span>
+  
 
-        <h2>
-          <a class="post-link" href="/blog/bash/deploy/ssh/2016/09/27/using-bash-script-for-deploying.html">Using bash script for deploying</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Sep 1, 2016</span>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://studentivan.ru/blog/social/share/yandex/2016/09/01/yandex-share-problems.html';
+      this.page.identifier = 'http://studentivan.ru/blog/social/share/yandex/2016/09/01/yandex-share-problems.html';
+    };
 
-        <h2>
-          <a class="post-link" href="/blog/social/share/yandex/2016/09/01/yandex-share-problems.html">Yandex share problems</a>
-        </h2>
-      </li>
-    
-  </ul>
+    (function() {
+      var d = document, s = d.createElement('script');
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+      s.src = 'https://studentivan.disqus.com/embed.js';
 
-</div>
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+  
+</article>
 </div>
         </div>
     </div>
