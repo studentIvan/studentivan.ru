@@ -6,37 +6,82 @@
 </description>
     <link>http://studentivan.ru/</link>
     <atom:link href="http://studentivan.ru/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 28 Sep 2016 05:15:58 +0400</pubDate>
-    <lastBuildDate>Wed, 28 Sep 2016 05:15:58 +0400</lastBuildDate>
+    <pubDate>Wed, 28 Sep 2016 06:00:06 +0400</pubDate>
+    <lastBuildDate>Wed, 28 Sep 2016 06:00:06 +0400</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+        <title>Using bash script for deploying</title>
+        <description>&lt;p&gt;Recently I had to connect the phpCI as a continuous integration system to the system consisting of several distributed servers with access via ssh+password (sad but ssh-keys were disallowed). It was decided to use ssh+scp+sshpass and then phpCI could upload builds to remote servers. For this purpose I wrote the following script:&lt;/p&gt;
 
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;span class=&quot;c&quot;&gt;# example: ./build.sh -b mylatestbuild -a myuser@myserver.ru -d /var/www/myuser/data -r /var/www/myuser/data/www/mysite.ru -p 123456&lt;/span&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$# &lt;/span&gt;-gt 1 &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;do
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$key&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+    -b|--buildpath&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;BUILD_PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$2&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# past argument&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+    -a|--remoteauth&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;REMOTE_AUTH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$2&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# past argument&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+    -r|--remoteprojectroot&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;REMOTE_PROJECT_ROOT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$2&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# past argument&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+    -p|--password&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;SSH_PASSWORD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$2&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# past argument&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+    -d|--remotedestination&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;REMOTE_DESTINATION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$2&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# past argument&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+    --default&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;DEFAULT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;YES
+    &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;c&quot;&gt;# unknown option&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;shift&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# past argument or value&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done
 
+&lt;/span&gt;tar -cf &lt;span class=&quot;nv&quot;&gt;$BUILD_PATH&lt;/span&gt;/build.tar --directory&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$BUILD_PATH&lt;/span&gt; index.php
+tar -uf &lt;span class=&quot;nv&quot;&gt;$BUILD_PATH&lt;/span&gt;/build.tar --directory&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$BUILD_PATH&lt;/span&gt; frontend
+tar -uf &lt;span class=&quot;nv&quot;&gt;$BUILD_PATH&lt;/span&gt;/build.tar --directory&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$BUILD_PATH&lt;/span&gt; acme
+gzip build.tar
+sshpass -p &lt;span class=&quot;nv&quot;&gt;$SSH_PASSWORD&lt;/span&gt; scp -o &lt;span class=&quot;nv&quot;&gt;UserKnownHostsFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/null -o &lt;span class=&quot;nv&quot;&gt;StrictHostKeyChecking&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;no &lt;span class=&quot;nv&quot;&gt;$BUILD_PATH&lt;/span&gt;/build.tar.gz &lt;span class=&quot;nv&quot;&gt;$REMOTE_AUTH&lt;/span&gt;:&lt;span class=&quot;nv&quot;&gt;$REMOTE_DESTINATION&lt;/span&gt;
+sshpass -p &lt;span class=&quot;nv&quot;&gt;$SSH_PASSWORD&lt;/span&gt; ssh -o &lt;span class=&quot;nv&quot;&gt;UserKnownHostsFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/null -o &lt;span class=&quot;nv&quot;&gt;StrictHostKeyChecking&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;no &lt;span class=&quot;nv&quot;&gt;$REMOTE_AUTH&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rm -rf &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$REMOTE_PROJECT_ROOT&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/frontend &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$REMOTE_PROJECT_ROOT&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/acme&quot;&lt;/span&gt;
+sshpass -p &lt;span class=&quot;nv&quot;&gt;$SSH_PASSWORD&lt;/span&gt; ssh -o &lt;span class=&quot;nv&quot;&gt;UserKnownHostsFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/null -o &lt;span class=&quot;nv&quot;&gt;StrictHostKeyChecking&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;no &lt;span class=&quot;nv&quot;&gt;$REMOTE_AUTH&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;tar -zxf &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$REMOTE_DESTINATION&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/build.tar.gz -C &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$REMOTE_PROJECT_ROOT&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The script is simple.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;frontend&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;acme&lt;/code&gt; are just example folders - use your own instead.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sshpass&lt;/code&gt; using only for password authorization. So You can remove it for ssh-keys auth.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no&lt;/code&gt; is using for pass unknown host error.&lt;/p&gt;
+
+&lt;p&gt;Hope that I saved a little bit of your time.&lt;/p&gt;
 </description>
         <pubDate>Tue, 27 Sep 2016 21:19:35 +0400</pubDate>
-        <link>http://studentivan.ru/blog/jekyll/update/2016/09/27/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://studentivan.ru/blog/jekyll/update/2016/09/27/welcome-to-jekyll.html</guid>
+        <link>http://studentivan.ru/blog/bash/deploy/ssh/2016/09/27/using-bash-script-for-deploying.html</link>
+        <guid isPermaLink="true">http://studentivan.ru/blog/bash/deploy/ssh/2016/09/27/using-bash-script-for-deploying.html</guid>
         
         
         <category>blog</category>
         
-        <category>jekyll</category>
+        <category>bash</category>
         
-        <category>update</category>
+        <category>deploy</category>
+        
+        <category>ssh</category>
         
       </item>
     
