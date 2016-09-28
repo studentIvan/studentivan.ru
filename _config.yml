@@ -1,0 +1,87 @@
+
+title: "Ivan Maslov: Full-Stack Web Engineer"
+description: > 
+  Ivan Maslov: Full-Stack Web Engineer Personal Site.
+baseurl: "" 
+blogurl: "/blog"
+url: "http://studentivan.ru" 
+
+disqus:
+  shortname: studentivan
+
+# Contacts
+
+public_profiles:
+  - title: twitter
+    username: IvanTranquility
+    url: https://twitter.com/
+    color: "#00aced"
+  - title: github
+    username: studentIvan
+    url: https://github.com/
+    color: "#333333"
+  - title: habrahabr
+    username: student_ivan
+    url: https://habrahabr.ru/users/
+    icon: header
+    color: "#8baab5"
+  - title: vk.com
+    username: dr.tranquility
+    url: https://vk.com/
+    icon: vk
+    color: "#45668e"
+  - title: facebook
+    username: ivan.tranquility
+    url: https://www.facebook.com/
+    color: "#3b5998"
+  - title: linkedin
+    username: drtranquility
+    url: https://www.linkedin.com/in/
+    color: "#007bb6"
+  - title: moikrug
+    username: studentivan
+    url: https://moikrug.ru/
+    icon: certificate
+    color: "#464646"
+  - title: instagram
+    username: studentivan
+    url: http://instagram.com/
+    visible: false
+    color: "#517fa4"
+  - title: duolingo
+    username: IvanTranqu1
+    url: https://www.duolingo.com/
+    icon: comments-o
+    color: "#71b200"
+  - title: upwork
+    username: ivanmaslov
+    url: https://www.upwork.com/fl/
+    icon: desktop
+    color: "#5bbc2e"
+
+skype_username:  radio.coder  # skype:radio.coder?call
+facetime_number:  "79995643839"  # facetime:79995643839
+phone_number:  "+79995643839"  # tel:+79995643839
+phone_number_pretty:  "+7 (999) 564-38-39"
+email: mail@studentivan.ru
+email_hash: d58e6abd5a8c6a45366797e28d6bdf21
+
+pgp_public_key: "E69E1D98.asc"
+
+# Build settings
+markdown: kramdown
+theme: minima
+timezone: Europe/Samara
+
+menu:
+  - home
+  - portfolio
+  - about
+
+defaults:
+  -
+    scope:
+      path: "blog"
+      type: "posts"
+    values:
+      layout: "post"

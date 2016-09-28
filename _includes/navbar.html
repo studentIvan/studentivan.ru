@@ -1,0 +1,108 @@
+<nav class="navbar navbar-full navbar-dark bg-inverse">
+    <button class="navbar-toggler hidden-md-up" type="button" 
+        data-toggle="collapse" data-target="#exCollapsingNavbar" 
+        aria-controls="exCollapsingNavbar" aria-expanded="false" 
+        style="color: white" 
+        aria-label="Toggle navigation">
+        &#9776;
+    </button>
+  <div class="collapse navbar-toggleable-sm" id="exCollapsingNavbar">
+        <a class="hidden-sm-down navbar-brand" href="/">{{ site.title }}</a>
+        <ul class="nav navbar-nav">
+        {% for menuitem in site.menu %}
+            {% assign url = '/' | append: menuitem | append: '/' %}
+            {% if url == '/home/' %}
+                {% assign url = '/' %}
+            {% endif %}
+            <li class="hidden-sm-down nav-item{% if page.url == url %} active{% endif %}">
+                <a class="nav-link" href="{{ url }}">
+                    {{ menuitem | capitalize }}
+                    {% if page.url == url %}<span class="sr-only">(current)</span>{% endif %}
+                </a>
+            </li>
+        {% endfor %}
+            <li class="hidden-md-up nav-item">
+                <a class="nav-link" href="mailto:{{ site.email }}">
+                    <img src="/images/mail-icon.png" alt="apple mail" 
+                        width="24" height="24"> send an email
+                </a>
+            </li>
+            <li class="hidden-md-up nav-item">
+                <a class="nav-link" href="skype:{{ site.skype_username }}?chat">
+                    <img src="/images/skype-icon.png" alt="skype" 
+                        width="24" height="24"> start skype chat
+                </a>
+            </li>
+            <li class="hidden-md-up nav-item">
+                <a class="nav-link" href="facetime:{{ site.facetime_number }}">
+                    <img src="/images/facetime-icon.png" alt="facetime" 
+                        width="24" height="24"> make facetime call
+                </a>
+            </li>
+            <li class="hidden-md-up nav-item">
+                <a class="nav-link" href="tel:{{ site.phone_number }}">
+                    <img src="/images/iphone-icon.png" alt="iphone" 
+                        width="24" height="24"> {{ site.phone_number_pretty }}
+                </a>
+            </li>
+        </ul>
+        <div class="hidden-md-up"><br></div>
+        <div class="pull-md-right">
+            <div class="btn-group hidden-sm-down">
+                <button type="button" class="btn btn-info dropdown-toggle" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-apple fa-fw" aria-hidden="true"></i>
+                        Contact with Ivan
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <!-- <h6 class="dropdown-header">Public Profiles</h6> -->
+                    <a class="dropdown-item" href="mailto:{{ site.email }}"
+                        data-toggle="tooltip" data-placement="left" 
+                        title="click to open your email application">
+                        <img src="/images/mail-icon.png" alt="apple mail" 
+                            width="24" height="24"> send an email
+                    </a>
+                    <a class="dropdown-item" href="skype:{{ site.skype_username }}?chat"
+                        data-toggle="tooltip" data-placement="left" 
+                        title="click to open your skype application">
+                        <img src="/images/skype-icon.png" alt="skype" 
+                            width="24" height="24"> start skype chat
+                    </a>
+                    <a class="dropdown-item" href="facetime:{{ site.facetime_number }}"
+                        data-toggle="tooltip" data-placement="left" 
+                        title="click to open your facetime application">
+                        <img src="/images/facetime-icon.png" alt="facetime" 
+                            width="24" height="24"> make facetime call
+                    </a>
+                    <a class="dropdown-item" href="tel:{{ site.phone_number }}"
+                        data-toggle="tooltip" data-placement="left" 
+                        title="ONLY for WORK moments, Russian number">
+                        <img src="/images/iphone-icon.png" alt="iphone" 
+                            width="24" height="24"> {{ site.phone_number_pretty }}&nbsp;&nbsp;&nbsp;
+                    </a>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-info dropdown-toggle" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="https://www.gravatar.com/avatar/{{ site.email_hash }}.jpg" alt="Ivan Maslov" 
+                        width="18" height="18" class="img-rounded btn-block__avatar">
+                        Ivan in global network
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <h6 class="dropdown-header">Public Profiles</h6>
+                    {% for network in site.public_profiles %}
+                        {% unless network.visible == false %}
+                        <a class="dropdown-item" target="_blank" href="{{ network.url }}{{ network.username }}"
+                            data-toggle="tooltip" data-placement="left" rel="nofollow"
+                            title="click to open {{ network.title }} link in new tab">
+                          <i class="fa fa-{% if network.icon %}{{ network.icon }}{% endif %}{% unless network.icon %}{{ network.title }}{% endunless %} fa-fw" aria-hidden="true" style="color: {{ network.color }}"></i> {{ network.title }} <span style="color: {{ network.color }}">@{{ network.username }}</span>
+                        </a>
+                        {% endunless %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

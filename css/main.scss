@@ -1,0 +1,86 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+// Our variables
+$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-size:   16px;
+$base-font-weight: 400;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+$text-color:       #111;
+$background-color: #fdfdfd;
+$brand-color:      #2a7ae2;
+
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+
+// Width of the content area
+$content-width:    800px;
+
+$on-palm:          600px;
+$on-laptop:        800px;
+
+// Minima also includes a mixin for defining media queries.
+// Use media queries like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+
+// Import partials from the `minima` theme.
+@import "minima";
+
+.btn-block__avatar {
+    position: relative;
+    margin-right: 2.95px;
+    top: -1.53px;
+}
+
+a.btn:visited {
+    color: white !important;
+}
+
+a.dropdown-item:visited {
+    color: #373a3c !important;
+    text-decoration: none !important;
+}
+
+.navbar {
+    margin-bottom: 15px;
+}
+
+.navbar.bg-inverse {
+    background-color: #3097d1 !important;
+    border-color: #1c73a5 !important;
+    color: #fff !important;
+}
+
+.jumbotron {
+    padding: 2rem 2rem !important;
+}
+
+.navbar .open>.btn-info.dropdown-toggle {
+    color: #fff !important;
+    background-color: #2a88bd !important;
+    border-color: #a6d2eb !important;
+}
+
+.navbar .btn.btn-info {
+    color: #fff;
+    background-color: #3097d1;
+    border-color: #ffffff;
+
+    &:hover, &:focus, &:active {
+        color: #fff;
+        background-color: #2a88bd;
+        border-color: #a6d2eb;
+    }
+}
