@@ -43,10 +43,10 @@
         
             
             
-            <li class="hidden-sm-down nav-item active">
+            <li class="hidden-sm-down nav-item">
                 <a class="nav-link" href="/">
                     Home
-                    <span class="sr-only">(current)</span>
+                    
                 </a>
             </li>
         
@@ -241,41 +241,67 @@
                   
                 </div>
             </div>
-            <div class="col-lg-9"><div class="home">
+            <div class="col-lg-9"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1>Latest Blog Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Modal social auth using window.open and setInterval</h1>
+    <p class="post-meta"><time datetime="2016-08-20T12:00:28+04:00" itemprop="datePublished">Aug 20, 2016</time></p>
+  </header>
 
-  <ul class="post-list">
+  <div class="post-content" itemprop="articleBody">
+    <h3 id="introduction">Introduction</h3>
+<p>The social authorization without page reloading is a modern web common problem. Many libraries are resolving backend problems with social auth like Django Social Auth (python/django) or HybridAuth (php/symfony) but no one of them does frontend code. The code below is my simple AngularJS Solution and You can adapt it for any framework even Vanilla.</p>
+
+<h3 id="code-solution">Code solution</h3>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">vm</span><span class="p">.</span><span class="nx">socialAuth</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">chWindow</span> <span class="o">=</span> <span class="nx">$window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'http://'</span> <span class="o">+</span> <span class="nx">$location</span><span class="p">.</span><span class="nx">host</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'/app/login/vk-oauth2/'</span><span class="p">);</span>
+  <span class="c1">// in this case /app/login/vk-oauth2/ is a simple django social auth url for vk.com</span>
+  <span class="c1">// replace it by function variable and You will got an multi-network code.</span>
+  <span class="c1">// $window.open does open new tab-window</span>
+  <span class="c1">// without angular is just smth like window.open('/app/login/vk-oauth2/');</span>
+  <span class="kd">var</span> <span class="nx">chInterval</span> <span class="o">=</span> <span class="nx">$interval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>  <span class="c1">// without angular is just setInterval</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">chWindow</span><span class="p">.</span><span class="nx">closed</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// chWindow will receive closed state after close</span>
+      <span class="c1">// the window is closed - we must recheck our session</span>
+      <span class="nx">$log</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">'child window closed - reload seesion pls =)'</span><span class="p">);</span> <span class="c1">// just console.log</span>
+      <span class="nx">$interval</span><span class="p">.</span><span class="nx">cancel</span><span class="p">(</span><span class="nx">chInterval</span><span class="p">);</span> <span class="c1">// in Vanilla is clearInterval(chInterval);</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// do not set to zero! else You can catch some bugs with it.</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>After that just attach this code to any social auth button like</p>
+
+<p><img src="/images/vk.com-login-buttion.png" alt="Sign in with VK.com" /></p>
+
+<p>Hope that I saved a little bit of your time.</p>
+
+  </div>
+
+  
     
-      <li>
-        <span class="post-meta">Sep 27, 2016</span>
+  
 
-        <h2>
-          <a class="post-link" href="/blog/bash/deploy/ssh/2016/09/27/using-bash-script-for-deploying.html">Using bash script for deploying</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Sep 1, 2016</span>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://studentivan.ru/blog/social/modal/openauth/2016/08/20/modal-social-auth-using-window-open-and-setinterval.html';
+      this.page.identifier = 'http://studentivan.ru/blog/social/modal/openauth/2016/08/20/modal-social-auth-using-window-open-and-setinterval.html';
+    };
 
-        <h2>
-          <a class="post-link" href="/blog/social/share/yandex/2016/09/01/yandex-share-problems.html">Yandex share problems</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 20, 2016</span>
+    (function() {
+      var d = document, s = d.createElement('script');
 
-        <h2>
-          <a class="post-link" href="/blog/social/modal/openauth/2016/08/20/modal-social-auth-using-window-open-and-setinterval.html">Modal social auth using window.open and setInterval</a>
-        </h2>
-      </li>
-    
-  </ul>
+      s.src = 'https://studentivan.disqus.com/embed.js';
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
-</div>
+
+  
+</article>
 </div>
         </div>
     </div>

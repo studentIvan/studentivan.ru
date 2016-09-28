@@ -6,8 +6,8 @@
 </description>
     <link>http://studentivan.ru/</link>
     <atom:link href="http://studentivan.ru/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 28 Sep 2016 06:56:40 +0400</pubDate>
-    <lastBuildDate>Wed, 28 Sep 2016 06:56:40 +0400</lastBuildDate>
+    <pubDate>Wed, 28 Sep 2016 07:34:56 +0400</pubDate>
+    <lastBuildDate>Wed, 28 Sep 2016 07:34:56 +0400</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -163,6 +163,49 @@ sshpass -p &lt;span class=&quot;nv&quot;&gt;$SSH_PASSWORD&lt;/span&gt; ssh -o &l
         <category>share</category>
         
         <category>yandex</category>
+        
+      </item>
+    
+      <item>
+        <title>Modal social auth using window.open and setInterval</title>
+        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;The social authorization without page reloading is a modern web common problem. Many libraries are resolving backend problems with social auth like Django Social Auth (python/django) or HybridAuth (php/symfony) but no one of them does frontend code. The code below is my simple AngularJS Solution and You can adapt it for any framework even Vanilla.&lt;/p&gt;
+
+&lt;h3 id=&quot;code-solution&quot;&gt;Code solution&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;vm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;socialAuth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;chWindow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;http://&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;/app/login/vk-oauth2/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// in this case /app/login/vk-oauth2/ is a simple django social auth url for vk.com&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// replace it by function variable and You will got an multi-network code.&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// $window.open does open new tab-window&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// without angular is just smth like window.open(&#39;/app/login/vk-oauth2/&#39;);&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;chInterval&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$interval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// without angular is just setInterval&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;chWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;closed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// chWindow will receive closed state after close&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// the window is closed - we must recheck our session&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;$log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;child window closed - reload seesion pls =)&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// just console.log&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;$interval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cancel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;chInterval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// in Vanilla is clearInterval(chInterval);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// do not set to zero! else You can catch some bugs with it.&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;After that just attach this code to any social auth button like&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/vk.com-login-buttion.png&quot; alt=&quot;Sign in with VK.com&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hope that I saved a little bit of your time.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 20 Aug 2016 12:00:28 +0400</pubDate>
+        <link>http://studentivan.ru/blog/social/modal/openauth/2016/08/20/modal-social-auth-using-window-open-and-setinterval.html</link>
+        <guid isPermaLink="true">http://studentivan.ru/blog/social/modal/openauth/2016/08/20/modal-social-auth-using-window-open-and-setinterval.html</guid>
+        
+        
+        <category>blog</category>
+        
+        <category>social</category>
+        
+        <category>modal</category>
+        
+        <category>openauth</category>
         
       </item>
     
