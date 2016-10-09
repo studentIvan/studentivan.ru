@@ -244,69 +244,63 @@
             <div class="col-lg-9"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Using bash script for deploying</h1>
-    <p class="post-meta"><time datetime="2016-09-27T21:19:35+04:00" itemprop="datePublished">September 27, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">My favorite sublime plugins</h1>
+    <p class="post-meta"><time datetime="2016-10-07T18:30:00+04:00" itemprop="datePublished">October 7, 2016</time></p>
     <p class="post-tags"></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Recently I had to connect the phpCI as a continuous integration system to the system consisting of several distributed servers with access via ssh+password (sad but ssh-keys were disallowed). It was decided to use ssh+scp+sshpass and then phpCI could upload builds to remote servers. For this purpose I wrote the following script:</p>
+    <p><img src="/images/2016-09-10-my-sublime.png" alt="That is as my sublime looks like" /></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
+<h4 id="the-list-of-my-favorite-sublime-text-3-plugins">The list of my favorite sublime text 3 plugins</h4>
 
-<span class="c"># example: ./build.sh -b mylatestbuild -a myuser@myserver.ru -d /var/www/myuser/data -r /var/www/myuser/data/www/mysite.ru -p 123456</span>
+<ul>
+  <li>AngularJS - better angular support</li>
+  <li>Better CoffeeScript - hightlight coffeescripts</li>
+  <li>Color Highlighter - detect and hightlight colors</li>
+  <li>Django - snippets for django</li>
+  <li>Django Lookup Snippets - snippets for django ORM</li>
+  <li>DocBlockr - automatic comments for js by <code class="highlighter-rouge">/**</code></li>
+  <li>Gitignore - highlight and support .gitignore files</li>
+  <li>HTML-CSS-JS Prettify - tool for prettify html/css/js</li>
+  <li>HTMLBeautify - another html beautifier tool</li>
+  <li>Icon Fonts - icon fonts snippets</li>
+  <li>INI - ini files support</li>
+  <li>Jade - jade highlight</li>
+  <li>Jekyll - toolset witch helps me with this blog</li>
+  <li>LESS - lesscss highlight</li>
+  <li>Liquid - liquid highlight</li>
+  <li>LogView - beautify logs view support</li>
+  <li>Material Theme - cool theme</li>
+  <li>Materialize - cool theme-set</li>
+  <li>nginx - nginx configuration highlight</li>
+  <li>Pug - modern Jade highlight</li>
+  <li>Python PEP8 Autoformat - tool for prettify python scripts</li>
+  <li>Sass - sass/scss highlight</li>
+  <li>SideBarEnhancements - sidebar files and folders enhancements, very useful</li>
+  <li>SideBarFolders - adds menu folders</li>
+  <li>Stylus - stylus highlight</li>
+  <li>Themes Menu Switcher - useful theme switcher</li>
+</ul>
 
-<span class="k">while</span> <span class="o">[[</span> <span class="nv">$# </span>-gt 1 <span class="o">]]</span>
-<span class="k">do
-</span><span class="nv">key</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+<p>As you see I consider myself a stronger front-end than backend developer :)</p>
 
-<span class="k">case</span> <span class="nv">$key</span> <span class="k">in</span>
-    -b|--buildpath<span class="p">)</span>
-    <span class="nv">BUILD_PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
-    <span class="nb">shift</span> <span class="c"># past argument</span>
-    <span class="p">;;</span>
-    -a|--remoteauth<span class="p">)</span>
-    <span class="nv">REMOTE_AUTH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
-    <span class="nb">shift</span> <span class="c"># past argument</span>
-    <span class="p">;;</span>
-    -r|--remoteprojectroot<span class="p">)</span>
-    <span class="nv">REMOTE_PROJECT_ROOT</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
-    <span class="nb">shift</span> <span class="c"># past argument</span>
-    <span class="p">;;</span>
-    -p|--password<span class="p">)</span>
-    <span class="nv">SSH_PASSWORD</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
-    <span class="nb">shift</span> <span class="c"># past argument</span>
-    <span class="p">;;</span>
-    -d|--remotedestination<span class="p">)</span>
-    <span class="nv">REMOTE_DESTINATION</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
-    <span class="nb">shift</span> <span class="c"># past argument</span>
-    <span class="p">;;</span>
-    --default<span class="p">)</span>
-    <span class="nv">DEFAULT</span><span class="o">=</span>YES
-    <span class="p">;;</span>
-    <span class="k">*</span><span class="p">)</span>
-            <span class="c"># unknown option</span>
-    <span class="p">;;</span>
-<span class="k">esac</span>
-<span class="nb">shift</span> <span class="c"># past argument or value</span>
-<span class="k">done
+<h4 id="masos-how-to-open-projects-with-sublime-text-3-using-term2">MasOS: how to open projects with sublime text 3 using term2</h4>
 
-</span>tar -cf <span class="nv">$BUILD_PATH</span>/build.tar --directory<span class="o">=</span><span class="nv">$BUILD_PATH</span> index.php
-tar -uf <span class="nv">$BUILD_PATH</span>/build.tar --directory<span class="o">=</span><span class="nv">$BUILD_PATH</span> frontend
-tar -uf <span class="nv">$BUILD_PATH</span>/build.tar --directory<span class="o">=</span><span class="nv">$BUILD_PATH</span> acme
-gzip build.tar
-sshpass -p <span class="nv">$SSH_PASSWORD</span> scp -o <span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null -o <span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no <span class="nv">$BUILD_PATH</span>/build.tar.gz <span class="nv">$REMOTE_AUTH</span>:<span class="nv">$REMOTE_DESTINATION</span>
-sshpass -p <span class="nv">$SSH_PASSWORD</span> ssh -o <span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null -o <span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no <span class="nv">$REMOTE_AUTH</span> <span class="s2">"rm -rf </span><span class="nv">$REMOTE_PROJECT_ROOT</span><span class="s2">/frontend </span><span class="nv">$REMOTE_PROJECT_ROOT</span><span class="s2">/acme"</span>
-sshpass -p <span class="nv">$SSH_PASSWORD</span> ssh -o <span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null -o <span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no <span class="nv">$REMOTE_AUTH</span> <span class="s2">"tar -zxf </span><span class="nv">$REMOTE_DESTINATION</span><span class="s2">/build.tar.gz -C </span><span class="nv">$REMOTE_PROJECT_ROOT</span><span class="s2">"</span></code></pre></figure>
+<p>MasOS users have Sublime binary file here</p>
 
-<p>The script is simple.
-<code class="highlighter-rouge">frontend</code> and <code class="highlighter-rouge">acme</code> are just example folders - use your own instead.</p>
+<p><code class="highlighter-rouge">/Applications/~\ Text.app/Contents/SharedSupport/bin/subl</code></p>
 
-<p><code class="highlighter-rouge">sshpass</code> using only for password authorization. So You can remove it for ssh-keys auth.</p>
+<p>It easy to create a symlink in /usr/local/bin</p>
 
-<p><code class="highlighter-rouge">-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no</code> is using for pass unknown host error.</p>
+<p><code class="highlighter-rouge">sudo ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime</code></p>
 
-<p>Hope that I saved a little bit of your time.</p>
+<p>You can find more in <a href="http://www.sublimetext.com/docs/3/osx_command_line.html">official sublime docs</a></p>
+
+<p>Then You got open project in current folder by</p>
+
+<p><code class="highlighter-rouge">sublime .</code></p>
+
 
   </div>
 
@@ -317,8 +311,8 @@ sshpass -p <span class="nv">$SSH_PASSWORD</span> ssh -o <span class="nv">UserKno
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = 'http://studentivan.ru/blog/bash/deploy/ssh/2016/09/27/using-bash-script-for-deploying.html';
-      this.page.identifier = 'http://studentivan.ru/blog/bash/deploy/ssh/2016/09/27/using-bash-script-for-deploying.html';
+      this.page.url = 'http://studentivan.ru/blog/environment/sublime/2016/10/07/my-favorite-sublime-plugins.html';
+      this.page.identifier = 'http://studentivan.ru/blog/environment/sublime/2016/10/07/my-favorite-sublime-plugins.html';
     };
 
     (function() {

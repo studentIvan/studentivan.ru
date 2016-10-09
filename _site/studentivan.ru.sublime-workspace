@@ -1,0 +1,836 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"read",
+				"readmore-js"
+			],
+			[
+				"cha",
+				"characterCounter"
+			],
+			[
+				"character",
+				"character-counter"
+			],
+			[
+				"slick",
+				"slickOption"
+			],
+			[
+				"targ",
+				"targetSlide"
+			],
+			[
+				"next",
+				"nextDate"
+			],
+			[
+				"nex",
+				"nextDate"
+			],
+			[
+				"days",
+				"daysCount"
+			],
+			[
+				"ne",
+				"nextSlide"
+			],
+			[
+				"new",
+				"newDate"
+			],
+			[
+				"Imo",
+				"important"
+			],
+			[
+				"in",
+				"index"
+			],
+			[
+				"serv",
+				"server_name"
+			],
+			[
+				"phi",
+				"phids"
+			],
+			[
+				"qu",
+				"questionId"
+			],
+			[
+				"op",
+				"op:ie\topacity:ie"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"$sta",
+				"$stateParams"
+			],
+			[
+				"widt",
+				"width\tAttr"
+			],
+			[
+				"searc",
+				"searchProcess"
+			],
+			[
+				"api",
+				"apiURL"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"$root",
+				"$rootScope\tAngularJS"
+			],
+			[
+				"cur",
+				"cursor"
+			],
+			[
+				"max-",
+				"max-width"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"webkit-pad",
+				"webkit-padding-start"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"for",
+				"for_superusers"
+			],
+			[
+				"test",
+				"testimonial_obj"
+			],
+			[
+				"tes",
+				"testimonial_obj"
+			],
+			[
+				"order",
+				"ordering"
+			],
+			[
+				"list",
+				"list_editable"
+			],
+			[
+				"mess",
+				"messages"
+			],
+			[
+				"messa",
+				"message"
+			],
+			[
+				"border-col",
+				"border-color"
+			],
+			[
+				"au",
+				"auth_password"
+			],
+			[
+				"use",
+				"use_ssl"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"Htt",
+				"Http404"
+			],
+			[
+				"mai",
+				"mailing_id"
+			],
+			[
+				"nav",
+				"nav-children"
+			],
+			[
+				"pad",
+				"padding-bottom"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"over",
+				"overflow"
+			],
+			[
+				"top",
+				"top-menu_link--tel"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"html",
+				"html2text"
+			],
+			[
+				"auth",
+				"auth_user"
+			],
+			[
+				"aut",
+				"auth_user"
+			],
+			[
+				"from",
+				"from_email"
+			],
+			[
+				"mode",
+				"models"
+			],
+			[
+				"com",
+				"complete"
+			],
+			[
+				"layo",
+				"layout_header"
+			],
+			[
+				"lay",
+				"layout_footer"
+			],
+			[
+				"HttpRes",
+				"HttpResponseRedirect"
+			],
+			[
+				"Http",
+				"HttpResponse"
+			],
+			[
+				"FB_APP",
+				"FB_APP_SECRET"
+			],
+			[
+				"Base",
+				"BaseModel"
+			],
+			[
+				"testim",
+				"testimonial"
+			],
+			[
+				"ver",
+				"verbose_name"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "blog/_posts/2016-09-10-my-favorite-sublime-plugins.markdown",
+			"settings":
+			{
+				"buffer_size": 1338,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "multi",
+		"selected_items":
+		[
+			[
+				"multi",
+				"Set Syntax: MultiMarkdown"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"sty",
+				"Set Syntax: Stylus"
+			],
+			[
+				"pug",
+				"Set Syntax: Pug"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"shell",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"js",
+				"Set Syntax: JSON"
+			],
+			[
+				"liq",
+				"Set Syntax: HTML Liquid"
+			],
+			[
+				"yam",
+				"Set Syntax: YAML"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"n",
+				"Set Syntax: nginx"
+			],
+			[
+				"ng",
+				"Set Syntax: nginx"
+			],
+			[
+				"ya",
+				"Set Syntax: YAML"
+			],
+			[
+				"rub",
+				"Set Syntax: Ruby"
+			],
+			[
+				"ruby",
+				"Set Syntax: Ruby"
+			],
+			[
+				"xml",
+				"Set Syntax: XML"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"ini",
+				"Set Syntax: INI"
+			],
+			[
+				"coffee",
+				"Set Syntax: CoffeeScript"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"jade",
+				"Set Syntax: Jade"
+			],
+			[
+				"python",
+				"Set Syntax: Python"
+			],
+			[
+				"syntax",
+				"Set Syntax: MagicPython"
+			],
+			[
+				"log",
+				"Set Syntax: LaTeX Log"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/studentIvan/projects/studentivan.ru",
+		"/Users/studentIvan/projects/studentivan.ru/images"
+	],
+	"file_history":
+	[
+		"/Users/studentIvan/projects/Frontend/package.json",
+		"/Users/studentIvan/projects/Frontend/source-files/scripts/app.js",
+		"/Users/studentIvan/projects/Frontend/node_modules/readmore-js/readmore.js",
+		"/Users/studentIvan/projects/Frontend/source-files/scripts/components/calendar.js",
+		"/Users/studentIvan/projects/Frontend/source-files/templates/funnel-2-appointment.pug",
+		"/Users/studentIvan/projects/Frontend/source-files/styles/components/character-counter.styl",
+		"/Users/studentIvan/projects/Frontend/source-files/scripts/components/character-counter.js",
+		"/Users/studentIvan/projects/Frontend/source-files/templates/user-profile.pug",
+		"/Users/studentIvan/projects/Frontend/source-files/templates/funnel-1-new.pug",
+		"/Users/studentIvan/projects/Frontend/source-files/scripts/components/tel-input.js",
+		"/Users/studentIvan/projects/Frontend/source-files/scripts/custom.js",
+		"/Users/studentIvan/projects/Frontend/node_modules/intl-tel-input/build/js/intlTelInput.js",
+		"/Users/studentIvan/projects/Frontend/node_modules/intl-tel-input/build/js/utils.js",
+		"/Users/studentIvan/projects/Frontend/source-files/scripts/components/maskedinput.js",
+		"/Users/studentIvan/projects/Frontend/node_modules/jquery.inputmask/dist/inputmask/jquery.inputmask.js",
+		"/Users/studentIvan/projects/Frontend/node_modules/jquery.inputmask/package.json",
+		"/Users/studentIvan/projects/Frontend/node_modules/slick-carousel/package.json",
+		"/Users/studentIvan/projects/Frontend/node_modules/slick-carousel/slick/slick.js",
+		"/Users/studentIvan/projects/Frontend/source-files/styles/components/days-carousel-component.styl",
+		"/Users/studentIvan/projects/Frontend/source-files/templates/components/days-carousel-component.pug",
+		"/Users/studentIvan/projects/Frontend/source-files/templates/components/search-filters-component.pug",
+		"/Users/studentIvan/projects/Frontend/source-files/styles/components/dropdown-component.styl",
+		"/Users/studentIvan/projects/Frontend/source-files/templates/data/filtermock.js",
+		"/Users/studentIvan/projects/Frontend/source-files/templates/doctor-profile.pug",
+		"/Users/studentIvan/projects/Frontend/source-files/styles/components/search-filters-component.styl",
+		"/Users/studentIvan/projects/Frontend/source-files/templates/components/daily-hours-component.pug",
+		"/Users/studentIvan/projects/Frontend/source-files/styles/components/daily-hours-component.styl",
+		"/Users/studentIvan/projects/Frontend/source-files/scripts/components/daily-hours.js",
+		"/Users/studentIvan/projects/Frontend/source-files/scripts/modules/map-initializer.js",
+		"/Users/studentIvan/projects/Frontend/source-files/scripts/components/g-maps-search.js",
+		"/Users/studentIvan/projects/Frontend/source-files/styles/main.styl",
+		"/Users/studentIvan/projects/Frontend/source-files/styles/components/calendar.styl",
+		"/Users/studentIvan/projects/Frontend/source-files/templates/components/choose-date-component.pug",
+		"/Users/studentIvan/projects/Frontend/node_modules/pickmeup/css/pickmeup.scss",
+		"/Users/studentIvan/projects/Frontend/source-files/templates/index.pug",
+		"/Users/studentIvan/projects/Frontend/source-files/templates/index--logged-in.pug",
+		"/Users/studentIvan/projects/Frontend/source-files/templates/components/header-component-map.pug",
+		"/Users/studentIvan/projects/Frontend/source-files/styles/components/g-map-search.styl",
+		"/Users/studentIvan/projects/Frontend/node_modules/pickmeup/package.json",
+		"/Users/studentIvan/projects/Frontend/source-files/templates/layouts/_layout-scripts.pug",
+		"/Users/studentIvan/projects/Frontend/source-files/templates/components/header-component.pug",
+		"/Users/studentIvan/projects/Frontend/source-files/styles/core/config.styl",
+		"/Users/studentIvan/projects/Frontend/tmp/templates/components.pug",
+		"/Users/studentIvan/projects/Frontend/one-doc.sublime-project",
+		"/Users/studentIvan/Documents/щаашсу",
+		"/Users/studentIvan/projects/dueljs/package.json",
+		"/Users/studentIvan/projects/murvica-catalog/hugo/layouts/index.html",
+		"/Users/studentIvan/projects/murvica-catalog/hugo/layouts/_default/single.html",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/like28.dscrm.ru",
+		"/Users/studentIvan/projects/murvica-catalog/hugo/layouts/fixtures/single.html",
+		"/Users/studentIvan/projects/murvica-catalog/hugo/content/about/our-story.md",
+		"/Users/studentIvan/projects/suitcss-testproject/index.css",
+		"/Users/studentIvan/projects/suitcss-testproject/build.css",
+		"/Users/studentIvan/Documents/dscrm.list.txt",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/home/django/projects_list.txt",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/home/django/projects/like18.dscrm.ru/env/bin/activate",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/home/django/projects/severodvinsk.dscrm.ru/env/bin/activate",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/home/django/projects/severodvinsk.dscrm.ru/uwsgi/production.ini",
+		"/Users/studentIvan/projects/studentivan.ru/_config.yml",
+		"/Users/studentIvan/projects/studentivan.ru/blog/_posts/2016-09-27-using-bash-script-for-deploying.markdown",
+		"/Users/studentIvan/projects/studentivan.ru/about.md",
+		"/Users/studentIvan/projects/123/dump.md",
+		"/Users/studentIvan/Downloads/test1.js",
+		"/Users/studentIvan/projects/studentivan.ru/_includes/navbar.html",
+		"/Users/studentIvan/projects/studentivan.ru/css/main.scss",
+		"/Users/studentIvan/projects/studentivan.ru/blog/_posts/2016-08-20-modal-social-auth-using-window-open-and-setinterval.markdown",
+		"/Users/studentIvan/projects/studentivan.ru/blog/_posts/2016-09-01-yandex-share-problems.markdown",
+		"/Users/studentIvan/Downloads/test1.json",
+		"/etc/hosts",
+		"/Users/studentIvan/projects/studentivan.ru/_includes/disqus_comments.html",
+		"/Users/studentIvan/projects/studentivan.ru/_layouts/default.html",
+		"/Users/studentIvan/projects/studentivan.ru/portfolio.md",
+		"/Users/studentIvan/projects/studentivan.ru/index.html",
+		"/Users/studentIvan/projects/studentivan.ru/pricing.md",
+		"/Users/studentIvan/projects/studentivan.ru/_layouts/portfolio.html",
+		"/Users/studentIvan/projects/studentivan.ru/_layouts/post.html",
+		"/Users/studentIvan/projects/studentivan.ru/_layouts/page.html",
+		"/Users/studentIvan/projects/studentivan.ru/_includes/icon-github.html",
+		"/Users/studentIvan/projects/my-awesome-site/index.html",
+		"/Users/studentIvan/projects/my-awesome-site/_layouts/default.html",
+		"/Users/studentIvan/projects/my-awesome-site/_config.yml",
+		"/Users/studentIvan/projects/my-awesome-site/_includes/navbar.html",
+		"/Users/studentIvan/projects/my-awesome-site/Gemfile",
+		"/Users/studentIvan/Library/Mobile Documents/com~apple~CloudDocs/Сертификаты/keys/gpg2016/E69E1D98.asc",
+		"/Users/studentIvan/Documents/E69E1D98.asc",
+		"/Users/studentIvan/projects/my-awesome-site/blog/_posts/2016-09-27-welcome-to-jekyll.markdown",
+		"/Users/studentIvan/projects/my-awesome-site/_posts/2016-09-27-welcome-to-jekyll.markdown",
+		"/Users/studentIvan/projects/my-awesome-site/_includes/metrika.html",
+		"/Users/studentIvan/projects/my-awesome-site/WMT99640453.HTML",
+		"/Users/studentIvan/projects/my-awesome-site/CNAME",
+		"/Users/studentIvan/projects/my-awesome-site/_site/index.html",
+		"/Users/studentIvan/projects/my-awesome-site/_layouts/header.html",
+		"/Users/studentIvan/projects/forge/receive.sh",
+		"/Users/studentIvan/projects/forge/curl.txt",
+		"/Users/studentIvan/projects/forge/busy.sh",
+		"/Users/studentIvan/projects/forge/build.sh",
+		"/Users/studentIvan/projects/forge/1.xml",
+		"/Users/studentIvan/projects/123/dump.txt",
+		"/Users/studentIvan/projects/garantservice/project/src/app/deals/chat/deal.controller.js",
+		"/Users/studentIvan/projects/garantservice/project/src/app/deals/chat/deal.html",
+		"/Users/studentIvan/projects/garantservice/project/src/app/support/ticket.html",
+		"/Users/studentIvan/projects/garantservice/project/src/app/support/create.html",
+		"/Users/studentIvan/projects/garantservice/project/src/app/components/deal/chat.tab.component.html",
+		"/Users/studentIvan/projects/garantservice/project/src/app/components/deal/chat.component.html",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/vanda.dscrm.ru",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/severodvinsk.dscrm.ru",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/nyan.dscrm.ru",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/likeavto",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/like16.dscrm.ru",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/connected.su",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/dscrm.ru",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/divan.pw",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/demo.dscrm.ru",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/nginx.conf",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/default",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/avto29.dscrm.ru",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/kadastr18",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/like18.dscrm.ru",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/wiki.dev.dscrm.ru",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/fastcgi_params",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/naxsi.rules",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/proxy_params",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/scgi_params",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/uwsgi_params",
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/fix",
+		"/Users/studentIvan/Documents/students.txt",
+		"/Users/studentIvan/Documents/groups.filter.txt",
+		"/Users/studentIvan/Downloads/json.txt"
+	],
+	"find":
+	{
+		"height": 30.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+			"/Users/studentIvan/projects/Frontend/source-files",
+			"/Users/studentIvan/projects/Frontend/source-files/",
+			"/Users/studentIvan/projects/Frontend",
+			"<project>",
+			"/Users/studentIvan/projects/studentivan.ru",
+			"/Users/studentIvan/projects/my-awesome-site"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			";');\n",
+			";\n",
+			"activateCarousel",
+			"cfoehrdes",
+			"log",
+			"Slidebefore",
+			"Slidenext",
+			"isDefaultPrevented",
+			"afterChange",
+			" \n",
+			"',\n",
+			"'],\n",
+			"left",
+			"top",
+			"$",
+			"();\n",
+			"modal",
+			"maps.googleapis",
+			"Where",
+			";\n",
+			"';\n",
+			"Where?",
+			"Where:",
+			"length",
+			"js-nav",
+			".js-nav",
+			"pid",
+			"style",
+			"admin",
+			"visible",
+			"#1756a9",
+			"}}</",
+			"link",
+			"studentIvan",
+			"\"\n",
+			"studentIvan",
+			"url",
+			"upload",
+			"accept",
+			"smbdStopTyping",
+			"\n    search: true",
+			"\n    type: ",
+			"\n    title: ",
+			"”",
+			"“",
+			"divan",
+			"connected",
+			";\n",
+			"201",
+			"3",
+			"php",
+			"2",
+			"1",
+			"PROJECT_ROOT",
+			"td",
+			"backend",
+			"999",
+			"imageManager",
+			";\n",
+			"assets",
+			";\n",
+			"Член",
+			"name",
+			" },",
+			"вопроса",
+			",\n",
+			"footer",
+			"prepe",
+			"log",
+			"link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css', media='screen', title='no title', charset='utf-8')",
+			"slide_links_wide",
+			"4",
+			"links",
+			"\";\n",
+			"admin",
+			"mailing_id",
+			"send_t",
+			"request",
+			"send_",
+			"');\n",
+			"enroll-btn",
+			"posts-list time",
+			"time",
+			"post-tags",
+			"\")\n",
+			"mailing",
+			"9",
+			"@media",
+			".header",
+			"<span><span>Поздравляем с регистрацией! Для дальнейшей работы</span>\n                                      <a href=\"#\">заполните раздел Документы</a></span>",
+			"header2",
+			"USBBootSupportedModels",
+			">'\n",
+			"HTMLField",
+			"Заголовок",
+			"HTMLField",
+			"testim",
+			"StatusEnum",
+			"status",
+			"testim",
+			"upload",
+			"select2_tagging",
+			"language",
+			"',\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"SlideBefore",
+			"SlideNext",
+			"$__",
+			".",
+			". Тип: ",
+			" ",
+			"\"",
+			"“",
+			"fileManager"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "blog/_posts/2016-09-10-my-favorite-sublime-plugins.markdown",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1338,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1337,
+								1337
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Markdown/MultiMarkdown.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 66.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "studentivan.ru.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"te",
+				"assets/stylesheets/theme-admin-extension.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 293.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 5
+	}
+}

@@ -126,6 +126,7 @@ DEPENDENCIES
   github-pages
   jekyll-github-metadata (~> 1.0)
   minima
+  pygments.rb
 
 RUBY VERSION
    ruby 2.3.1p112

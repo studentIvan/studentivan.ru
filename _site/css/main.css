@@ -178,6 +178,8 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 .highlight .vi { color: #008080; }
 .highlight .il { color: #099; }
 
+.post-tags { color: lightgray; font-size: 12px; }
+
 .btn-block__avatar { position: relative; margin-right: 2.95px; top: -1.53px; }
 
 a.btn:visited { color: white !important; }
@@ -194,3 +196,7 @@ a.dropdown-item:visited { color: #373a3c !important; text-decoration: none !impo
 
 .navbar .btn.btn-info { color: #fff; background-color: #3097d1; border-color: #ffffff; }
 .navbar .btn.btn-info:hover, .navbar .btn.btn-info:focus, .navbar .btn.btn-info:active { color: #fff; background-color: #2a88bd; border-color: #a6d2eb; }
+
+h1 { margin-bottom: 0.5em !important; }
+
+h4 { margin-top: 2em !important; margin-bottom: 1em !important; }

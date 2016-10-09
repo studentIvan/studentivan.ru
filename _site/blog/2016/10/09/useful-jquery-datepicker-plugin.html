@@ -244,69 +244,111 @@
             <div class="col-lg-9"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Using bash script for deploying</h1>
-    <p class="post-meta"><time datetime="2016-09-27T21:19:35+04:00" itemprop="datePublished">September 27, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">Useful jQuery datepicker plugin</h1>
+    <p class="post-meta"><time datetime="2016-10-09T00:00:00+04:00" itemprop="datePublished">October 9, 2016</time></p>
     <p class="post-tags"></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Recently I had to connect the phpCI as a continuous integration system to the system consisting of several distributed servers with access via ssh+password (sad but ssh-keys were disallowed). It was decided to use ssh+scp+sshpass and then phpCI could upload builds to remote servers. For this purpose I wrote the following script:</p>
+    <p>Yesterday I got a task to attach some datepicker to inputs. Datepicker must be bounded with input, prohibited to select past date and date after 3 months from today. And of course I meant that it will easy. Case: no bootstrap attached, no jquery-ui attached, es6 webpack import, stylus, needed to be styled as site design. 
+I realized that not so much plugins exist.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
+<p>My datepicker markup (bemto pug mixin) was looking as</p>
 
-<span class="c"># example: ./build.sh -b mylatestbuild -a myuser@myserver.ru -d /var/www/myuser/data -r /var/www/myuser/data/www/mysite.ru -p 123456</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">mixin</span> <span class="nx">chooseDate</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+  <span class="o">+</span><span class="nx">b</span><span class="p">.</span><span class="nx">choose</span><span class="o">-</span><span class="nx">date</span>
+    <span class="o">+</span><span class="nx">e</span><span class="p">.</span><span class="nx">datepicker</span>
+        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s1">'text'</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s1">'Pick a date'</span><span class="p">)</span>
+        <span class="o">+</span><span class="nx">fontIcon</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'calendar'</span> <span class="p">})</span>
+</code></pre>
+</div>
 
-<span class="k">while</span> <span class="o">[[</span> <span class="nv">$# </span>-gt 1 <span class="o">]]</span>
-<span class="k">do
-</span><span class="nv">key</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+<p>When I found <a href="https://github.com/nazar-pc/PickMeUp">PickMeUp</a>, I said “yeah, it what I want”. But after use I had several problems…</p>
 
-<span class="k">case</span> <span class="nv">$key</span> <span class="k">in</span>
-    -b|--buildpath<span class="p">)</span>
-    <span class="nv">BUILD_PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
-    <span class="nb">shift</span> <span class="c"># past argument</span>
-    <span class="p">;;</span>
-    -a|--remoteauth<span class="p">)</span>
-    <span class="nv">REMOTE_AUTH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
-    <span class="nb">shift</span> <span class="c"># past argument</span>
-    <span class="p">;;</span>
-    -r|--remoteprojectroot<span class="p">)</span>
-    <span class="nv">REMOTE_PROJECT_ROOT</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
-    <span class="nb">shift</span> <span class="c"># past argument</span>
-    <span class="p">;;</span>
-    -p|--password<span class="p">)</span>
-    <span class="nv">SSH_PASSWORD</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
-    <span class="nb">shift</span> <span class="c"># past argument</span>
-    <span class="p">;;</span>
-    -d|--remotedestination<span class="p">)</span>
-    <span class="nv">REMOTE_DESTINATION</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
-    <span class="nb">shift</span> <span class="c"># past argument</span>
-    <span class="p">;;</span>
-    --default<span class="p">)</span>
-    <span class="nv">DEFAULT</span><span class="o">=</span>YES
-    <span class="p">;;</span>
-    <span class="k">*</span><span class="p">)</span>
-            <span class="c"># unknown option</span>
-    <span class="p">;;</span>
-<span class="k">esac</span>
-<span class="nb">shift</span> <span class="c"># past argument or value</span>
-<span class="k">done
+<ol>
+  <li>
+    <p>First I had to convert sass to stylus, if you want a solution <a href="https://gist.github.com/studentIvan/9bfb53a93513d2990c3ed3400296d284">see my gist</a></p>
+  </li>
+  <li>
+    <p>PickeMeUp always using body as container. If your page has fixed top navbar layout you will got a problem with riding calendar. It doesn’t look fine. The solution from developer I found in <a href="https://github.com/nazar-pc/PickMeUp/issues/111">issue #111</a> (use flat and shut up). It seemed okay but calendar has no activity in flat mode.</p>
+  </li>
+  <li>
+    <p>I want to bound it to input and trigger it by clicking whole datepicker div with icon. In flat mode by default you cant.</p>
+  </li>
+</ol>
 
-</span>tar -cf <span class="nv">$BUILD_PATH</span>/build.tar --directory<span class="o">=</span><span class="nv">$BUILD_PATH</span> index.php
-tar -uf <span class="nv">$BUILD_PATH</span>/build.tar --directory<span class="o">=</span><span class="nv">$BUILD_PATH</span> frontend
-tar -uf <span class="nv">$BUILD_PATH</span>/build.tar --directory<span class="o">=</span><span class="nv">$BUILD_PATH</span> acme
-gzip build.tar
-sshpass -p <span class="nv">$SSH_PASSWORD</span> scp -o <span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null -o <span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no <span class="nv">$BUILD_PATH</span>/build.tar.gz <span class="nv">$REMOTE_AUTH</span>:<span class="nv">$REMOTE_DESTINATION</span>
-sshpass -p <span class="nv">$SSH_PASSWORD</span> ssh -o <span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null -o <span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no <span class="nv">$REMOTE_AUTH</span> <span class="s2">"rm -rf </span><span class="nv">$REMOTE_PROJECT_ROOT</span><span class="s2">/frontend </span><span class="nv">$REMOTE_PROJECT_ROOT</span><span class="s2">/acme"</span>
-sshpass -p <span class="nv">$SSH_PASSWORD</span> ssh -o <span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null -o <span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no <span class="nv">$REMOTE_AUTH</span> <span class="s2">"tar -zxf </span><span class="nv">$REMOTE_DESTINATION</span><span class="s2">/build.tar.gz -C </span><span class="nv">$REMOTE_PROJECT_ROOT</span><span class="s2">"</span></code></pre></figure>
+<p>So I did modify the mixin</p>
 
-<p>The script is simple.
-<code class="highlighter-rouge">frontend</code> and <code class="highlighter-rouge">acme</code> are just example folders - use your own instead.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">mixin</span> <span class="nx">chooseDate</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+  <span class="o">+</span><span class="nx">b</span><span class="p">.</span><span class="nx">choose</span><span class="o">-</span><span class="nx">date</span>
+    <span class="o">+</span><span class="nx">e</span><span class="p">.</span><span class="nx">datepicker</span>
+        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s1">'text'</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s1">'Pick a date'</span><span class="p">)</span>
+        <span class="o">+</span><span class="nx">fontIcon</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'calendar'</span> <span class="p">})</span>
+    <span class="o">+</span><span class="nx">e</span><span class="p">.</span><span class="nx">datepickerbox</span>
+</code></pre>
+</div>
 
-<p><code class="highlighter-rouge">sshpass</code> using only for password authorization. So You can remove it for ssh-keys auth.</p>
+<p>And do the total code in simple ES6 with MomentJS/jQuery/Vanilla mix</p>
 
-<p><code class="highlighter-rouge">-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no</code> is using for pass unknown host error.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">pickmeup</span> <span class="nx">from</span> <span class="s1">'pickmeup'</span>
+<span class="kr">import</span> <span class="nx">moment</span> <span class="nx">from</span> <span class="s1">'moment'</span>
 
-<p>Hope that I saved a little bit of your time.</p>
+<span class="kr">const</span> <span class="nx">init</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">today</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(),</span> <span class="nx">next3months</span> <span class="o">=</span> <span class="nx">moment</span><span class="p">().</span><span class="nx">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'months'</span><span class="p">).</span><span class="nx">toDate</span><span class="p">();</span>
+        <span class="kd">let</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.choose-date__datepickerbox'</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">let</span> <span class="nx">$picker</span> <span class="o">=</span> <span class="nx">pickmeup</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">min</span><span class="p">:</span> <span class="nx">today</span><span class="p">,</span>
+            <span class="na">max</span><span class="p">:</span> <span class="nx">next3months</span><span class="p">,</span>
+            <span class="na">select_year</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">select_month</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">flat</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="na">hide_on_select</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="na">format</span><span class="p">:</span> <span class="s1">'Y.m.d'</span>
+        <span class="p">});</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="nx">element</span><span class="p">).</span><span class="nx">each</span><span class="p">((</span><span class="nx">i</span><span class="p">,</span> <span class="nx">found</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">pickmeup</span><span class="p">(</span><span class="nx">found</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+            <span class="kd">let</span> <span class="nx">$input</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">found</span><span class="p">).</span><span class="nx">parent</span><span class="p">().</span><span class="nx">find</span><span class="p">(</span><span class="s1">'input'</span><span class="p">);</span>
+            <span class="c1">// here I using europe date format Y.m.d</span>
+            <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="nx">today</span><span class="p">.</span><span class="nx">toISOString</span><span class="p">().</span><span class="nx">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/-/g</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">));</span>
+            <span class="nx">$input</span><span class="p">.</span><span class="nx">parent</span><span class="p">().</span><span class="nx">click</span><span class="p">((</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">box</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">parent</span><span class="p">().</span><span class="nx">parent</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.choose-date__datepickerbox .pickmeup'</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+                <span class="nx">box</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">'pmu-hidden'</span><span class="p">);</span>
+            <span class="p">});</span>
+
+            <span class="nx">$input</span><span class="p">.</span><span class="nx">keyup</span><span class="p">((</span><span class="nx">event</span><span class="p">,</span> <span class="nx">remoteCall</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">newDate</span> <span class="o">=</span> <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
+                <span class="k">if</span> <span class="p">(</span><span class="sr">/</span><span class="se">\d{4}\.\d{2}\.\d{2}</span><span class="sr">/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">newDate</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="c1">// here I using europe date format Y.m.d</span>
+                    <span class="kd">let</span> <span class="nx">dateResult</span><span class="p">;</span>
+                    <span class="nx">$picker</span><span class="p">.</span><span class="nx">set_date</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">newDate</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\.</span><span class="sr">/g</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">)));</span>
+                    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="nx">dateResult</span> <span class="o">=</span> <span class="nx">$picker</span><span class="p">.</span><span class="nx">get_date</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+                        <span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="nx">dateResult</span><span class="p">);</span>
+                    <span class="p">},</span> <span class="mi">1</span><span class="p">);</span>
+                    <span class="nx">$picker</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+        <span class="p">});</span>
+
+        <span class="nx">element</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'pickmeup-change'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">pickmeup</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+            <span class="nx">$</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">parent</span><span class="p">().</span><span class="nx">find</span><span class="p">(</span><span class="s1">'input'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">formatted_date</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">init</span><span class="p">();</span>
+</code></pre>
+</div>
+
 
   </div>
 
@@ -317,8 +359,8 @@ sshpass -p <span class="nv">$SSH_PASSWORD</span> ssh -o <span class="nv">UserKno
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = 'http://studentivan.ru/blog/bash/deploy/ssh/2016/09/27/using-bash-script-for-deploying.html';
-      this.page.identifier = 'http://studentivan.ru/blog/bash/deploy/ssh/2016/09/27/using-bash-script-for-deploying.html';
+      this.page.url = 'http://studentivan.ru/blog/2016/10/09/useful-jquery-datepicker-plugin.html';
+      this.page.identifier = 'http://studentivan.ru/blog/2016/10/09/useful-jquery-datepicker-plugin.html';
     };
 
     (function() {

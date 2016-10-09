@@ -1,0 +1,28 @@
+{
+	"folders":
+	[
+		{
+            "follow_symlinks": true,
+			"path": "/Users/studentIvan/projects/studentivan.ru/",
+            "file_exclude_patterns": [
+                "*.DS_Store",
+                "browserconfig.xml",
+                "favicon*",
+                "CNAME"
+            ],
+            "folder_exclude_patterns": ["_site"],
+            "name": "studentivan.ru"
+		}
+	],
+
+    "settings":
+    {
+        "Jekyll":
+        {
+            "jekyll_posts_path": "/Users/studentIvan/projects/studentivan.ru/blog/_posts",
+            "jekyll_drafts_path": "/Users/studentIvan/projects/studentivan.ru/blog/_posts",
+            "jekyll_uploads_path": "/Users/studentIvan/projects/studentivan.ru/uploads",
+            "jekyll_templates_path": "/Users/studentIvan/projects/studentivan.ru/_layouts"
+        }
+    }
+}

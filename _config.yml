@@ -72,6 +72,7 @@ pgp_public_key: "E69E1D98.asc"
 markdown: kramdown
 theme: minima
 timezone: Europe/Samara
+# highlighter: pygments 
 
 menu:
   - home

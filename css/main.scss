@@ -38,6 +38,8 @@ $on-laptop:        800px;
 // Import partials from the `minima` theme.
 @import "minima";
 
+@import "components/tags";
+
 .btn-block__avatar {
     position: relative;
     margin-right: 2.95px;
@@ -83,4 +85,13 @@ a.dropdown-item:visited {
         background-color: #2a88bd;
         border-color: #a6d2eb;
     }
+}
+
+h1 {
+    margin-bottom: 0.5em !important;
+}
+
+h4 {
+    margin-top: 2em !important;
+    margin-bottom: 1em !important;
 }
