@@ -8,13 +8,13 @@ I realized that not so much plugins exist.
 
 My datepicker markup (bemto pug mixin) was looking as
 
-```javascript
+{% highlight jade %}
 mixin chooseDate(options)
   +b.choose-date
     +e.datepicker
         input(type='text' placeholder='Pick a date')
         +fontIcon({ name: 'calendar' })
-```
+{% endhighlight %}
 
 When I found [PickMeUp](https://github.com/nazar-pc/PickMeUp), I said "yeah, it what I want". But after use I had several problems...
 
@@ -26,18 +26,18 @@ When I found [PickMeUp](https://github.com/nazar-pc/PickMeUp), I said "yeah, it 
 
 So I did modify the mixin
 
-```javascript
+{% highlight jade %}
 mixin chooseDate(options)
   +b.choose-date
     +e.datepicker
         input(type='text' placeholder='Pick a date')
         +fontIcon({ name: 'calendar' })
     +e.datepickerbox
-```
+{% endhighlight %}
 
 And do the total code in simple ES6 with MomentJS/jQuery/Vanilla mix
 
-```javascript
+{% highlight javascript %}
 import pickmeup from 'pickmeup'
 import moment from 'moment'
 
@@ -94,6 +94,6 @@ const init = () => {
 }
 
 export default init();
-```
+{% endhighlight %}
 
 

@@ -255,13 +255,11 @@ I realized that not so much plugins exist.</p>
 
 <p>My datepicker markup (bemto pug mixin) was looking as</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">mixin</span> <span class="nx">chooseDate</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
-  <span class="o">+</span><span class="nx">b</span><span class="p">.</span><span class="nx">choose</span><span class="o">-</span><span class="nx">date</span>
-    <span class="o">+</span><span class="nx">e</span><span class="p">.</span><span class="nx">datepicker</span>
-        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s1">'text'</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s1">'Pick a date'</span><span class="p">)</span>
-        <span class="o">+</span><span class="nx">fontIcon</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'calendar'</span> <span class="p">})</span>
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-jade" data-lang="jade">mixin chooseDate(options)
+  +b.choose-date
+    +e.datepicker
+        input(type='text' placeholder='Pick a date')
+        +fontIcon({ name: 'calendar' })</code></pre></figure>
 
 <p>When I found <a href="https://github.com/nazar-pc/PickMeUp">PickMeUp</a>, I said “yeah, it what I want”. But after use I had several problems…</p>
 
@@ -279,18 +277,16 @@ I realized that not so much plugins exist.</p>
 
 <p>So I did modify the mixin</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">mixin</span> <span class="nx">chooseDate</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
-  <span class="o">+</span><span class="nx">b</span><span class="p">.</span><span class="nx">choose</span><span class="o">-</span><span class="nx">date</span>
-    <span class="o">+</span><span class="nx">e</span><span class="p">.</span><span class="nx">datepicker</span>
-        <span class="nx">input</span><span class="p">(</span><span class="nx">type</span><span class="o">=</span><span class="s1">'text'</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s1">'Pick a date'</span><span class="p">)</span>
-        <span class="o">+</span><span class="nx">fontIcon</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'calendar'</span> <span class="p">})</span>
-    <span class="o">+</span><span class="nx">e</span><span class="p">.</span><span class="nx">datepickerbox</span>
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-jade" data-lang="jade">mixin chooseDate(options)
+  +b.choose-date
+    +e.datepicker
+        input(type='text' placeholder='Pick a date')
+        +fontIcon({ name: 'calendar' })
+    +e.datepickerbox</code></pre></figure>
 
 <p>And do the total code in simple ES6 with MomentJS/jQuery/Vanilla mix</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">pickmeup</span> <span class="nx">from</span> <span class="s1">'pickmeup'</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="nx">pickmeup</span> <span class="nx">from</span> <span class="s1">'pickmeup'</span>
 <span class="kr">import</span> <span class="nx">moment</span> <span class="nx">from</span> <span class="s1">'moment'</span>
 
 <span class="kr">const</span> <span class="nx">init</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -345,9 +341,7 @@ I realized that not so much plugins exist.</p>
     <span class="p">});</span>
 <span class="p">}</span>
 
-<span class="kr">export</span> <span class="k">default</span> <span class="nx">init</span><span class="p">();</span>
-</code></pre>
-</div>
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">init</span><span class="p">();</span></code></pre></figure>
 
 
   </div>
@@ -395,6 +389,7 @@ I realized that not so much plugins exist.</p>
             $('[data-toggle="tooltip"]').tooltip();  // initialize tooltip 
         });
     </script>
+    <script type="text/javascript" src="/scripts/prism.js"></script>
     <!-- /common scripts -->
 
     <!-- common styles -->
