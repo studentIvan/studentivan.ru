@@ -6,9 +6,224 @@
 </description>
     <link>http://studentivan.ru/</link>
     <atom:link href="http://studentivan.ru/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 10 Oct 2016 04:08:51 +0400</pubDate>
-    <lastBuildDate>Mon, 10 Oct 2016 04:08:51 +0400</lastBuildDate>
+    <pubDate>Mon, 07 Nov 2016 00:37:33 +0400</pubDate>
+    <lastBuildDate>Mon, 07 Nov 2016 00:37:33 +0400</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>iOS iPhone and iPad frontend experience</title>
+        <description>&lt;p&gt;Today I will share some secrets of web development for Safari and iOS.&lt;/p&gt;
+
+&lt;p&gt;There are examples on JavaScript and Stylus.&lt;/p&gt;
+
+&lt;h4 id=&quot;detection-iphone-ipad-ipod-js-stylus&quot;&gt;Detection iPhone, iPad, iPod (JS, Stylus)&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isIPhone&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/iPhone/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;userAgent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;MSStream&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This method will strict detect iPhone device. If you want to detect an iPad - замените на iPad. If you need a Simulator - the user-agent will contain additional word “Simulator”.
+Microsoft adds some of its user-agents string “iPhone” with some strange goals - keep this in mind.&lt;/p&gt;
+
+&lt;p&gt;Next, assume that you have determined that the user is using iPhone. But you want to make a hack/feature for the specific model. When it comes to layout, as the hack will be convenient to add an CSS class. We will come stylus:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-stylus&quot;&gt;/**
+ * iPhone mixin
+ * example:
+ * +iphone(all, landscape)
+ *   body
+ *     display none
+ */
+iphone($version = all, $orientation = all)
+  $media-orientation = $orientation == all ? &#39;and&#39; : &#39;and (orientation: &#39; + $orientation + &#39;) and&#39;
+  if $version == &#39;4&#39; or $version == &#39;4S&#39; or $version == &#39;all&#39;
+    $query = &#39;only screen and (min-device-width: 320px) and (max-device-width: 480px) %s (-webkit-min-device-pixel-ratio: 2)&#39; % $media-orientation
+    @media $query
+      {block}
+  if $version == &#39;5&#39; or $version == &#39;5S&#39; or $version == &#39;SE&#39; or $version == &#39;all&#39;
+    $query = &#39;only screen and (min-device-width: 320px) and (max-device-width: 568px) %s (-webkit-min-device-pixel-ratio: 2)&#39; % $media-orientation
+    @media $query
+      {block}
+  if $version == &#39;6&#39; or $version == &#39;6S&#39; or $version == &#39;7&#39; or $version == &#39;7S&#39; or $version == &#39;all&#39;
+    $query = &#39;only screen and (min-device-width: 375px) and (max-device-width: 667px) %s (-webkit-min-device-pixel-ratio: 2)&#39; % $media-orientation
+    @media $query
+      {block}
+  if $version == &#39;6+&#39; or $version == &#39;7+&#39; or $version == &#39;all&#39;
+    $query = &#39;only screen and (min-device-width: 414px) and (max-device-width: 736px) %s (-webkit-min-device-pixel-ratio: 3)&#39; % $media-orientation
+    @media $query
+      {block}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note - this is a mixin for the iPhone, but it works on the basis of the screen data, so it will fall under the many Android devices. Use only with JavaScript!&lt;/p&gt;
+
+&lt;p&gt;As for the iPad - then there is your mixin:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-stylus&quot;&gt;ipad($version = all, $orientation = all)
+  $media-orientation = $orientation == all ? &#39;and&#39; : &#39;and (orientation: &#39; + $orientation + &#39;) and&#39;
+  if $version == mini or $version == 1 or $version == 2 or $version == all
+    $query = &#39;only screen and (min-device-width: 768px) and (max-device-width: 1024px) %s (-webkit-min-device-pixel-ratio: 1)&#39; % $media-orientation
+    @media $query
+      {block}
+  if $version == 3 $version == 4 or $version == all
+    $query = &#39;only screen and (min-device-width: 768px) and (max-device-width: 1024px) %s (-webkit-min-device-pixel-ratio: 2)&#39; % $media-orientation
+    @media $query
+      {block}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;track-input-edit&quot;&gt;Track input edit&lt;/h4&gt;
+
+&lt;p&gt;The method is common to all devices, not just Apple.&lt;/p&gt;
+
+&lt;p&gt;Usually developers use the onkeyup event to track changes, but then they realize that backspace is not responding to onkeyup and they are starting to use onkeydown. Next they do realize that pasting is possible not only by cmd+V (ctrl+V) - so they discover paste.&lt;/p&gt;
+
+&lt;p&gt;In the end they discover with horror that iPhone/Android can simply erase the selected text without notifying onkeyup or onkeydown or even paste. So experience is born something (you can throw any event, such as click)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// $input - selected by jQuery object&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;$input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;propertychange change click keyup input paste&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// do something&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;debug-iphoneipadsimulator-from-the-mac-os&quot;&gt;Debug iPhone/iPad/Simulator from the Mac OS&lt;/h4&gt;
+
+&lt;p&gt;I will not tell you details. I like &lt;a href=&quot;https://webdesign.tutsplus.com/articles/quick-tip-using-web-inspector-to-debug-mobile-safari--webdesign-8787&quot;&gt;this description&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;using-simulator-to-test-orientations&quot;&gt;Using Simulator to test orientations&lt;/h4&gt;
+
+&lt;p&gt;You can use cmd + &amp;gt; or cmd + &amp;lt; to change the orientation of iPad simulator.&lt;/p&gt;
+
+&lt;p&gt;Do not forget to test iPad 2 with iOS 9.3 (or closest) because at this time is a popular model still.&lt;/p&gt;
+
+&lt;p&gt;Be careful - Safari on iOS 9.3 does not support some ES6 features like Proxy and Babel will never implement it. (Especially for Proxy I have found some Google polyfill, but it doesn’t work well with the webpack at 2016-11-07, an issue &lt;a href=&quot;https://github.com/GoogleChrome/proxy-polyfill/issues/10&quot;&gt;here&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h4 id=&quot;using-datepicker&quot;&gt;Using datepicker&lt;/h4&gt;
+
+&lt;p&gt;Safari has a great support of native input type=”date”. I strongly recommend you to use this instead of any custom datepickers.&lt;/p&gt;
+
+&lt;p&gt;The display format can depends on the settings, but data storage format is always be the same:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;YYYY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;MM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;DD&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To install today’s date through the &lt;a href=&quot;http://momentjs.com/&quot;&gt;moment js&lt;/a&gt;, you can use this code:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// $input - selected by jQuery object&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;$input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Y-MM-DD&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For parsing it is also convenient to use moment js:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// $input - selected by jQuery object&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;YYYY-MM-DD&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isValid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// you can check that date is valid&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;using-window-resize-event&quot;&gt;Using window resize event&lt;/h4&gt;
+
+&lt;p&gt;The devices will trigger window resize event any time user scrolling the page.&lt;/p&gt;
+
+&lt;p&gt;So if you want to listen real resize event, not scroll, then you should replace code like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// do your code here ...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To something like below:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;screenWidth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;body&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;screenCurrentWidth&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;currentScreenWidth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentScreenWidth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;screenWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// just a trick with mobile devices&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// do your code here ...&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;body&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;screenCurrentWidth&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;currentScreenWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;extra-surprises&quot;&gt;Extra: surprises&lt;/h4&gt;
+
+&lt;p&gt;What you might not expect in the FE development with iOS devices:&lt;/p&gt;
+
+&lt;iframe width=&quot;400&quot; height=&quot;225&quot; src=&quot;https://www.youtube-nocookie.com/embed/_bSEfx6D8mA?rel=0&amp;amp;controls=0&amp;amp;showinfo=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;When you click on the input/textarea, the device can scroll the page to the height of the keyboard.&lt;/li&gt;
+  &lt;li&gt;The device can do zoomOut after finishing text edit. Be sure to append user-scalable=0 in meta name=”viewport” if you don’t want to flash the white edges of the page.&lt;/li&gt;
+  &lt;li&gt;iPhone can just give your page a horizontal scrolling, to avoid this use the following hack:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-stylus&quot;&gt;html
+body
+   overflow-x hidden
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;extra-war-with-emoji&quot;&gt;Extra: war with Emoji&lt;/h4&gt;
+
+&lt;p&gt;iOS, especially iPad love sometimes to replace the unicode with our emoji.&lt;/p&gt;
+
+&lt;p&gt;Frequently suffer the symbols U+25B6 ▶ and U+25C0 ◀.&lt;/p&gt;
+
+&lt;p&gt;You can open this page from your iPad and you will see that unicode icons turned into pictures.
+To avoid such situations there are several solutions, the simplest is to use a time-tested Icon Fonts such as FontAwesome. A little more complicated to find a SVG version of the unicode character and convert it to png.&lt;/p&gt;
+
+&lt;h4 id=&quot;extra-treatment-bugs-of-performance-of-sticky-blocks-on-iphone-5s-and-below&quot;&gt;Extra: Treatment bugs of performance of Sticky blocks on iPhone 5S and below&lt;/h4&gt;
+
+&lt;p&gt;If during the test you have identified some bugs of performance on these devices - this is the time-tested hack with additional hardware load for you:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-stylus&quot;&gt;.my-sticky-block
+  transform translate3d(0, 0, 0)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Be careful - this method apart from the additional expenses of battery of the device may bring to the sticky-elements some new bugs. Thoroughly test the hack on a real device and use only after that.&lt;/p&gt;
+
+&lt;p&gt;If possible, refrain from Sticky blocks on iPhone 5S and below, or close your eyes on the brakes - which may have not reflected very well on the seriousness of your website in the eyes of the user.&lt;/p&gt;
+
+&lt;h4 id=&quot;extra-iphone-portrait-mode-and-google-maps-v3&quot;&gt;Extra: iPhone portrait mode and Google Maps V3&lt;/h4&gt;
+
+&lt;p&gt;In portrait orientation, for iPhone all models at the current time (2016-11-06) there is a bug with incorrect positioning of the +/- at the bottom and your blocks if you are using any. The code below will help you solve the problem:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// browser.isIPhone() - look at the top of the article&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// $ is a simple jQuery&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// gm-bundled-control-on-bottom - controls on bottom&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// this.nodeElement - the block where Google Map initialized&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;orientationchange&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isIPhone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;orientation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nodeElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;div.gm-bundled-control.gm-bundled-control-on-bottom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;bottom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;119px&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// if the iPhone reacted quickly&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nodeElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;div.gm-bundled-control.gm-bundled-control-on-bottom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;bottom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;119px&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// with this delay the any model iPhone can give response on an iFrame&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/map-example.png&quot; alt=&quot;Google Map Portrait&quot; width=&quot;150px&quot; align=&quot;left&quot; style=&quot;margin-right: 15px&quot; /&gt; As you can see, the code uses only != 90 orientation (Portrait Mode). In the orientationchange event code of the buttons will be restored automatically. Now an important comment about the window.orientation:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This feature has been removed from the Web standards.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;But do our code with a new standard window.screen.orientation is is impossible yet, because Safari does not yet support it (2016-11-06). Just be careful, you might be better just to use any polyfill.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 06 Nov 2016 00:00:00 +0400</pubDate>
+        <link>http://studentivan.ru/blog/2016/11/06/ios-iphone-and-ipad-frontend-experience.html</link>
+        <guid isPermaLink="true">http://studentivan.ru/blog/2016/11/06/ios-iphone-and-ipad-frontend-experience.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>Useful jQuery datepicker plugin</title>
@@ -131,7 +346,6 @@ I realized that not so much plugins exist.&lt;/p&gt;
   &lt;li&gt;Gitignore - highlight and support .gitignore files&lt;/li&gt;
   &lt;li&gt;HTML-CSS-JS Prettify - tool for prettify html/css/js&lt;/li&gt;
   &lt;li&gt;HTMLBeautify - another html beautifier tool&lt;/li&gt;
-  &lt;li&gt;Icon Fonts - icon fonts snippets&lt;/li&gt;
   &lt;li&gt;INI - ini files support&lt;/li&gt;
   &lt;li&gt;Jade - jade highlight&lt;/li&gt;
   &lt;li&gt;Jekyll - toolset witch helps me with this blog&lt;/li&gt;

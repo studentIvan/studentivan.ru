@@ -244,37 +244,215 @@
             <div class="col-lg-9"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Modal social auth using window.open and setInterval</h1>
-    <p class="post-meta"><time datetime="2016-08-20T12:00:28+04:00" itemprop="datePublished">August 20, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">iOS iPhone and iPad frontend experience</h1>
+    <p class="post-meta"><time datetime="2016-11-06T00:00:00+04:00" itemprop="datePublished">November 6, 2016</time></p>
     <p class="post-tags"></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h3 id="introduction">Introduction</h3>
-<p>The social authorization without page reloading is a modern web common problem. Many libraries are resolving backend problems with social auth like Django Social Auth (python/django) or HybridAuth (php/symfony) but no one of them does frontend code. The code below is my simple AngularJS Solution and You can adapt it for any framework even Vanilla.</p>
+    <p>Today I will share some secrets of web development for Safari and iOS.</p>
 
-<h3 id="code-solution">Code solution</h3>
+<p>There are examples on JavaScript and Stylus.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">vm</span><span class="p">.</span><span class="nx">socialAuth</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">chWindow</span> <span class="o">=</span> <span class="nx">$window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'http://'</span> <span class="o">+</span> <span class="nx">$location</span><span class="p">.</span><span class="nx">host</span><span class="p">()</span> <span class="o">+</span> <span class="s1">'/app/login/vk-oauth2/'</span><span class="p">);</span>
-  <span class="c1">// in this case /app/login/vk-oauth2/ is a simple django social auth url for vk.com</span>
-  <span class="c1">// replace it by function variable and You will got an multi-network code.</span>
-  <span class="c1">// $window.open does open new tab-window</span>
-  <span class="c1">// without angular is just smth like window.open('/app/login/vk-oauth2/');</span>
-  <span class="kd">var</span> <span class="nx">chInterval</span> <span class="o">=</span> <span class="nx">$interval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>  <span class="c1">// without angular is just setInterval</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">chWindow</span><span class="p">.</span><span class="nx">closed</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// chWindow will receive closed state after close</span>
-      <span class="c1">// the window is closed - we must recheck our session</span>
-      <span class="nx">$log</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">'child window closed - reload seesion pls =)'</span><span class="p">);</span> <span class="c1">// just console.log</span>
-      <span class="nx">$interval</span><span class="p">.</span><span class="nx">cancel</span><span class="p">(</span><span class="nx">chInterval</span><span class="p">);</span> <span class="c1">// in Vanilla is clearInterval(chInterval);</span>
+<h4 id="detection-iphone-ipad-ipod-js-stylus">Detection iPhone, iPad, iPod (JS, Stylus)</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">isIPhone</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="sr">/iPhone/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">MSStream</span>
+</code></pre>
+</div>
+
+<p>This method will strict detect iPhone device. If you want to detect an iPad - замените на iPad. If you need a Simulator - the user-agent will contain additional word “Simulator”.
+Microsoft adds some of its user-agents string “iPhone” with some strange goals - keep this in mind.</p>
+
+<p>Next, assume that you have determined that the user is using iPhone. But you want to make a hack/feature for the specific model. When it comes to layout, as the hack will be convenient to add an CSS class. We will come stylus:</p>
+
+<pre><code class="language-stylus">/**
+ * iPhone mixin
+ * example:
+ * +iphone(all, landscape)
+ *   body
+ *     display none
+ */
+iphone($version = all, $orientation = all)
+  $media-orientation = $orientation == all ? 'and' : 'and (orientation: ' + $orientation + ') and'
+  if $version == '4' or $version == '4S' or $version == 'all'
+    $query = 'only screen and (min-device-width: 320px) and (max-device-width: 480px) %s (-webkit-min-device-pixel-ratio: 2)' % $media-orientation
+    @media $query
+      {block}
+  if $version == '5' or $version == '5S' or $version == 'SE' or $version == 'all'
+    $query = 'only screen and (min-device-width: 320px) and (max-device-width: 568px) %s (-webkit-min-device-pixel-ratio: 2)' % $media-orientation
+    @media $query
+      {block}
+  if $version == '6' or $version == '6S' or $version == '7' or $version == '7S' or $version == 'all'
+    $query = 'only screen and (min-device-width: 375px) and (max-device-width: 667px) %s (-webkit-min-device-pixel-ratio: 2)' % $media-orientation
+    @media $query
+      {block}
+  if $version == '6+' or $version == '7+' or $version == 'all'
+    $query = 'only screen and (min-device-width: 414px) and (max-device-width: 736px) %s (-webkit-min-device-pixel-ratio: 3)' % $media-orientation
+    @media $query
+      {block}
+</code></pre>
+
+<p>Note - this is a mixin for the iPhone, but it works on the basis of the screen data, so it will fall under the many Android devices. Use only with JavaScript!</p>
+
+<p>As for the iPad - then there is your mixin:</p>
+
+<pre><code class="language-stylus">ipad($version = all, $orientation = all)
+  $media-orientation = $orientation == all ? 'and' : 'and (orientation: ' + $orientation + ') and'
+  if $version == mini or $version == 1 or $version == 2 or $version == all
+    $query = 'only screen and (min-device-width: 768px) and (max-device-width: 1024px) %s (-webkit-min-device-pixel-ratio: 1)' % $media-orientation
+    @media $query
+      {block}
+  if $version == 3 $version == 4 or $version == all
+    $query = 'only screen and (min-device-width: 768px) and (max-device-width: 1024px) %s (-webkit-min-device-pixel-ratio: 2)' % $media-orientation
+    @media $query
+      {block}
+</code></pre>
+
+<h4 id="track-input-edit">Track input edit</h4>
+
+<p>The method is common to all devices, not just Apple.</p>
+
+<p>Usually developers use the onkeyup event to track changes, but then they realize that backspace is not responding to onkeyup and they are starting to use onkeydown. Next they do realize that pasting is possible not only by cmd+V (ctrl+V) - so they discover paste.</p>
+
+<p>In the end they discover with horror that iPhone/Android can simply erase the selected text without notifying onkeyup or onkeydown or even paste. So experience is born something (you can throw any event, such as click)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// $input - selected by jQuery object</span>
+<span class="nx">$input</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s1">'propertychange change click keyup input paste'</span><span class="p">,</span> <span class="nx">event</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// do something</span>
+<span class="p">})</span>
+</code></pre>
+</div>
+
+<h4 id="debug-iphoneipadsimulator-from-the-mac-os">Debug iPhone/iPad/Simulator from the Mac OS</h4>
+
+<p>I will not tell you details. I like <a href="https://webdesign.tutsplus.com/articles/quick-tip-using-web-inspector-to-debug-mobile-safari--webdesign-8787">this description</a>.</p>
+
+<h4 id="using-simulator-to-test-orientations">Using Simulator to test orientations</h4>
+
+<p>You can use cmd + &gt; or cmd + &lt; to change the orientation of iPad simulator.</p>
+
+<p>Do not forget to test iPad 2 with iOS 9.3 (or closest) because at this time is a popular model still.</p>
+
+<p>Be careful - Safari on iOS 9.3 does not support some ES6 features like Proxy and Babel will never implement it. (Especially for Proxy I have found some Google polyfill, but it doesn’t work well with the webpack at 2016-11-07, an issue <a href="https://github.com/GoogleChrome/proxy-polyfill/issues/10">here</a>)</p>
+
+<h4 id="using-datepicker">Using datepicker</h4>
+
+<p>Safari has a great support of native input type=”date”. I strongly recommend you to use this instead of any custom datepickers.</p>
+
+<p>The display format can depends on the settings, but data storage format is always be the same:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nc">YYYY</span><span class="o">-</span><span class="nc">MM</span><span class="o">-</span><span class="nc">DD</span>
+</code></pre>
+</div>
+
+<p>To install today’s date through the <a href="http://momentjs.com/">moment js</a>, you can use this code:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// $input - selected by jQuery object</span>
+<span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="nx">moment</span><span class="p">().</span><span class="nx">format</span><span class="p">(</span><span class="s1">'Y-MM-DD'</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<p>For parsing it is also convenient to use moment js:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// $input - selected by jQuery object</span>
+<span class="kr">const</span> <span class="nx">date</span> <span class="o">=</span> <span class="nx">moment</span><span class="p">(</span><span class="nx">$input</span><span class="p">.</span><span class="nx">val</span><span class="p">(),</span> <span class="s1">'YYYY-MM-DD'</span><span class="p">)</span>
+<span class="nx">date</span><span class="p">.</span><span class="nx">isValid</span><span class="p">()</span> <span class="c1">// you can check that date is valid</span>
+</code></pre>
+</div>
+
+<h4 id="using-window-resize-event">Using window resize event</h4>
+
+<p>The devices will trigger window resize event any time user scrolling the page.</p>
+
+<p>So if you want to listen real resize event, not scroll, then you should replace code like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">resize</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// do your code here ...</span>
+<span class="p">})</span>
+</code></pre>
+</div>
+
+<p>To something like below:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">screenWidth</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'body'</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">'screenCurrentWidth'</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">resize</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">currentScreenWidth</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">width</span><span class="p">()</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">currentScreenWidth</span> <span class="o">!=</span> <span class="nx">screenWidth</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// just a trick with mobile devices</span>
+        <span class="c1">// do your code here ...</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">'body'</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">'screenCurrentWidth'</span><span class="p">,</span> <span class="nx">currentScreenWidth</span><span class="p">)</span>
     <span class="p">}</span>
-  <span class="p">},</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// do not set to zero! else You can catch some bugs with it.</span>
-<span class="p">};</span></code></pre></figure>
+<span class="p">})</span>
+</code></pre>
+</div>
 
-<p>After that just attach this code to any social auth button like</p>
+<h4 id="extra-surprises">Extra: surprises</h4>
 
-<p><img src="/images/vk.com-login-buttion.png" alt="Sign in with VK.com" /></p>
+<p>What you might not expect in the FE development with iOS devices:</p>
 
-<p>Hope that I saved a little bit of your time.</p>
+<iframe width="400" height="225" src="https://www.youtube-nocookie.com/embed/_bSEfx6D8mA?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+
+<ol>
+  <li>When you click on the input/textarea, the device can scroll the page to the height of the keyboard.</li>
+  <li>The device can do zoomOut after finishing text edit. Be sure to append user-scalable=0 in meta name=”viewport” if you don’t want to flash the white edges of the page.</li>
+  <li>iPhone can just give your page a horizontal scrolling, to avoid this use the following hack:</li>
+</ol>
+
+<pre><code class="language-stylus">html
+body
+   overflow-x hidden
+</code></pre>
+
+<h4 id="extra-war-with-emoji">Extra: war with Emoji</h4>
+
+<p>iOS, especially iPad love sometimes to replace the unicode with our emoji.</p>
+
+<p>Frequently suffer the symbols U+25B6 ▶ and U+25C0 ◀.</p>
+
+<p>You can open this page from your iPad and you will see that unicode icons turned into pictures.
+To avoid such situations there are several solutions, the simplest is to use a time-tested Icon Fonts such as FontAwesome. A little more complicated to find a SVG version of the unicode character and convert it to png.</p>
+
+<h4 id="extra-treatment-bugs-of-performance-of-sticky-blocks-on-iphone-5s-and-below">Extra: Treatment bugs of performance of Sticky blocks on iPhone 5S and below</h4>
+
+<p>If during the test you have identified some bugs of performance on these devices - this is the time-tested hack with additional hardware load for you:</p>
+
+<pre><code class="language-stylus">.my-sticky-block
+  transform translate3d(0, 0, 0)
+</code></pre>
+
+<p>Be careful - this method apart from the additional expenses of battery of the device may bring to the sticky-elements some new bugs. Thoroughly test the hack on a real device and use only after that.</p>
+
+<p>If possible, refrain from Sticky blocks on iPhone 5S and below, or close your eyes on the brakes - which may have not reflected very well on the seriousness of your website in the eyes of the user.</p>
+
+<h4 id="extra-iphone-portrait-mode-and-google-maps-v3">Extra: iPhone portrait mode and Google Maps V3</h4>
+
+<p>In portrait orientation, for iPhone all models at the current time (2016-11-06) there is a bug with incorrect positioning of the +/- at the bottom and your blocks if you are using any. The code below will help you solve the problem:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// browser.isIPhone() - look at the top of the article</span>
+<span class="c1">// $ is a simple jQuery</span>
+<span class="c1">// gm-bundled-control-on-bottom - controls on bottom</span>
+<span class="c1">// this.nodeElement - the block where Google Map initialized</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'orientationchange'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">browser</span><span class="p">.</span><span class="nx">isIPhone</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">orientation</span> <span class="o">!=</span> <span class="mi">90</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">nodeElement</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'div.gm-bundled-control.gm-bundled-control-on-bottom'</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s1">'bottom'</span><span class="p">,</span> <span class="s1">'119px'</span><span class="p">)</span> <span class="c1">// if the iPhone reacted quickly</span>
+        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">nodeElement</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'div.gm-bundled-control.gm-bundled-control-on-bottom'</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s1">'bottom'</span><span class="p">,</span> <span class="s1">'119px'</span><span class="p">)</span>
+            <span class="c1">// with this delay the any model iPhone can give response on an iFrame</span>
+        <span class="p">},</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+</div>
+
+<p><img src="/images/map-example.png" alt="Google Map Portrait" width="150px" align="left" style="margin-right: 15px" /> As you can see, the code uses only != 90 orientation (Portrait Mode). In the orientationchange event code of the buttons will be restored automatically. Now an important comment about the window.orientation:</p>
+
+<blockquote>
+  <p>This feature has been removed from the Web standards.</p>
+</blockquote>
+
+<p>But do our code with a new standard window.screen.orientation is is impossible yet, because Safari does not yet support it (2016-11-06). Just be careful, you might be better just to use any polyfill.</p>
 
   </div>
 
@@ -285,8 +463,8 @@
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = 'http://studentivan.ru/blog/social/modal/openauth/2016/08/20/modal-social-auth-using-window-open-and-setinterval.html';
-      this.page.identifier = 'http://studentivan.ru/blog/social/modal/openauth/2016/08/20/modal-social-auth-using-window-open-and-setinterval.html';
+      this.page.url = 'http://studentivan.ru/blog/2016/11/06/ios-iphone-and-ipad-frontend-experience.html';
+      this.page.identifier = 'http://studentivan.ru/blog/2016/11/06/ios-iphone-and-ipad-frontend-experience.html';
     };
 
     (function() {

@@ -17,7 +17,6 @@ categories: environment sublime
 * Gitignore - highlight and support .gitignore files
 * HTML-CSS-JS Prettify - tool for prettify html/css/js
 * HTMLBeautify - another html beautifier tool
-* Icon Fonts - icon fonts snippets
 * INI - ini files support
 * Jade - jade highlight
 * Jekyll - toolset witch helps me with this blog

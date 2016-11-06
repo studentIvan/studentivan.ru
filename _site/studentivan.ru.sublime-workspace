@@ -260,10 +260,46 @@
 	"buffers":
 	[
 		{
-			"file": "blog/_posts/2016-09-10-my-favorite-sublime-plugins.markdown",
+			"file": "blog/_posts/2016-10-07-my-favorite-sublime-plugins.markdown",
 			"settings":
 			{
-				"buffer_size": 1338,
+				"buffer_size": 1868,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "blog/_posts/2016-10-09-useful-jquery-datepicker-plugin.markdown",
+			"settings":
+			{
+				"buffer_size": 3698,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_sass/components/highlight.sass",
+			"settings":
+			{
+				"buffer_size": 2369,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_layouts/default.html",
+			"settings":
+			{
+				"buffer_size": 4956,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_config.yml",
+			"settings":
+			{
+				"buffer_size": 1900,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -423,10 +459,24 @@
 	"expanded_folders":
 	[
 		"/Users/studentIvan/projects/studentivan.ru",
-		"/Users/studentIvan/projects/studentivan.ru/images"
+		"/Users/studentIvan/projects/studentivan.ru/_includes",
+		"/Users/studentIvan/projects/studentivan.ru/_layouts",
+		"/Users/studentIvan/projects/studentivan.ru/_sass",
+		"/Users/studentIvan/projects/studentivan.ru/_sass/components",
+		"/Users/studentIvan/projects/studentivan.ru/_sass/minima",
+		"/Users/studentIvan/projects/studentivan.ru/blog/_posts"
 	],
 	"file_history":
 	[
+		"/Users/studentIvan/projects/studentivan.ru/css/main.scss",
+		"/Users/studentIvan/projects/studentivan.ru/_sass/components/highlight.sass",
+		"/Users/studentIvan/Downloads/prism.css",
+		"/Users/studentIvan/projects/studentivan.ru/Gemfile.lock",
+		"/Users/studentIvan/projects/studentivan.ru/Gemfile",
+		"/Users/studentIvan/projects/studentivan.ru/_layouts/post.html",
+		"/Users/studentIvan/projects/studentivan.ru/_sass/components/tags.sass",
+		"/Users/studentIvan/projects/studentivan.ru/studentivan.ru.sublime-project",
+		"/Users/studentIvan/projects/studentivan.ru/upload/.gitkeep",
 		"/Users/studentIvan/projects/Frontend/package.json",
 		"/Users/studentIvan/projects/Frontend/source-files/scripts/app.js",
 		"/Users/studentIvan/projects/Frontend/node_modules/readmore-js/readmore.js",
@@ -491,7 +541,6 @@
 		"/Users/studentIvan/projects/123/dump.md",
 		"/Users/studentIvan/Downloads/test1.js",
 		"/Users/studentIvan/projects/studentivan.ru/_includes/navbar.html",
-		"/Users/studentIvan/projects/studentivan.ru/css/main.scss",
 		"/Users/studentIvan/projects/studentivan.ru/blog/_posts/2016-08-20-modal-social-auth-using-window-open-and-setinterval.markdown",
 		"/Users/studentIvan/projects/studentivan.ru/blog/_posts/2016-09-01-yandex-share-problems.markdown",
 		"/Users/studentIvan/Downloads/test1.json",
@@ -502,7 +551,6 @@
 		"/Users/studentIvan/projects/studentivan.ru/index.html",
 		"/Users/studentIvan/projects/studentivan.ru/pricing.md",
 		"/Users/studentIvan/projects/studentivan.ru/_layouts/portfolio.html",
-		"/Users/studentIvan/projects/studentivan.ru/_layouts/post.html",
 		"/Users/studentIvan/projects/studentivan.ru/_layouts/page.html",
 		"/Users/studentIvan/projects/studentivan.ru/_includes/icon-github.html",
 		"/Users/studentIvan/projects/my-awesome-site/index.html",
@@ -547,18 +595,11 @@
 		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/like18.dscrm.ru",
 		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/wiki.dev.dscrm.ru",
 		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/fastcgi_params",
-		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/naxsi.rules",
-		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/proxy_params",
-		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/scgi_params",
-		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/uwsgi_params",
-		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/fix",
-		"/Users/studentIvan/Documents/students.txt",
-		"/Users/studentIvan/Documents/groups.filter.txt",
-		"/Users/studentIvan/Downloads/json.txt"
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/naxsi.rules"
 	],
 	"find":
 	{
-		"height": 30.0
+		"height": 70.0
 	},
 	"find_in_files":
 	{
@@ -708,28 +749,29 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "blog/_posts/2016-09-10-my-favorite-sublime-plugins.markdown",
+					"file": "blog/_posts/2016-10-07-my-favorite-sublime-plugins.markdown",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1338,
+						"buffer_size": 1868,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1337,
-								1337
+								73,
+								73
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Material Facebook.tmTheme",
 							"open_with_edit": true,
 							"side_bar_folders_auto_load_folder": 1,
 							"syntax": "Packages/Markdown/MultiMarkdown.sublime-syntax",
@@ -740,6 +782,132 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "blog/_posts/2016-10-09-useful-jquery-datepicker-plugin.markdown",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3698,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								501,
+								501
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Material Facebook.tmTheme",
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 268.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "_sass/components/highlight.sass",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2369,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Material Facebook.tmTheme",
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "_layouts/default.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4956,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4394,
+								4394
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Material Facebook.tmTheme",
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1828.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "_config.yml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1900,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1762,
+								1762
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Material Facebook.tmTheme",
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/YAML/YAML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1205.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
 					"type": "text"
 				}
@@ -748,7 +916,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 30.0
+		"height": 70.0
 	},
 	"input":
 	{
