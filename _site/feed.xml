@@ -6,8 +6,8 @@
 </description>
     <link>http://studentivan.ru/</link>
     <atom:link href="http://studentivan.ru/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 07 Nov 2016 00:37:33 +0400</pubDate>
-    <lastBuildDate>Mon, 07 Nov 2016 00:37:33 +0400</lastBuildDate>
+    <pubDate>Mon, 07 Nov 2016 00:43:48 +0400</pubDate>
+    <lastBuildDate>Mon, 07 Nov 2016 00:43:48 +0400</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -121,6 +121,11 @@ iphone($version = all, $orientation = all)
 &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isValid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// you can check that date is valid&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
+&lt;h4 id=&quot;retina&quot;&gt;Retina!&lt;/h4&gt;
+
+&lt;p&gt;If you have not a retina display to test your images, just do one easy thing:
+Set image width as 50% of its real - it will solve many problems and your site will be more seriously.&lt;/p&gt;
 
 &lt;h4 id=&quot;using-window-resize-event&quot;&gt;Using window resize event&lt;/h4&gt;
 

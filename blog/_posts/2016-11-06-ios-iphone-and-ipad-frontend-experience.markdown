@@ -115,6 +115,11 @@ const date = moment($input.val(), 'YYYY-MM-DD')
 date.isValid() // you can check that date is valid
 ```
 
+#### Retina!
+
+If you have not a retina display to test your images, just do one easy thing:
+Set image width as 50% of its real - it will solve many problems and your site will be more seriously.
+
 #### Using window resize event
 
 The devices will trigger window resize event any time user scrolling the page. 
