@@ -13,7 +13,7 @@ There are examples on JavaScript and Stylus.
 const isIPhone = () => /iPhone/.test(navigator.userAgent) && !window.MSStream
 ```
 
-This method will strict detect iPhone device. If you want to detect an iPad - замените на iPad. If you need a Simulator - the user-agent will contain additional word "Simulator".
+This method will strict detect iPhone device. If you want to detect an iPad - replace on iPad. If you need a Simulator - the user-agent will contain additional word "Simulator".
 Microsoft adds some of its user-agents string "iPhone" with some strange goals - keep this in mind.
 
 Next, assume that you have determined that the user is using iPhone. But you want to make a hack/feature for the specific model. When it comes to layout, as the hack will be convenient to add an CSS class. We will come stylus:

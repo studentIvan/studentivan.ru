@@ -6,8 +6,8 @@
 </description>
     <link>http://studentivan.ru/</link>
     <atom:link href="http://studentivan.ru/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 07 Nov 2016 00:43:48 +0400</pubDate>
-    <lastBuildDate>Mon, 07 Nov 2016 00:43:48 +0400</lastBuildDate>
+    <pubDate>Mon, 07 Nov 2016 01:18:45 +0400</pubDate>
+    <lastBuildDate>Mon, 07 Nov 2016 01:18:45 +0400</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -22,7 +22,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;This method will strict detect iPhone device. If you want to detect an iPad - замените на iPad. If you need a Simulator - the user-agent will contain additional word “Simulator”.
+&lt;p&gt;This method will strict detect iPhone device. If you want to detect an iPad - replace on iPad. If you need a Simulator - the user-agent will contain additional word “Simulator”.
 Microsoft adds some of its user-agents string “iPhone” with some strange goals - keep this in mind.&lt;/p&gt;
 
 &lt;p&gt;Next, assume that you have determined that the user is using iPhone. But you want to make a hack/feature for the specific model. When it comes to layout, as the hack will be convenient to add an CSS class. We will come stylus:&lt;/p&gt;
