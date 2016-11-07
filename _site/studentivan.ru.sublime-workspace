@@ -260,15 +260,6 @@
 	"buffers":
 	[
 		{
-			"file": "blog/_posts/2016-10-07-my-favorite-sublime-plugins.markdown",
-			"settings":
-			{
-				"buffer_size": 1868,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "blog/_posts/2016-10-09-useful-jquery-datepicker-plugin.markdown",
 			"settings":
 			{
@@ -278,28 +269,10 @@
 			}
 		},
 		{
-			"file": "_sass/components/highlight.sass",
+			"file": "blog/_posts/2016-11-06-ios-iphone-and-ipad-frontend-experience.markdown",
 			"settings":
 			{
-				"buffer_size": 2369,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "_layouts/default.html",
-			"settings":
-			{
-				"buffer_size": 4956,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "_config.yml",
-			"settings":
-			{
-				"buffer_size": 1900,
+				"buffer_size": 9398,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -464,12 +437,18 @@
 		"/Users/studentIvan/projects/studentivan.ru/_sass",
 		"/Users/studentIvan/projects/studentivan.ru/_sass/components",
 		"/Users/studentIvan/projects/studentivan.ru/_sass/minima",
-		"/Users/studentIvan/projects/studentivan.ru/blog/_posts"
+		"/Users/studentIvan/projects/studentivan.ru/blog",
+		"/Users/studentIvan/projects/studentivan.ru/blog/_posts",
+		"/Users/studentIvan/projects/studentivan.ru/images"
 	],
 	"file_history":
 	[
-		"/Users/studentIvan/projects/studentivan.ru/css/main.scss",
+		"/Users/studentIvan/projects/studentivan.ru/blog/_posts/2016-10-07-my-favorite-sublime-plugins.markdown",
+		"/Users/studentIvan/projects/studentivan.ru/_config.yml",
+		"/Users/studentIvan/projects/studentivan.ru/_layouts/default.html",
 		"/Users/studentIvan/projects/studentivan.ru/_sass/components/highlight.sass",
+		"/Users/studentIvan/projects/studentivan.ru/.gitignore",
+		"/Users/studentIvan/projects/studentivan.ru/css/main.scss",
 		"/Users/studentIvan/Downloads/prism.css",
 		"/Users/studentIvan/projects/studentivan.ru/Gemfile.lock",
 		"/Users/studentIvan/projects/studentivan.ru/Gemfile",
@@ -535,7 +514,6 @@
 		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/home/django/projects/like18.dscrm.ru/env/bin/activate",
 		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/home/django/projects/severodvinsk.dscrm.ru/env/bin/activate",
 		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/home/django/projects/severodvinsk.dscrm.ru/uwsgi/production.ini",
-		"/Users/studentIvan/projects/studentivan.ru/_config.yml",
 		"/Users/studentIvan/projects/studentivan.ru/blog/_posts/2016-09-27-using-bash-script-for-deploying.markdown",
 		"/Users/studentIvan/projects/studentivan.ru/about.md",
 		"/Users/studentIvan/projects/123/dump.md",
@@ -546,7 +524,6 @@
 		"/Users/studentIvan/Downloads/test1.json",
 		"/etc/hosts",
 		"/Users/studentIvan/projects/studentivan.ru/_includes/disqus_comments.html",
-		"/Users/studentIvan/projects/studentivan.ru/_layouts/default.html",
 		"/Users/studentIvan/projects/studentivan.ru/portfolio.md",
 		"/Users/studentIvan/projects/studentivan.ru/index.html",
 		"/Users/studentIvan/projects/studentivan.ru/pricing.md",
@@ -593,9 +570,7 @@
 		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/avto29.dscrm.ru",
 		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/kadastr18",
 		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/like18.dscrm.ru",
-		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/wiki.dev.dscrm.ru",
-		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/fastcgi_params",
-		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/naxsi.rules"
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/wiki.dev.dscrm.ru"
 	],
 	"find":
 	{
@@ -749,44 +724,11 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "blog/_posts/2016-10-07-my-favorite-sublime-plugins.markdown",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1868,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								73,
-								73
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Material Facebook.tmTheme",
-							"open_with_edit": true,
-							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/Markdown/MultiMarkdown.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "blog/_posts/2016-10-09-useful-jquery-datepicker-plugin.markdown",
 					"semi_transient": false,
 					"settings":
@@ -806,106 +748,42 @@
 						{
 							"color_scheme": "Packages/User/Color Highlighter/themes/Material Facebook.tmTheme",
 							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 268.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "_sass/components/highlight.sass",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2369,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Material Facebook.tmTheme",
-							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 910.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "_layouts/default.html",
+					"buffer": 1,
+					"file": "blog/_posts/2016-11-06-ios-iphone-and-ipad-frontend-experience.markdown",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4956,
+						"buffer_size": 9398,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4394,
-								4394
+								420,
+								420
 							]
 						],
 						"settings":
 						{
 							"color_scheme": "Packages/User/Color Highlighter/themes/Material Facebook.tmTheme",
 							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1828.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "_config.yml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1900,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1762,
-								1762
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Material Facebook.tmTheme",
-							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/YAML/YAML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1205.0,
+						"translation.y": 132.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
