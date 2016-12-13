@@ -1,8 +1,7 @@
-
 code[class*="language-"]
-  color: black
+  color: #f8f8f2
   background: none
-  text-shadow: 0 1px white
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3)
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
   text-align: left
   white-space: pre
@@ -19,9 +18,9 @@ code[class*="language-"]
   hyphens: none
 
 pre[class*="language-"]
-  color: black
+  color: #f8f8f2
   background: none
-  text-shadow: 0 1px white
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3)
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
   text-align: left
   white-space: pre
@@ -36,40 +35,13 @@ pre[class*="language-"]
   -moz-hyphens: none
   -ms-hyphens: none
   hyphens: none
-  &::-moz-selection, ::-moz-selection
-    text-shadow: none
-    background: #b3d4fc
-
-code[class*="language-"]
-  &::-moz-selection, ::-moz-selection
-    text-shadow: none
-    background: #b3d4fc
-
-pre[class*="language-"]
-  &::selection, ::selection
-    text-shadow: none
-    background: #b3d4fc
-
-code[class*="language-"]
-  &::selection, ::selection
-    text-shadow: none
-    background: #b3d4fc
-
-@media print
-  code[class*="language-"], pre[class*="language-"]
-    text-shadow: none
-
-/* Code blocks
-
-pre[class*="language-"]
   padding: 1em
   margin: .5em 0
   overflow: auto
+  border-radius: 0.3em
 
 \:not(pre) > code[class*="language-"], pre[class*="language-"]
-  background: #f5f2f0
-
-/* Inline code
+  background: #2f3030
 
 \:not(pre) > code[class*="language-"]
   padding: .1em
@@ -80,36 +52,344 @@ pre[class*="language-"]
   &.comment, &.prolog, &.doctype, &.cdata
     color: slategray
   &.punctuation
-    color: #999
+    color: #f8f8f2
 
 .namespace
   opacity: .7
 
 .token
-  &.property, &.tag, &.boolean, &.number, &.constant, &.symbol, &.deleted
-    color: #905
+  &.property, &.tag, &.constant, &.symbol, &.deleted
+    color: #f92672
+  &.boolean, &.number
+    color: #ae81ff
   &.selector, &.attr-name, &.string, &.char, &.builtin, &.inserted
-    color: #690
+    color: #a6e22e
   &.operator, &.entity, &.url
-    color: #a67f59
-    background: hsla(0, 0%, 100%, 0.5)
+    color: #f8f8f2
 
 .language-css .token.string, .style .token.string
-  color: #a67f59
-  background: hsla(0, 0%, 100%, 0.5)
+  color: #f8f8f2
 
 .token
-  &.atrule, &.attr-value, &.keyword
-    color: #07a
-  &.function
-    color: #DD4A68
-  &.regex, &.important, &.variable
-    color: #e90
-  &.important, &.bold
+  &.variable
+    color: #f8f8f2
+  &.atrule, &.attr-value, &.function
+    color: #e6db74
+  &.keyword
+    color: #66d9ef
+  &.regex
+    color: #fd971f
+  &.important
+    color: #fd971f
+    font-weight: bold
+  &.bold
     font-weight: bold
   &.italic
     font-style: italic
   &.entity
     cursor: help
-  a
-    color: inherit
+
+pre.line-numbers
+  position: relative
+  padding-left: 3.8em
+  counter-reset: linenumber
+  > code
+    position: relative
+
+.line-numbers .line-numbers-rows
+  position: absolute
+  pointer-events: none
+  top: 0
+  font-size: 100%
+  left: -3.8em
+  width: 3em
+  letter-spacing: -1px
+  border-right: 1px solid #999
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+.line-numbers-rows > span
+  pointer-events: none
+  display: block
+  counter-increment: linenumber
+  &:before
+    content: counter(linenumber)
+    color: #999
+    display: block
+    padding-right: 0.8em
+    text-align: right
+
+.token a
+  color: inherit
+
+code[class*="language-"] a[href], pre[class*="language-"] a[href]
+  cursor: help
+  text-decoration: none
+
+code[class*="language-"] a[href]:hover
+  cursor: help
+  text-decoration: underline
+
+pre
+  &[class*="language-"] a[href]:hover
+    cursor: help
+    text-decoration: underline
+  &.code-toolbar
+    position: relative
+    > .toolbar
+      position: absolute
+      top: .3em
+      right: .2em
+      transition: opacity 0.3s ease-in-out
+      opacity: 0
+    &:hover > .toolbar
+      opacity: 1
+    > .toolbar
+      .toolbar-item
+        display: inline-block
+      a
+        cursor: pointer
+      button
+        background: none
+        border: 0
+        color: inherit
+        font: inherit
+        line-height: normal
+        overflow: visible
+        padding: 0
+        -webkit-user-select: none
+        -moz-user-select: none
+        -ms-user-select: none
+      a, button, span
+        color: #bbb
+        font-size: .8em
+        padding: 0 .5em
+        background: #f5f2f0
+        background: rgba(224, 224, 224, 0.2)
+        box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2)
+        border-radius: .5em
+      a
+        &:hover, &:focus
+          color: inherit
+          text-decoration: none
+      button
+        &:hover, &:focus
+          color: inherit
+          text-decoration: none
+      span
+        &:hover, &:focus
+          color: inherit
+          text-decoration: none
+
+.prism-previewer
+  position: absolute
+  pointer-events: none
+  &:before
+    position: absolute
+    pointer-events: none
+  &:after
+    position: absolute
+    pointer-events: none
+    left: 50%
+  left: 50%
+  margin-top: -48px
+  width: 32px
+  height: 32px
+  margin-left: -16px
+  opacity: 0
+  -webkit-transition: opacity .25s
+  -o-transition: opacity .25s
+  transition: opacity .25s
+  &.flipped
+    margin-top: 0
+    margin-bottom: -48px
+  &:before, &:after
+    content: ''
+    position: absolute
+    pointer-events: none
+  &:before
+    top: -5px
+    right: -5px
+    left: -5px
+    bottom: -5px
+    border-radius: 10px
+    border: 5px solid #fff
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5) inset, 0 0 10px rgba(0, 0, 0, 0.75)
+  &:after
+    top: 100%
+    width: 0
+    height: 0
+    margin: 5px 0 0 -7px
+    border: 7px solid transparent
+    border-color: rgba(255, 0, 0, 0)
+    border-top-color: #fff
+  &.flipped:after
+    top: auto
+    bottom: 100%
+    margin-top: 0
+    margin-bottom: 5px
+    border-top-color: rgba(255, 0, 0, 0)
+    border-bottom-color: #fff
+  &.active
+    opacity: 1
+
+.prism-previewer-color
+  background-image: linear-gradient(45deg, #bbb 25%, transparent 25%, transparent 75%, #bbb 75%, #bbb), linear-gradient(45deg, #bbb 25%, #eee 25%, #eee 75%, #bbb 75%, #bbb)
+  background-size: 10px 10px
+  background-position: 0 0, 5px 5px
+  &:before
+    background-color: inherit
+    background-clip: padding-box
+
+.prism-previewer-gradient
+  background-image: linear-gradient(45deg, #bbb 25%, transparent 25%, transparent 75%, #bbb 75%, #bbb), linear-gradient(45deg, #bbb 25%, #eee 25%, #eee 75%, #bbb 75%, #bbb)
+  background-size: 10px 10px
+  background-position: 0 0, 5px 5px
+  width: 64px
+  margin-left: -32px
+  &:before
+    content: none
+  div
+    position: absolute
+    top: -5px
+    left: -5px
+    right: -5px
+    bottom: -5px
+    border-radius: 10px
+    border: 5px solid #fff
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5) inset, 0 0 10px rgba(0, 0, 0, 0.75)
+
+.prism-previewer-easing
+  margin-top: -76px
+  margin-left: -30px
+  width: 60px
+  height: 60px
+  background: #333
+  &.flipped
+    margin-bottom: -116px
+  svg
+    width: 60px
+    height: 60px
+  circle
+    fill: hsl(200, 10%, 20%)
+    stroke: white
+  path
+    fill: none
+    stroke: white
+    stroke-linecap: round
+    stroke-width: 4
+  line
+    stroke: white
+    stroke-opacity: 0.5
+    stroke-width: 2
+
+@-webkit-keyframes prism-previewer-time
+  0%
+    stroke-dasharray: 0, 500
+    stroke-dashoffset: 0
+
+  50%
+    stroke-dasharray: 100, 500
+    stroke-dashoffset: 0
+
+  100%
+    stroke-dasharray: 0, 500
+    stroke-dashoffset: -100
+
+
+@-o-keyframes prism-previewer-time
+  0%
+    stroke-dasharray: 0, 500
+    stroke-dashoffset: 0
+
+  50%
+    stroke-dasharray: 100, 500
+    stroke-dashoffset: 0
+
+  100%
+    stroke-dasharray: 0, 500
+    stroke-dashoffset: -100
+
+
+@-moz-keyframes prism-previewer-time
+  0%
+    stroke-dasharray: 0, 500
+    stroke-dashoffset: 0
+
+  50%
+    stroke-dasharray: 100, 500
+    stroke-dashoffset: 0
+
+  100%
+    stroke-dasharray: 0, 500
+    stroke-dashoffset: -100
+
+
+@keyframes prism-previewer-time
+  0%
+    stroke-dasharray: 0, 500
+    stroke-dashoffset: 0
+
+  50%
+    stroke-dasharray: 100, 500
+    stroke-dashoffset: 0
+
+  100%
+    stroke-dasharray: 0, 500
+    stroke-dashoffset: -100
+
+
+.prism-previewer-time
+  &:before
+    border-radius: 50%
+    background: #fff
+  &:after
+    margin-top: 4px
+  svg
+    width: 32px
+    height: 32px
+    -webkit-transform: rotate(-90deg)
+    -moz-transform: rotate(-90deg)
+    -ms-transform: rotate(-90deg)
+    -o-transform: rotate(-90deg)
+    transform: rotate(-90deg)
+  circle
+    fill: transparent
+    stroke: hsl(200, 10%, 20%)
+    stroke-opacity: 0.9
+    stroke-width: 32
+    stroke-dasharray: 0, 500
+    stroke-dashoffset: 0
+    -webkit-animation: prism-previewer-time linear infinite 3s
+    -moz-animation: prism-previewer-time linear infinite 3s
+    -o-animation: prism-previewer-time linear infinite 3s
+    animation: prism-previewer-time linear infinite 3s
+
+.prism-previewer-angle
+  &:before
+    border-radius: 50%
+    background: #fff
+  &:after
+    margin-top: 4px
+  svg
+    width: 32px
+    height: 32px
+    -webkit-transform: rotate(-90deg)
+    -moz-transform: rotate(-90deg)
+    -ms-transform: rotate(-90deg)
+    -o-transform: rotate(-90deg)
+    transform: rotate(-90deg)
+  &[data-negative] svg
+    -webkit-transform: scaleX(-1) rotate(-90deg)
+    -moz-transform: scaleX(-1) rotate(-90deg)
+    -ms-transform: scaleX(-1) rotate(-90deg)
+    -o-transform: scaleX(-1) rotate(-90deg)
+    transform: scaleX(-1) rotate(-90deg)
+  circle
+    fill: transparent
+    stroke: hsl(200, 10%, 20%)
+    stroke-opacity: 0.9
+    stroke-width: 32
+    stroke-dasharray: 0, 500

@@ -12,14 +12,10 @@ disqus:
 # Contacts
 
 public_profiles:
-  - title: twitter
-    username: IvanTranquility
-    url: https://twitter.com/
-    color: "#00aced"
   - title: github
     username: studentIvan
     url: https://github.com/
-    color: "#333333"
+    color: "#a8a8a8"
   - title: habrahabr
     username: student_ivan
     url: https://habrahabr.ru/users/
@@ -38,11 +34,16 @@ public_profiles:
     username: drtranquility
     url: https://www.linkedin.com/in/
     color: "#007bb6"
+    visible: false
+  - title: twitter
+    username: IvanTranquility
+    url: https://twitter.com/
+    color: "#00aced"
   - title: moikrug
     username: studentivan
     url: https://moikrug.ru/
     icon: certificate
-    color: "#464646"
+    color: "#b3b3b3"
   - title: instagram
     username: studentivan
     url: http://instagram.com/
@@ -77,7 +78,8 @@ timezone: Europe/Samara
 menu:
   - home
   - portfolio
-  - about
+  - resume
+  - samples
 
 defaults:
   -

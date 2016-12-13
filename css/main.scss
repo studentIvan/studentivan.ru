@@ -14,11 +14,34 @@ $spacing-unit:     30px;
 
 $text-color:       #111;
 $background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
+$brand-color:      #2a7ae2; // links
+$main-color-background: #212632; // background of navbar
+$main-color-border:  #1c73a5; // background of navbar
+
+$main-btn-bg-color: #323437;
+$main-btn-border-color: #abb0b5;
+$main-btn-text-color: #e8e9ee;
+
+$main-btn-bg-color-hover: #14181e;
+$main-btn-border-color-hover: #75797f;
+$main-btn-text-color-hover: #8b9198; // inverted
+
+$nav-dropdown-link-text-color: hsla(225,4%,82%,1);
+$nav-dropdown-bg-color: #212634;
+$nav-dropdown-bg-border: rgba(171,176,181,1);
+$nav-dropdown-link-text-color-visited: #d5d6db;
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
+
+$learn-more-btn-text-color-hover: #fcfdff;
+$learn-more-btn-bg-color-hover: #373a3c;
+$learn-more-btn-border-color-hover: #14181e;
+
+$learn-more-btn-text-color: #fff;
+$learn-more-btn-bg-color: #2f4560;
+$learn-more-btn-border-color: #2f4560;
 
 // Width of the content area
 $content-width:    800px;
@@ -41,51 +64,86 @@ $on-laptop:        800px;
 @import "components/tags";
 @import "components/highlight";
 
+a, a:visited {
+    color: #344A6E;
+}
+
+pre {
+    color: #e5e6eb;
+    background-color: #373a3c;
+}
+
 .btn-block__avatar {
     position: relative;
     margin-right: 2.95px;
     top: -1.53px;
 }
 
-a.btn:visited {
+a.btn, a.btn:visited {
     color: white !important;
-}
-
-a.dropdown-item:visited {
-    color: #373a3c !important;
-    text-decoration: none !important;
-}
-
-.navbar {
-    margin-bottom: 15px;
-}
-
-.navbar.bg-inverse {
-    background-color: #3097d1 !important;
-    border-color: #1c73a5 !important;
-    color: #fff !important;
 }
 
 .jumbotron {
     padding: 2rem 2rem !important;
 }
 
-.navbar .open>.btn-info.dropdown-toggle {
-    color: #fff !important;
-    background-color: #2a88bd !important;
-    border-color: #a6d2eb !important;
+@mixin navbar-btn-highlighted() {
+    color: $main-btn-text-color !important;
+    background-color: $main-btn-bg-color !important;
+    border-color: $main-btn-border-color !important;
 }
 
-.navbar .btn.btn-info {
-    color: #fff;
-    background-color: #3097d1;
-    border-color: #ffffff;
+.navbar {
+    margin-bottom: 15px;
 
-    &:hover, &:focus, &:active {
-        color: #fff;
-        background-color: #2a88bd;
-        border-color: #a6d2eb;
+    .bg-inverse {
+        background-color: $main-color-background !important;
+        border-color: $main-color-border !important;
+        color: #fff !important;
     }
+
+    .dropdown-menu {
+        background-color: $nav-dropdown-bg-color;
+        border-color: $nav-dropdown-bg-border;
+
+        &:visited {
+            color: $nav-dropdown-link-text-color-visited !important;
+            text-decoration: none !important;
+        }
+    }
+    .dropdown-item {
+        color: $nav-dropdown-link-text-color;
+    }
+
+    .open>.btn-info.dropdown-toggle {
+        @include navbar-btn-highlighted();
+    }
+
+    .btn.btn-info {
+        color: $main-btn-text-color-hover;
+        background-color: $main-btn-bg-color-hover;
+        border-color: $main-btn-border-color-hover;
+
+        &:hover, &:focus, &:active {
+            @include navbar-btn-highlighted();
+        }
+    }
+}
+
+.btn.btn-primary.btn-lg {
+    background-color: $learn-more-btn-bg-color;
+    color: $learn-more-btn-text-color;
+    border-color: $learn-more-btn-border-color;
+
+    &:hover {
+        background-color: $learn-more-btn-bg-color-hover;
+        color: $learn-more-btn-text-color-hover;
+        border-color: $learn-more-btn-border-color-hover;
+    }
+}
+
+.home {
+    margin-top: 10px;
 }
 
 h1 {
@@ -95,4 +153,47 @@ h1 {
 h4 {
     margin-top: 2em !important;
     margin-bottom: 1em !important;
+}
+
+article {
+    margin-top: 10px;
+}
+
+.token.atrule, .token.attr-value, .token.function {
+    color: #ffeb3b;
+}
+
+.token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted {
+    color: #03a9f4;
+}
+
+.language-stylus {
+    .token.property {
+        color: #03a9f4;
+    }
+}
+
+.highlighter-rouge .highlight {
+    background: #2f3030;
+    color: #e7e8ed;
+
+    .kr {
+        color: #bfbfbf;
+    }
+
+    .sr {
+        color: #fdfdfc;
+    }
+
+    .nb {
+        color: #ffeb3b;
+    }
+
+    .s1 {
+        color: #03a9f4;
+    }
+
+    .nc {
+        color: #fff;
+    }
 }
