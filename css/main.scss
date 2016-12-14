@@ -64,6 +64,8 @@ $on-laptop:        800px;
 @import "components/tags";
 @import "components/highlight";
 
+@import "bootstrap4/scss/bootstrap.scss";
+
 a, a:visited {
     color: #344A6E;
 }
@@ -83,24 +85,80 @@ a.btn, a.btn:visited {
     color: white !important;
 }
 
-.jumbotron {
-    padding: 2rem 2rem !important;
-}
-
 @mixin navbar-btn-highlighted() {
     color: $main-btn-text-color !important;
     background-color: $main-btn-bg-color !important;
     border-color: $main-btn-border-color !important;
 }
 
-.navbar {
-    margin-bottom: 15px;
+.post {
+    &-header {
+        @extend .post-header;
 
-    .bg-inverse {
-        background-color: $main-color-background !important;
-        border-color: $main-color-border !important;
-        color: #fff !important;
+        &__title {
+            @extend .post-title;
+        }
+
+        &__meta {
+            @extend .post-meta;
+        }
+
+        &__tags {
+            @extend .post-tags;
+        }
     }
+}
+
+.page-content-container {
+    @extend .container-fluid, .row;
+
+    &__summary-column {
+        @extend .col-lg-3;
+
+        .summary {
+            @extend .jumbotron;
+            padding: 2rem 2rem !important;
+
+            &__avatar {
+                border-radius: .3rem;
+            }
+
+            &__accent {
+                @extend .lead;
+
+                &__button {
+                    @extend .btn, .btn-primary, .btn-lg;
+                    background-color: $learn-more-btn-bg-color;
+                    color: $learn-more-btn-text-color;
+                    border-color: $learn-more-btn-border-color;
+
+                    &:hover {
+                        background-color: $learn-more-btn-bg-color-hover;
+                        color: $learn-more-btn-text-color-hover;
+                        border-color: $learn-more-btn-border-color-hover;
+                    }
+                }
+            }
+
+            &__horizontal-line {
+                margin-top: 1.5rem!important;
+                margin-bottom: 1.5rem!important;
+            }
+        }
+    }
+
+    &__content-column {
+        @extend .col-md-9;
+    }
+}
+
+.page-navbar {
+    @extend .navbar, .navbar-full, .navbar-dark, .bg-inverse;
+
+    margin-bottom: 15px;
+    background-color: $main-color-background !important;
+    border-color: $main-color-border !important;
+    color: #fff !important;
 
     .dropdown-menu {
         background-color: $nav-dropdown-bg-color;
@@ -111,34 +169,94 @@ a.btn, a.btn:visited {
             text-decoration: none !important;
         }
     }
-    .dropdown-item {
-        color: $nav-dropdown-link-text-color;
-    }
 
-    .open>.btn-info.dropdown-toggle {
-        @include navbar-btn-highlighted();
-    }
+    &-dropdown-right-menu {
+        @extend .dropdown-menu, .dropdown-menu-right;
 
-    .btn.btn-info {
-        color: $main-btn-text-color-hover;
-        background-color: $main-btn-bg-color-hover;
-        border-color: $main-btn-border-color-hover;
+        &__item, &__item:visited {
+            @extend .dropdown-item;
+            color: $nav-dropdown-link-text-color !important;
+        }
 
-        &:hover, &:focus, &:active {
-            @include navbar-btn-highlighted();
+        &__header {
+            @extend .dropdown-header;
         }
     }
-}
 
-.btn.btn-primary.btn-lg {
-    background-color: $learn-more-btn-bg-color;
-    color: $learn-more-btn-text-color;
-    border-color: $learn-more-btn-border-color;
+    &__mobile-toggler {
+        @extend .navbar-toggler, .hidden-md-up;
+    }
 
-    &:hover {
-        background-color: $learn-more-btn-bg-color-hover;
-        color: $learn-more-btn-text-color-hover;
-        border-color: $learn-more-btn-border-color-hover;
+    &-content {
+        @extend .collapse, .navbar-toggleable-sm;
+
+        &__brand {
+            @extend .hidden-sm-down, .navbar-brand;
+        }
+
+        &__mobile-break {
+            @extend .hidden-md-up;
+        }
+
+        &__menu {
+            @extend .nav, .navbar-nav;
+
+            &__item {
+                @extend .nav-item;
+
+                &>a {
+                    @extend .nav-link;
+
+                    span {
+                        @extend .sr-only;
+                    }
+                }
+
+                &--active {
+                    @extend .active;
+                }
+
+                &--left {
+                    @extend .hidden-sm-down;
+                }
+
+                &--mobile-only {
+                    @extend .hidden-md-up;
+                }
+            }
+        }
+
+        &__right-menu {
+            float: right;
+
+            &__buttons {
+                @extend .btn-group;
+
+                &:focus {
+                    outline-color: #4d4946;
+                }
+
+                &:first {
+                    @extend .hidden-sm-down;
+                }
+
+                &.open>button {
+                    @include navbar-btn-highlighted();
+                }
+
+                &>button {
+                    @extend .btn, .btn-info, .dropdown-toggle;
+                    border-radius: 4px !important;
+                    color: $main-btn-text-color-hover;
+                    background-color: $main-btn-bg-color-hover;
+                    border-color: $main-btn-border-color-hover;
+
+                    &:hover, &:focus, &:active, &:visited {
+                        @include navbar-btn-highlighted();
+                    }
+                }
+            }
+        }
     }
 }
 

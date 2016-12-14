@@ -13,7 +13,7 @@
 
     <!-- styles -->
     <link rel="stylesheet" href="/css/main.css?v=WGaE89omgm">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous"> -->
     <!-- /styles -->
 
     <!-- favicons -->
@@ -30,108 +30,106 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-full navbar-dark bg-inverse">
-    <button class="navbar-toggler hidden-md-up" type="button" 
-        data-toggle="collapse" data-target="#exCollapsingNavbar" 
-        aria-controls="exCollapsingNavbar" aria-expanded="false" 
-        style="color: white" 
-        aria-label="Toggle navigation">
+    <nav class="page-navbar">
+    <button class="page-navbar__mobile-toggler" type="button" 
+        data-toggle="collapse" data-target="#page-navbar__content-main" 
+        aria-controls="#page-navbar-content-main" aria-expanded="false" 
+        style="color: white" aria-label="Toggle navigation">
         &#9776;
     </button>
-  <div class="collapse navbar-toggleable-sm" id="exCollapsingNavbar">
-        <a class="hidden-sm-down navbar-brand" href="/">Ivan Maslov: Full-Stack Web Engineer</a>
-        <ul class="nav navbar-nav">
-        
+    <div class="page-navbar-content" id="#page-navbar-content-main">
+        <a class="page-navbar-content__brand" href="/">Ivan Maslov: Full-Stack Web Engineer</a>
+        <ul class="page-navbar-content__menu">
             
             
-            <li class="hidden-sm-down nav-item">
-                <a class="nav-link" href="/">
+            
+            <li class="page-navbar-content__menu__item page-navbar-content__menu__item--left">
+                <a href="/">
                     Home
                     
                 </a>
             </li>
-        
             
             
-            <li class="hidden-sm-down nav-item">
-                <a class="nav-link" href="/portfolio/">
+            
+            <li class="page-navbar-content__menu__item page-navbar-content__menu__item--left">
+                <a href="/portfolio/">
                     Portfolio
                     
                 </a>
             </li>
-        
             
             
-            <li class="hidden-sm-down nav-item">
-                <a class="nav-link" href="/resume/">
+            
+            <li class="page-navbar-content__menu__item page-navbar-content__menu__item--left">
+                <a href="/resume/">
                     Resume
                     
                 </a>
             </li>
-        
             
             
-            <li class="hidden-sm-down nav-item">
-                <a class="nav-link" href="/samples/">
+            
+            <li class="page-navbar-content__menu__item page-navbar-content__menu__item--left">
+                <a href="/samples/">
                     Samples
                     
                 </a>
             </li>
-        
-            <li class="hidden-md-up nav-item">
-                <a class="nav-link" href="mailto:mail@studentivan.ru">
+            
+            <li class="page-navbar-content__menu__item page-navbar-content__menu__item--mobile-only">
+                <a href="mailto:mail@studentivan.ru">
                     <img src="/images/mail-icon.png" alt="apple mail" 
                         width="24" height="24"> send an email
                 </a>
             </li>
-            <li class="hidden-md-up nav-item">
-                <a class="nav-link" href="skype:radio.coder?chat">
+            <li class="page-navbar-content__menu__item page-navbar-content__menu__item--mobile-only">
+                <a href="skype:radio.coder?chat">
                     <img src="/images/skype-icon.png" alt="skype" 
                         width="24" height="24"> start skype chat
                 </a>
             </li>
-            <li class="hidden-md-up nav-item">
-                <a class="nav-link" href="facetime:79992284007">
+            <li class="page-navbar-content__menu__item page-navbar-content__menu__item--mobile-only">
+                <a href="facetime:79992284007">
                     <img src="/images/facetime-icon.png" alt="facetime" 
                         width="24" height="24"> make facetime call
                 </a>
             </li>
-            <li class="hidden-md-up nav-item">
-                <a class="nav-link" href="tel:+79992284007">
+            <li class="page-navbar-content__menu__item page-navbar-content__menu__item--mobile-only">
+                <a href="tel:+79992284007">
                     <img src="/images/iphone-icon.png" alt="iphone" 
                         width="24" height="24"> +7 (999) 228-4-007
                 </a>
             </li>
         </ul>
-        <div class="hidden-md-up"><br></div>
-        <div class="pull-md-right">
-            <div class="btn-group hidden-sm-down">
-                <button type="button" class="btn btn-info dropdown-toggle" 
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="page-navbar-content__mobile-break"><br></div>
+        <div class="page-navbar-content__right-menu">
+            <div class="page-navbar-content__right-menu__buttons">
+                <button type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-apple fa-fw" aria-hidden="true"></i>
                         Contact with Ivan
                 </button>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <!-- <h6 class="dropdown-header">Public Profiles</h6> -->
-                    <a class="dropdown-item" href="mailto:mail@studentivan.ru"
+                <div class="page-navbar-dropdown-right-menu">
+                    <a class="page-navbar-dropdown-right-menu__item" href="mailto:mail@studentivan.ru"
                         data-toggle="tooltip" data-placement="left" 
                         title="click to open your email application">
                         <img src="/images/mail-icon.png" alt="apple mail" 
                             width="24" height="24"> send an email
                     </a>
-                    <a class="dropdown-item" href="skype:radio.coder?chat"
+                    <a class="page-navbar-dropdown-right-menu__item" href="skype:radio.coder?chat"
                         data-toggle="tooltip" data-placement="left" 
                         title="click to open your skype application">
                         <img src="/images/skype-icon.png" alt="skype" 
                             width="24" height="24"> start skype chat
                     </a>
-                    <a class="dropdown-item" href="facetime:79992284007"
+                    <a class="page-navbar-dropdown-right-menu__item" href="facetime:79992284007"
                         data-toggle="tooltip" data-placement="left" 
                         title="click to open your facetime application">
                         <img src="/images/facetime-icon.png" alt="facetime" 
                             width="24" height="24"> make facetime call
                     </a>
-                    <a class="dropdown-item" href="tel:+79992284007"
+                    <a class="page-navbar-dropdown-right-menu__item" href="tel:+79992284007"
                         data-toggle="tooltip" data-placement="left" 
                         title="ONLY for WORK moments, Russian number">
                         <img src="/images/iphone-icon.png" alt="iphone" 
@@ -140,17 +138,17 @@
                 </div>
             </div>
 
-            <div class="btn-group">
-                <button type="button" class="btn btn-info dropdown-toggle" 
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="page-navbar-content__right-menu__buttons">
+                <button type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
                         Ivan in global network
                 </button>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <h6 class="dropdown-header">Public Profiles</h6>
+                <div class="page-navbar-dropdown-right-menu">
+                    <h6 class="page-navbar-dropdown-right-menu__header">Public Profiles</h6>
                     
                         
-                        <a class="dropdown-item" target="_blank" href="https://github.com/studentIvan"
+                        <a class="page-navbar-dropdown-right-menu__item" target="_blank" href="https://github.com/studentIvan"
                             data-toggle="tooltip" data-placement="left" rel="nofollow"
                             title="click to open github link in new tab">
                           <i class="fa fa-github fa-fw" aria-hidden="true" style="color: #a8a8a8"></i> github <span style="color: #a8a8a8">@studentIvan</span>
@@ -158,7 +156,7 @@
                         
                     
                         
-                        <a class="dropdown-item" target="_blank" href="https://habrahabr.ru/users/student_ivan"
+                        <a class="page-navbar-dropdown-right-menu__item" target="_blank" href="https://habrahabr.ru/users/student_ivan"
                             data-toggle="tooltip" data-placement="left" rel="nofollow"
                             title="click to open habrahabr link in new tab">
                           <i class="fa fa-header fa-fw" aria-hidden="true" style="color: #8baab5"></i> habrahabr <span style="color: #8baab5">@student_ivan</span>
@@ -166,7 +164,7 @@
                         
                     
                         
-                        <a class="dropdown-item" target="_blank" href="https://vk.com/dr.tranquility"
+                        <a class="page-navbar-dropdown-right-menu__item" target="_blank" href="https://vk.com/dr.tranquility"
                             data-toggle="tooltip" data-placement="left" rel="nofollow"
                             title="click to open vk.com link in new tab">
                           <i class="fa fa-vk fa-fw" aria-hidden="true" style="color: #45668e"></i> vk.com <span style="color: #45668e">@dr.tranquility</span>
@@ -174,7 +172,7 @@
                         
                     
                         
-                        <a class="dropdown-item" target="_blank" href="https://www.facebook.com/ivan.tranquility"
+                        <a class="page-navbar-dropdown-right-menu__item" target="_blank" href="https://www.facebook.com/ivan.tranquility"
                             data-toggle="tooltip" data-placement="left" rel="nofollow"
                             title="click to open facebook link in new tab">
                           <i class="fa fa-facebook fa-fw" aria-hidden="true" style="color: #3b5998"></i> facebook <span style="color: #3b5998">@ivan.tranquility</span>
@@ -184,7 +182,7 @@
                         
                     
                         
-                        <a class="dropdown-item" target="_blank" href="https://twitter.com/IvanTranquility"
+                        <a class="page-navbar-dropdown-right-menu__item" target="_blank" href="https://twitter.com/IvanTranquility"
                             data-toggle="tooltip" data-placement="left" rel="nofollow"
                             title="click to open twitter link in new tab">
                           <i class="fa fa-twitter fa-fw" aria-hidden="true" style="color: #00aced"></i> twitter <span style="color: #00aced">@IvanTranquility</span>
@@ -192,7 +190,7 @@
                         
                     
                         
-                        <a class="dropdown-item" target="_blank" href="https://moikrug.ru/studentivan"
+                        <a class="page-navbar-dropdown-right-menu__item" target="_blank" href="https://moikrug.ru/studentivan"
                             data-toggle="tooltip" data-placement="left" rel="nofollow"
                             title="click to open moikrug link in new tab">
                           <i class="fa fa-certificate fa-fw" aria-hidden="true" style="color: #b3b3b3"></i> moikrug <span style="color: #b3b3b3">@studentivan</span>
@@ -202,7 +200,7 @@
                         
                     
                         
-                        <a class="dropdown-item" target="_blank" href="https://www.duolingo.com/IvanTranqu1"
+                        <a class="page-navbar-dropdown-right-menu__item" target="_blank" href="https://www.duolingo.com/IvanTranqu1"
                             data-toggle="tooltip" data-placement="left" rel="nofollow"
                             title="click to open duolingo link in new tab">
                           <i class="fa fa-comments-o fa-fw" aria-hidden="true" style="color: #71b200"></i> duolingo <span style="color: #71b200">@IvanTranqu1</span>
@@ -210,7 +208,7 @@
                         
                     
                         
-                        <a class="dropdown-item" target="_blank" href="https://www.upwork.com/fl/ivanmaslov"
+                        <a class="page-navbar-dropdown-right-menu__item" target="_blank" href="https://www.upwork.com/fl/ivanmaslov"
                             data-toggle="tooltip" data-placement="left" rel="nofollow"
                             title="click to open upwork link in new tab">
                           <i class="fa fa-desktop fa-fw" aria-hidden="true" style="color: #5bbc2e"></i> upwork <span style="color: #5bbc2e">@ivanmaslov</span>
@@ -222,34 +220,39 @@
         </div>
     </div>
 </nav>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="jumbotron">
-                  <p>
-                    <img src="/images/nicely.png" class="img-rounded" alt="Ivan Maslov">
-                  </p>
-                  <p class="lead">
-                  <strong>Ivan Maslov</strong>, 24 years<br>
-                  <i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> Russia, Izhevsk
-                  </p>
-                  <hr class="m-y-2">
-                  <p>Worked on many projects and used different technologies such as <a href="https://angularjs.org/" target="_blank" rel="nofollow">angular</a>, <a href="https://www.mongodb.com/" target="_blank" rel="nofollow">mongo</a>, <a href="https://www.djangoproject.com/" target="_blank" rel="nofollow">django</a>, <a href="https://www.docker.com/" target="_blank" rel="nofollow">docker</a>, <a href="https://secure.php.net/" target="_blank" rel="nofollow">php</a> and so on.</p>
-                  <hr class="m-y-2">
-                  <p>Mac OS with <a href="https://git-scm.com/" target="_blank" rel="nofollow">git</a>, <a href="https://www.sublimetext.com/" target="_blank" rel="nofollow">sublime</a>, <a href="https://www.jetbrains.com/phpstorm/" target="_blank" rel="nofollow">phpstorm</a>, <a href="https://www.jetbrains.com/pycharm/" target="_blank" rel="nofollow">pycharm</a>, <a href="http://brew.sh/" target="_blank" rel="nofollow">homebrew</a> and <a href="https://www.iterm2.com/" target="_blank" rel="nofollow">iterm</a> are using for developing.</p>
-                  
-                  <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="/resume/" role="button">Learn more</a>
-                  </p>
-                  
-                </div>
+    <div class="page-content-container">
+        <div class="page-content-container__summary-column">
+            <div class="summary">
+              <p>
+                <img src="/images/nicely.png" class="summary__avatar" alt="Ivan Maslov">
+              </p>
+              <p class="summary__accent">
+                <strong>Ivan Maslov</strong>, 24 years<br>
+                <i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> Russia, Izhevsk
+              </p>
+              <hr class="summary__horizontal-line">
+              <p>
+                Worked on many projects and used different technologies such as <a href="https://angularjs.org/" target="_blank" rel="nofollow">angular</a>, <a href="https://www.mongodb.com/" target="_blank" rel="nofollow">mongo</a>, <a href="https://www.djangoproject.com/" target="_blank" rel="nofollow">django</a>, <a href="https://www.docker.com/" target="_blank" rel="nofollow">docker</a>, <a href="https://secure.php.net/" target="_blank" rel="nofollow">php</a> and so on.
+              </p>
+              <hr class="summary__horizontal-line">
+              <p>
+                Mac OS with <a href="https://git-scm.com/" target="_blank" rel="nofollow">git</a>, <a href="https://www.sublimetext.com/" target="_blank" rel="nofollow">sublime</a>, <a href="https://www.jetbrains.com/phpstorm/" target="_blank" rel="nofollow">phpstorm</a>, <a href="https://www.jetbrains.com/pycharm/" target="_blank" rel="nofollow">pycharm</a>, <a href="http://brew.sh/" target="_blank" rel="nofollow">homebrew</a> and <a href="https://www.iterm2.com/" target="_blank" rel="nofollow">iterm</a> are using for developing.</p>
+              
+              <p class="summary__accent">
+                <a class="summary__accent__button" href="/resume/" role="button">
+                  Learn more
+                </a>
+              </p>
+              
             </div>
-            <div class="col-lg-9"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        </div>
+        <div class="page-content-container__content-column">
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Modal social auth using window.open and setInterval</h1>
-    <p class="post-meta"><time datetime="2016-08-20T12:00:28+04:00" itemprop="datePublished">August 20, 2016</time></p>
-    <p class="post-tags"></p>
+    <h1 class="post-header__title" itemprop="name headline">Modal social auth using window.open and setInterval</h1>
+    <p class="post-header__meta"><time datetime="2016-08-20T12:00:28+04:00" itemprop="datePublished">August 20, 2016</time></p>
+    <p class="post-header__tags"></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
@@ -306,7 +309,7 @@
 
   
 </article>
-</div>
+
         </div>
     </div>
 
