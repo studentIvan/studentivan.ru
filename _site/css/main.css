@@ -1119,12 +1119,12 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 .fade { opacity: 0; transition: opacity .15s linear; }
 .fade.in { opacity: 1; }
 
-.collapse, .page-navbar-content { display: none; }
-.collapse.in, .in.page-navbar-content { display: block; }
+.collapse { display: none; }
+.collapse.in { display: block; }
 
-tr.collapse.in, tr.in.page-navbar-content { display: table-row; }
+tr.collapse.in { display: table-row; }
 
-tbody.collapse.in, tbody.in.page-navbar-content { display: table-row-group; }
+tbody.collapse.in { display: table-row-group; }
 
 .collapsing { position: relative; height: 0; overflow: hidden; transition-timing-function: ease; transition-duration: .35s; transition-property: height; }
 
@@ -2109,7 +2109,7 @@ a.text-gray-dark:focus, a.text-gray-dark:hover { color: #1f2021 !important; }
 
 .hidden-xs-up { display: none !important; }
 
-@media (max-width: 575px) { .hidden-xs-down { display: none !important; } }
+@media (max-width: 575px) { .hidden-xs-down, .page-content-container__summary-column { display: none !important; } }
 
 @media (min-width: 576px) { .hidden-sm-up { display: none !important; } }
 
@@ -2146,6 +2146,8 @@ pre { color: #e5e6eb; background-color: #373a3c; }
 
 a.btn, .page-content-container__summary-column a.summary__accent__button, a.btn:visited, .page-content-container__summary-column a.summary__accent__button:visited { color: white !important; }
 
+@media screen and (max-width: 600px) { .post-link { font-size: 18px; } }
+
 .page-content-container__summary-column .summary { padding: 2rem 2rem !important; }
 .page-content-container__summary-column .summary__avatar { border-radius: .3rem; }
 .page-content-container__summary-column .summary__accent__button { background-color: #2f4560; color: #fff; border-color: #2f4560; }
@@ -2165,6 +2167,7 @@ a.btn, .page-content-container__summary-column a.summary__accent__button, a.btn:
 .home { margin-top: 10px; }
 
 h1 { margin-bottom: 0.5em !important; }
+@media screen and (max-width: 600px) { h1 { font-size: 30px !important; } }
 
 h4 { margin-top: 2em !important; margin-bottom: 1em !important; }
 
@@ -2182,3 +2185,5 @@ article { margin-top: 10px; }
 .highlighter-rouge .highlight .nb { color: #ffeb3b; }
 .highlighter-rouge .highlight .s1 { color: #03a9f4; }
 .highlighter-rouge .highlight .nc { color: #fff; }
+
+html, body { overflow-x: hidden; }

@@ -66,6 +66,7 @@ $on-laptop:        800px;
 
 @import "bootstrap4/scss/bootstrap.scss";
 
+
 a, a:visited {
     color: #344A6E;
 }
@@ -91,6 +92,12 @@ a.btn, a.btn:visited {
     border-color: $main-btn-border-color !important;
 }
 
+.post-link {
+    @include media-query($on-palm) {
+        font-size: 18px;
+    }
+}
+
 .post {
     &-header {
         @extend .post-header;
@@ -113,7 +120,7 @@ a.btn, a.btn:visited {
     @extend .container-fluid, .row;
 
     &__summary-column {
-        @extend .col-lg-3;
+        @extend .col-lg-3, .hidden-xs-down;
 
         .summary {
             @extend .jumbotron;
@@ -188,7 +195,7 @@ a.btn, a.btn:visited {
     }
 
     &-content {
-        @extend .collapse, .navbar-toggleable-sm;
+        @extend .navbar-toggleable-sm;
 
         &__brand {
             @extend .hidden-sm-down, .navbar-brand;
@@ -266,6 +273,9 @@ a.btn, a.btn:visited {
 
 h1 {
     margin-bottom: 0.5em !important;
+    @include media-query($on-palm) {
+        font-size: 30px !important;
+    }
 }
 
 h4 {
@@ -314,4 +324,8 @@ article {
     .nc {
         color: #fff;
     }
+}
+
+html, body {
+   overflow-x: hidden;
 }

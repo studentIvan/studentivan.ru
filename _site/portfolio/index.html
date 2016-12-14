@@ -13,7 +13,6 @@
 
     <!-- styles -->
     <link rel="stylesheet" href="/css/main.css?v=WGaE89omgm">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous"> -->
     <!-- /styles -->
 
     <!-- favicons -->
@@ -32,12 +31,12 @@
 <body>
     <nav class="page-navbar">
     <button class="page-navbar__mobile-toggler" type="button" 
-        data-toggle="collapse" data-target="#page-navbar__content-main" 
+        data-toggle="collapse" data-target="#page-navbar-content-main" 
         aria-controls="#page-navbar-content-main" aria-expanded="false" 
         style="color: white" aria-label="Toggle navigation">
         &#9776;
     </button>
-    <div class="page-navbar-content" id="#page-navbar-content-main">
+    <div class="page-navbar-content collapse" id="page-navbar-content-main">
         <a class="page-navbar-content__brand" href="/">Ivan Maslov: Full-Stack Web Engineer</a>
         <ul class="page-navbar-content__menu">
             
@@ -77,6 +76,7 @@
                 </a>
             </li>
             
+            <div class="page-navbar-content__mobile-break"><br></div>
             <li class="page-navbar-content__menu__item page-navbar-content__menu__item--mobile-only">
                 <a href="mailto:mail@studentivan.ru">
                     <img src="/images/mail-icon.png" alt="apple mail" 
@@ -255,15 +255,12 @@
     
 
     <!-- common scripts -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" 
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" 
-        integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" 
-        integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('[data-toggle="tooltip"]').tooltip();  // initialize tooltip 
+            $('[data-toggle="tooltip"]').tooltip();  // initialize the tooltips
         });
     </script>
     <script type="text/javascript" src="/scripts/prism.js?v=WGaE89omgm"></script>

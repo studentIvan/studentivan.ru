@@ -1,11 +1,11 @@
 <nav class="page-navbar">
     <button class="page-navbar__mobile-toggler" type="button" 
-        data-toggle="collapse" data-target="#page-navbar__content-main" 
+        data-toggle="collapse" data-target="#page-navbar-content-main" 
         aria-controls="#page-navbar-content-main" aria-expanded="false" 
         style="color: white" aria-label="Toggle navigation">
         &#9776;
     </button>
-    <div class="page-navbar-content" id="#page-navbar-content-main">
+    <div class="page-navbar-content collapse" id="page-navbar-content-main">
         <a class="page-navbar-content__brand" href="/">{{ site.title }}</a>
         <ul class="page-navbar-content__menu">
             {% for menuitem in site.menu %}
@@ -20,6 +20,7 @@
                 </a>
             </li>
             {% endfor %}
+            <div class="page-navbar-content__mobile-break"><br></div>
             <li class="page-navbar-content__menu__item page-navbar-content__menu__item--mobile-only">
                 <a href="mailto:{{ site.email }}">
                     <img src="/images/mail-icon.png" alt="apple mail" 

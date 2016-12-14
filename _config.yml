@@ -4,7 +4,10 @@ description: >
   Ivan Maslov: Full-Stack Web Engineer Personal Site.
 baseurl: "" 
 blogurl: "/blog"
-url: "http://studentivan.ru" 
+url: "http://studentivan.ru"
+
+host: 0.0.0.0
+port: 4000
 
 disqus:
   shortname: studentivan
