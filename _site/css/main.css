@@ -2185,5 +2185,6 @@ article { margin-top: 10px; }
 .highlighter-rouge .highlight .nb { color: #ffeb3b; }
 .highlighter-rouge .highlight .s1 { color: #03a9f4; }
 .highlighter-rouge .highlight .nc { color: #fff; }
+.highlighter-rouge .highlight .err { background-color: #2f3030; color: #8bc34a; }
 
 html, body { overflow-x: hidden; }

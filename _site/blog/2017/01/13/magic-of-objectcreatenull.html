@@ -42,10 +42,10 @@
             
             
             
-            <li class="page-navbar-content__menu__item page-navbar-content__menu__item--left page-navbar-content__menu__item--active">
+            <li class="page-navbar-content__menu__item page-navbar-content__menu__item--left">
                 <a href="/">
                     Home
-                    <span>(current)</span>
+                    
                 </a>
             </li>
             
@@ -246,81 +246,140 @@
             </div>
         </div>
         <div class="page-content-container__content-column">
-          <div class="home">
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1>Latest Blog Posts</h1>
+  <header class="post-header">
+    <h1 class="post-header__title" itemprop="name headline">Magic of Object.create(null)</h1>
+    <p class="post-header__meta"><time datetime="2017-01-13T12:20:43+04:00" itemprop="datePublished">January 13, 2017</time></p>
+    <p class="post-header__tags"></p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Jan 13, 2017</span>
+  <div class="post-content" itemprop="articleBody">
+    <h4 id="objectcreatenull">Object.create(null)</h4>
 
-        <h2>
-          <a class="post-link" href="/blog/2017/01/13/magic-of-objectcreatenull.html">Magic of Object.create(null)</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 13, 2017</span>
+<p>Few weeks ago I did open the <code class="highlighter-rouge">Object.create(null)</code> power.</p>
 
-        <h2>
-          <a class="post-link" href="/blog/2017/01/13/build-es6-frontend-today-with-webpack-2.html">Build ES6 frontend today with the webpack 2</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Nov 6, 2016</span>
+<p>The <code class="highlighter-rouge">Object.create(null)</code> does create the simple JavaScript <strong>object</strong> with the <code class="highlighter-rouge">null</code> prototype.</p>
 
-        <h2>
-          <a class="post-link" href="/blog/2016/11/06/ios-iphone-and-ipad-frontend-experience.html">iOS iPhone and iPad frontend experience</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Oct 9, 2016</span>
+<p>Default JavaScript <strong>object</strong>, for example <code class="highlighter-rouge">const simple = {};</code>, contains prototype link to the JavaScript <strong><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> object</strong> and contains all of it methods and properties.</p>
 
-        <h2>
-          <a class="post-link" href="/blog/2016/10/09/useful-jquery-datepicker-plugin.html">Useful jQuery datepicker plugin</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Oct 7, 2016</span>
+<p>In some cases the Object.create(null) can be used as hash-data-storage-object with speed up to 10% on the basic object of Object.</p>
 
-        <h2>
-          <a class="post-link" href="/blog/environment/sublime/2016/10/07/my-favorite-sublime-plugins.html">My favorite sublime plugins</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Sep 27, 2016</span>
+<p>Let’s test:</p>
 
-        <h2>
-          <a class="post-link" href="/blog/bash/deploy/ssh/2016/09/27/using-bash-script-for-deploying.html">Using bash script for deploying</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Sep 1, 2016</span>
+<ul>
+  <li>Creation</li>
+</ul>
 
-        <h2>
-          <a class="post-link" href="/blog/social/share/yandex/2016/09/01/yandex-share-problems.html">Yandex share problems</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Aug 20, 2016</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">'Object object'</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">9</span><span class="nx">e5</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">simple</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">'Object object'</span><span class="p">);</span>
 
-        <h2>
-          <a class="post-link" href="/blog/social/modal/openauth/2016/08/20/modal-social-auth-using-window-open-and-setinterval.html">Modal social auth using window.open and setInterval</a>
-        </h2>
-      </li>
-    
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
+<span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">'null object'</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">9</span><span class="nx">e5</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">simple</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">'null object'</span><span class="p">);</span>
+</code></pre>
 </div>
+
+<p><strong>null</strong> object slow down to 2 times</p>
+
+<ul>
+  <li>Write</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="s1">'use strict'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">'Object object'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">simple</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">9</span><span class="nx">e4</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">simple</span><span class="p">[</span><span class="err">`</span><span class="nx">val_$</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span><span class="err">`</span><span class="p">]</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">'Object object'</span><span class="p">);</span>
+<span class="p">}());</span>
+
+<span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="s1">'use strict'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">'null object'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">simple</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">9</span><span class="nx">e4</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">simple</span><span class="p">[</span><span class="err">`</span><span class="nx">val_$</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span><span class="err">`</span><span class="p">]</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">'null object'</span><span class="p">);</span>
+<span class="p">}());</span>
+</code></pre>
+</div>
+
+<p><strong>null</strong> object fast up to 10%</p>
+
+<ul>
+  <li>Write/Access</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="s1">'use strict'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">'Object object'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">simple</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">9</span><span class="nx">e4</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">simple</span><span class="p">[</span><span class="err">`</span><span class="nx">val_$</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span><span class="err">`</span><span class="p">]</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">9</span><span class="nx">e4</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">simple</span><span class="p">[</span><span class="err">`</span><span class="nx">val_$</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span><span class="err">`</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">'Object object'</span><span class="p">);</span>
+<span class="p">}());</span>
+
+<span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="s1">'use strict'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">'null object'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">simple</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">9</span><span class="nx">e4</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">simple</span><span class="p">[</span><span class="err">`</span><span class="nx">val_$</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span><span class="err">`</span><span class="p">]</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">9</span><span class="nx">e4</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">simple</span><span class="p">[</span><span class="err">`</span><span class="nx">val_$</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span><span class="err">`</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">'null object'</span><span class="p">);</span>
+<span class="p">}());</span>
+</code></pre>
+</div>
+
+<p><strong>null</strong> object fast up to 15%</p>
+
+<h4 id="summary">Summary</h4>
+
+<p>We can use <code class="highlighter-rouge">Object.create(null)</code> when we need just empty map with some memory optimization and no overhead to worry about inherited properties. But in other cases the Object prototype will be better to use.</p>
+
+  </div>
+
+  
+    
+  
+
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'http://studentivan.ru/blog/2017/01/13/magic-of-objectcreatenull.html';
+      this.page.identifier = 'http://studentivan.ru/blog/2017/01/13/magic-of-objectcreatenull.html';
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = 'https://studentivan.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+  
+</article>
 
         </div>
     </div>
