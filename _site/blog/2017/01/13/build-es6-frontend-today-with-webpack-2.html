@@ -249,75 +249,111 @@
           <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-header__title" itemprop="name headline">Yandex share problems</h1>
-    <p class="post-header__meta"><time datetime="2016-09-01T15:15:27+04:00" itemprop="datePublished">September 1, 2016</time></p>
+    <h1 class="post-header__title" itemprop="name headline">Build ES6 frontend today with the webpack 2</h1>
+    <p class="post-header__meta"><time datetime="2017-01-13T10:54:58+04:00" itemprop="datePublished">January 13, 2017</time></p>
     <p class="post-header__tags"></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h3 id="introduction">Introduction</h3>
-<p>Quite convenient to use plug-in software for sharing - <a href="https://tech.yandex.ru/share/">https://tech.yandex.ru/share/</a></p>
+    <h4 id="introduction">Introduction</h4>
 
-<p>Past time I’ve faced with some problems and some of them I’ll show now.</p>
+<p>Assessing the bulk of the opportunities of a stable standard ECMAScript 6 (Harmony), I realized that all of these capabilities are already readily available to us today. These new extensions of language as Arrow-functions that are compilated by transpilers as <code class="highlighter-rouge">function () {}</code> or new methods like <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign">Object.assign</a> are already available to us today.</p>
 
-<p>Sometimes You need to change the data that are substituted in the dialog box after sharing. But as Facebook and VK.com are using meta-cache, the changes in the plugin settings and meta-tags (og tags) are not automatically picked up. For manual cleaning You can use these tools: <a href="https://developers.facebook.com/tools/debug/">Facebook share debug</a>, <a href="https://vk.com/dev/pages.clearCache">VK.com pages clear cache</a> and <a href="https://cards-dev.twitter.com/validator">Twitter cards validator</a>.</p>
+<p>The whole range of modern browsers, except IE, Safari 9, Firefox ESR and Android anyway successfully pass more than 98% of tests in ES6. So why do we still use the transpilers?</p>
 
-<h3 id="solutions-of-common-problems">Solutions of common problems</h3>
+<p>Pluses of transpilers:</p>
+
+<ul>
+  <li>leverage ES6, ES7, ESNEXT with support for IE, Opera 9, Firefox ESR and Android.</li>
+  <li>the ability to use the style without ; (reduced syntactic sugar).</li>
+  <li>the ability to implement additional logic in compile time.</li>
+</ul>
+
+<p>Minuses of transpilers:</p>
+
+<ul>
+  <li>Compile to ES5 or even ES3 transpiler forced to use complicated syntax, for example to replace the arrow functions by the ordinary.</li>
+  <li>Support for older browsers requires the connection of additional polyfill libraries.</li>
+  <li>Using polyfills, we can often lose browser code optimization.
+Even if the polyfill is not used, but loaded - JS-engine still looks and precompile it.</li>
+  <li>To compile at developing mode is spent additional time and computer resources.</li>
+  <li>We are forced to use source maps for debugging the code.</li>
+</ul>
+
+<p>A little bit about the browsers that don’t support ES6:</p>
+
+<ul>
+  <li>IE11 - stable version of Internet Explorer, the standard browser of Windows 8.1 and installed as an upgrade to Windows 7/Vista. Windows XP and below do not have official support from Microsoft and have less than half a percent of the market.</li>
+  <li>Safari 9 is the standard browser of iOS 9, a system which is still popular, for example on iPad2.</li>
+  <li>Firefox ESR - extended support release, is often used by banks and organizations. Many Internet banks in Russia recommend to use FF ESR to work with their online Bank.</li>
+  <li>Android browser - standard browser from Google for Android phones. At the moment the old versions of Android recognized as only Android versions below 4.0.</li>
+</ul>
+
+<h4 id="es6-support-testing">ES6 Support Testing</h4>
+
+<p>Only for these browsers we have to use additional libraries with polyfills and do not use new JavaScript language features that cannot be described with polyfill, such as loop for-of or template strings.</p>
+
+<p>The output which I suggest:</p>
 
 <ol>
-  <li>To work with yandex-share is better to use <a href="https://tech.yandex.ru/share/doc/dg/api-docpage/">API yandex share</a>.</li>
+  <li>Two simple tests on the browser to check the work with ES6</li>
+  <li>Separate compilation of files for legacy browsers using transpiler</li>
 </ol>
 
-<p>Below is an example code:</p>
+<p>Simple and tasteful:</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Ya</span><span class="p">.</span><span class="nx">share2</span><span class="p">(</span><span class="s1">'&lt;block id&gt;'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">content</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">url</span><span class="p">:</span> <span class="s1">'&lt;full share url&gt;'</span><span class="p">,</span>
-    <span class="na">title</span><span class="p">:</span> <span class="s1">'&lt;share title&gt;'</span><span class="p">,</span>
-    <span class="na">description</span><span class="p">:</span> <span class="s1">'&lt;share description&gt;'</span><span class="p">,</span>
-    <span class="na">image</span><span class="p">:</span> <span class="s1">'&lt;share image&gt;'</span>
-  <span class="p">},</span>
-  <span class="na">contentByService</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">twitter</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">url</span><span class="p">:</span> <span class="s1">'&lt;url for twitter&gt;'</span><span class="p">,</span>
-      <span class="na">title</span><span class="p">:</span> <span class="s1">'&lt;title for twitter&gt;'</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="na">theme</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">services</span><span class="p">:</span> <span class="s1">'twitter,vkontakte,facebook,odnoklassniki'</span>
-  <span class="p">}</span>
-<span class="p">});</span></code></pre></figure>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/**
+ * check that browser supports basic ES6
+ * @return {Boolean}
+ */</span>
+<span class="kd">var</span> <span class="nx">isSupportsBasicES6</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">isSupportsBasicES6</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="s2">"use strict"</span><span class="p">;</span>
 
-<ol>
-  <li>
-    <p>Yandex-share doesn’t create full URLs for odnoklassniki (ok) and a facebook and maybe plus few more social networks (doesn’t add params like image, description, so on). In this case the networks pull the information from og-tags. One solution is - write an hack for replace result of ya-share work. It is also possible to properly set a backend, to give the correct og-tags. <a href="http://stackoverflow.com/questions/11616697/how-to-use-og-meta-tag-for-facebook-share">Follow this link for more information</a>.</p>
-  </li>
-  <li>
-    <p>It’s better to assign the result object into a variable - it will allow You to control objects without recreating.</p>
-  </li>
-</ol>
+  <span class="k">try</span> <span class="p">{</span> <span class="nb">eval</span><span class="p">(</span><span class="s2">"let foo = (x)=&gt;x+1"</span><span class="p">);</span> <span class="p">}</span>
+  <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">};</span>
 
-<p>The example dirty yandex share hack for links replacement on Frontend:</p>
+<span class="cm">/**
+ * check that browser supports param destructing
+ * @return {Boolean}
+ */</span>
+<span class="kd">var</span> <span class="nx">isSupportsDefaultParamsDestructing</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">isSupportsDefaultParamsDestructing</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="s2">"use strict"</span><span class="p">;</span>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// $ is a jQuery. For AngularJS use angular.element instead.</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nb">eval</span><span class="p">(</span><span class="s1">'(function({a = 1, b = 0, c = 3, x:d = 0, y:e = 5},'</span>
+          <span class="o">+</span> <span class="s1">'  [f = 6, g = 0, h = 8]) {'</span>
+          <span class="o">+</span> <span class="s1">'return a === 1 &amp;&amp; b === 2 &amp;&amp; c === 3 &amp;&amp; d === 4 &amp;&amp;'</span>
+          <span class="o">+</span> <span class="s1">'e === 5 &amp;&amp; f === 6 &amp;&amp; g === 7 &amp;&amp; h === 8;'</span>
+          <span class="o">+</span> <span class="s1">'}({b:2, c:undefined, x:4},[, 7, undefined]));'</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">};</span>
 
-<span class="c1">// facebook example</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'.ya-share2__item_service_facebook a'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'href'</span><span class="p">,</span> 
-  <span class="s1">'https://www.facebook.com/sharer.php?'</span> <span class="o">+</span>
-  <span class="s1">'u='</span> <span class="o">+</span> <span class="s1">'&lt;full share url&gt;'</span> <span class="o">+</span>
-  <span class="s1">'&amp;picture='</span> <span class="o">+</span> <span class="s1">'&lt;share image url&gt;'</span>  <span class="o">+</span>
-  <span class="s1">'&amp;title='</span> <span class="o">+</span> <span class="s1">'&lt;share title&gt;'</span> <span class="o">+</span>
-  <span class="s1">'&amp;description='</span> <span class="o">+</span> <span class="s1">'&lt;share description&gt;'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">harmonyMode</span> <span class="o">=</span> <span class="nx">isSupportsBasicES6</span><span class="p">()</span> 
+  <span class="o">&amp;&amp;</span> <span class="nx">isSupportsDefaultParamsDestructing</span><span class="p">();</span>
+</code></pre>
+</div>
 
-<span class="c1">// odnoklassniki aka ok example</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'.ya-share2__item_service_odnoklassniki a'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'href'</span><span class="p">,</span> 
-  <span class="s1">'http://connect.ok.ru/dk?st.cmd=WidgetSharePreview'</span> <span class="o">+</span>
-  <span class="s1">'&amp;st.shareUrl='</span> <span class="o">+</span> <span class="s1">'&lt;full share url&gt;'</span> <span class="o">+</span>
-  <span class="s1">'&amp;st.title='</span> <span class="o">+</span> <span class="s1">'&lt;share title&gt;'</span> <span class="o">+</span>
-  <span class="s1">'&amp;st.description='</span> <span class="o">+</span> <span class="s1">'&lt;share description&gt;'</span> <span class="o">+</span>
-  <span class="s1">'&amp;st.imageUrl='</span> <span class="o">+</span> <span class="s1">'&lt;share image url&gt;'</span><span class="p">);</span></code></pre></figure>
+<p>Why the two tests? Because the first will certainly weed out the browsers on the type of IE11, but it has the risk of runs in some browsers, which still has partial support for ES6.</p>
 
-<p>Hope that I saved a little bit of your time.</p>
+<p>If you look at the statistics table, these two tests should be enough to weed out the unwanted browsers, while not citing a specific UserAgent.</p>
+
+<p><strong><a href="https://kangax.github.io/compat-table/es6/">https://kangax.github.io/compat-table/es6/</a></strong></p>
+
+<p>In General, these two test is quite efficient, despite the try/catch blocks.</p>
+
+<h4 id="with-the-webpack2-power">With the webpack2 power</h4>
+
+<p><strong><a href="https://webpack.js.org/">The webpack 2 supports native import/export</a></strong>, so we no need for babelify this stuff anymore.</p>
+
+<p>To build the simple scenarios, without the use of additional compilers like TS-&gt;JS, I wrote <strong><a href="https://github.com/studentIvan/ES6-cool-frontend-build">my ready frontend kit</a></strong>, which includes productive script <strong><a href="https://github.com/studentIvan/ES6-cool-frontend-build/blob/master/src/entries/core/acme.js">acme.js</a></strong> automatically determining what is to work with ES6, and preloading babelify version js of the project for lagging browsers.</p>
+
+<p>The kit is based on the webpack 2 and uses all its main features, including the <a href="http://www.2ality.com/2015/12/webpack-tree-shaking.html">tree-shaking</a>, almost does not perform compilation during development.</p>
+
+<p>The test page you can find <strong><a href="https://studentivan.github.io/ES6-cool-frontend-build/build/">by the link</a></strong></p>
+
 
   </div>
 
@@ -328,8 +364,8 @@
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = 'http://studentivan.ru/blog/social/share/yandex/2016/09/01/yandex-share-problems.html';
-      this.page.identifier = 'http://studentivan.ru/blog/social/share/yandex/2016/09/01/yandex-share-problems.html';
+      this.page.url = 'http://studentivan.ru/blog/2017/01/13/build-es6-frontend-today-with-webpack-2.html';
+      this.page.identifier = 'http://studentivan.ru/blog/2017/01/13/build-es6-frontend-today-with-webpack-2.html';
     };
 
     (function() {

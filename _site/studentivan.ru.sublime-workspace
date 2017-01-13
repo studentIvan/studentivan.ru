@@ -260,19 +260,28 @@
 	"buffers":
 	[
 		{
-			"file": "blog/_posts/2016-10-09-useful-jquery-datepicker-plugin.markdown",
+			"file": "_includes/navbar.html",
 			"settings":
 			{
-				"buffer_size": 3698,
+				"buffer_size": 6160,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "blog/_posts/2016-11-06-ios-iphone-and-ipad-frontend-experience.markdown",
+			"file": "_layouts/default.html",
 			"settings":
 			{
-				"buffer_size": 9398,
+				"buffer_size": 5039,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_includes/metrika.html",
+			"settings":
+			{
+				"buffer_size": 812,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -439,13 +448,17 @@
 		"/Users/studentIvan/projects/studentivan.ru/_sass/minima",
 		"/Users/studentIvan/projects/studentivan.ru/blog",
 		"/Users/studentIvan/projects/studentivan.ru/blog/_posts",
-		"/Users/studentIvan/projects/studentivan.ru/images"
+		"/Users/studentIvan/projects/studentivan.ru/images",
+		"/Users/studentIvan/projects/studentivan.ru/scripts"
 	],
 	"file_history":
 	[
+		"/Users/studentIvan/projects/studentivan.ru/_layouts/default.html",
+		"/Users/studentIvan/projects/studentivan.ru/_includes/metrika.html",
+		"/Users/studentIvan/projects/studentivan.ru/blog/_posts/2016-10-09-useful-jquery-datepicker-plugin.markdown",
+		"/Users/studentIvan/projects/studentivan.ru/blog/_posts/2016-11-06-ios-iphone-and-ipad-frontend-experience.markdown",
 		"/Users/studentIvan/projects/studentivan.ru/blog/_posts/2016-10-07-my-favorite-sublime-plugins.markdown",
 		"/Users/studentIvan/projects/studentivan.ru/_config.yml",
-		"/Users/studentIvan/projects/studentivan.ru/_layouts/default.html",
 		"/Users/studentIvan/projects/studentivan.ru/_sass/components/highlight.sass",
 		"/Users/studentIvan/projects/studentivan.ru/.gitignore",
 		"/Users/studentIvan/projects/studentivan.ru/css/main.scss",
@@ -567,10 +580,7 @@
 		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/demo.dscrm.ru",
 		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/nginx.conf",
 		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/default",
-		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/avto29.dscrm.ru",
-		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/kadastr18",
-		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/like18.dscrm.ru",
-		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/wiki.dev.dscrm.ru"
+		"/private/var/folders/wb/v29k7f4n1gnc1kln0rt1sq100000gp/T/d11e14c8-e8ac-434f-bd90-f476206e5960/etc/nginx/sites-available/avto29.dscrm.ru"
 	],
 	"find":
 	{
@@ -594,6 +604,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"break",
 			";');\n",
 			";\n",
 			"activateCarousel",
@@ -724,66 +735,100 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "blog/_posts/2016-10-09-useful-jquery-datepicker-plugin.markdown",
+					"file": "_includes/navbar.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3698,
+						"buffer_size": 6160,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								501,
-								501
+								1132,
+								1132
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Material Facebook.tmTheme",
+							"color_scheme": "Packages/User/Color Highlighter/themes/Material-Theme-Palenight.tmTheme",
 							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 910.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "_layouts/default.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5039,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3578,
+								3578
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Material-Theme-Palenight.tmTheme",
+							"side_bar_folders_auto_load_folder": 1,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1456.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "blog/_posts/2016-11-06-ios-iphone-and-ipad-frontend-experience.markdown",
+					"buffer": 2,
+					"file": "_includes/metrika.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9398,
+						"buffer_size": 812,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								420,
-								420
+								812,
+								812
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Material Facebook.tmTheme",
+							"color_scheme": "Packages/User/Color Highlighter/themes/Material-Theme-Palenight.tmTheme",
 							"side_bar_folders_auto_load_folder": 1,
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 132.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

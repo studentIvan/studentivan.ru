@@ -6,9 +6,120 @@
 </description>
     <link>http://studentivan.ru/</link>
     <atom:link href="http://studentivan.ru/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 23 Dec 2016 14:11:37 +0400</pubDate>
-    <lastBuildDate>Fri, 23 Dec 2016 14:11:37 +0400</lastBuildDate>
+    <pubDate>Fri, 13 Jan 2017 12:11:33 +0400</pubDate>
+    <lastBuildDate>Fri, 13 Jan 2017 12:11:33 +0400</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Build ES6 frontend today with the webpack 2</title>
+        <description>&lt;h4 id=&quot;introduction&quot;&gt;Introduction&lt;/h4&gt;
+
+&lt;p&gt;Assessing the bulk of the opportunities of a stable standard ECMAScript 6 (Harmony), I realized that all of these capabilities are already readily available to us today. These new extensions of language as Arrow-functions that are compilated by transpilers as &lt;code class=&quot;highlighter-rouge&quot;&gt;function () {}&lt;/code&gt; or new methods like &lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign&quot;&gt;Object.assign&lt;/a&gt; are already available to us today.&lt;/p&gt;
+
+&lt;p&gt;The whole range of modern browsers, except IE, Safari 9, Firefox ESR and Android anyway successfully pass more than 98% of tests in ES6. So why do we still use the transpilers?&lt;/p&gt;
+
+&lt;p&gt;Pluses of transpilers:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;leverage ES6, ES7, ESNEXT with support for IE, Opera 9, Firefox ESR and Android.&lt;/li&gt;
+  &lt;li&gt;the ability to use the style without ; (reduced syntactic sugar).&lt;/li&gt;
+  &lt;li&gt;the ability to implement additional logic in compile time.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Minuses of transpilers:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Compile to ES5 or even ES3 transpiler forced to use complicated syntax, for example to replace the arrow functions by the ordinary.&lt;/li&gt;
+  &lt;li&gt;Support for older browsers requires the connection of additional polyfill libraries.&lt;/li&gt;
+  &lt;li&gt;Using polyfills, we can often lose browser code optimization.
+Even if the polyfill is not used, but loaded - JS-engine still looks and precompile it.&lt;/li&gt;
+  &lt;li&gt;To compile at developing mode is spent additional time and computer resources.&lt;/li&gt;
+  &lt;li&gt;We are forced to use source maps for debugging the code.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A little bit about the browsers that don’t support ES6:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;IE11 - stable version of Internet Explorer, the standard browser of Windows 8.1 and installed as an upgrade to Windows 7/Vista. Windows XP and below do not have official support from Microsoft and have less than half a percent of the market.&lt;/li&gt;
+  &lt;li&gt;Safari 9 is the standard browser of iOS 9, a system which is still popular, for example on iPad2.&lt;/li&gt;
+  &lt;li&gt;Firefox ESR - extended support release, is often used by banks and organizations. Many Internet banks in Russia recommend to use FF ESR to work with their online Bank.&lt;/li&gt;
+  &lt;li&gt;Android browser - standard browser from Google for Android phones. At the moment the old versions of Android recognized as only Android versions below 4.0.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;es6-support-testing&quot;&gt;ES6 Support Testing&lt;/h4&gt;
+
+&lt;p&gt;Only for these browsers we have to use additional libraries with polyfills and do not use new JavaScript language features that cannot be described with polyfill, such as loop for-of or template strings.&lt;/p&gt;
+
+&lt;p&gt;The output which I suggest:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Two simple tests on the browser to check the work with ES6&lt;/li&gt;
+  &lt;li&gt;Separate compilation of files for legacy browsers using transpiler&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Simple and tasteful:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
+ * check that browser supports basic ES6
+ * @return {Boolean}
+ */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isSupportsBasicES6&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isSupportsBasicES6&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;use strict&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;let foo = (x)=&amp;gt;x+1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/**
+ * check that browser supports param destructing
+ * @return {Boolean}
+ */&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isSupportsDefaultParamsDestructing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isSupportsDefaultParamsDestructing&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;use strict&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;(function({a = 1, b = 0, c = 3, x:d = 0, y:e = 5},&#39;&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;  [f = 6, g = 0, h = 8]) {&#39;&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;return a === 1 &amp;amp;&amp;amp; b === 2 &amp;amp;&amp;amp; c === 3 &amp;amp;&amp;amp; d === 4 &amp;amp;&amp;amp;&#39;&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;e === 5 &amp;amp;&amp;amp; f === 6 &amp;amp;&amp;amp; g === 7 &amp;amp;&amp;amp; h === 8;&#39;&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;}({b:2, c:undefined, x:4},[, 7, undefined]));&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;harmonyMode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isSupportsBasicES6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; 
+  &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isSupportsDefaultParamsDestructing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Why the two tests? Because the first will certainly weed out the browsers on the type of IE11, but it has the risk of runs in some browsers, which still has partial support for ES6.&lt;/p&gt;
+
+&lt;p&gt;If you look at the statistics table, these two tests should be enough to weed out the unwanted browsers, while not citing a specific UserAgent.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://kangax.github.io/compat-table/es6/&quot;&gt;https://kangax.github.io/compat-table/es6/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In General, these two test is quite efficient, despite the try/catch blocks.&lt;/p&gt;
+
+&lt;h4 id=&quot;with-the-webpack2-power&quot;&gt;With the webpack2 power&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://webpack.js.org/&quot;&gt;The webpack 2 supports native import/export&lt;/a&gt;&lt;/strong&gt;, so we no need for babelify this stuff anymore.&lt;/p&gt;
+
+&lt;p&gt;To build the simple scenarios, without the use of additional compilers like TS-&amp;gt;JS, I wrote &lt;strong&gt;&lt;a href=&quot;https://github.com/studentIvan/ES6-cool-frontend-build&quot;&gt;my ready frontend kit&lt;/a&gt;&lt;/strong&gt;, which includes productive script &lt;strong&gt;&lt;a href=&quot;https://github.com/studentIvan/ES6-cool-frontend-build/blob/master/src/entries/core/acme.js&quot;&gt;acme.js&lt;/a&gt;&lt;/strong&gt; automatically determining what is to work with ES6, and preloading babelify version js of the project for lagging browsers.&lt;/p&gt;
+
+&lt;p&gt;The kit is based on the webpack 2 and uses all its main features, including the &lt;a href=&quot;http://www.2ality.com/2015/12/webpack-tree-shaking.html&quot;&gt;tree-shaking&lt;/a&gt;, almost does not perform compilation during development.&lt;/p&gt;
+
+&lt;p&gt;The test page you can find &lt;strong&gt;&lt;a href=&quot;https://studentivan.github.io/ES6-cool-frontend-build/build/&quot;&gt;by the link&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 13 Jan 2017 10:54:58 +0400</pubDate>
+        <link>http://studentivan.ru/blog/2017/01/13/build-es6-frontend-today-with-webpack-2.html</link>
+        <guid isPermaLink="true">http://studentivan.ru/blog/2017/01/13/build-es6-frontend-today-with-webpack-2.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>iOS iPhone and iPad frontend experience</title>
