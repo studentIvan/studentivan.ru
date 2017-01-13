@@ -12,7 +12,7 @@ The whole range of modern browsers, except IE, Safari 9, Firefox ESR and Android
 
 Pluses of transpilers:
 
-- leverage ES6, ES7, ESNEXT with support for IE, Opera 9, Firefox ESR and Android.
+- leverage ES6, ES7, ESNEXT with support for IE, Safari 9, Firefox ESR and Android.
 - the ability to use the style without ; (reduced syntactic sugar).
 - the ability to implement additional logic in compile time.
 
