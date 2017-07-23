@@ -6,13 +6,13 @@ date: 2017-07-23 20:06:18 +0400
 
 #### How I faced with TinyMCE
 
-Few months ago I did start the work on **Plomino** project. 
+A few months ago I did start the work on **Plomino** project. 
 
-At first the Plomino is a visual form builder and it has built with **TinyMCE**.
+At first, the Plomino is a visual form builder and it has built with **TinyMCE**.
 
 I was a Senior Developer on this project and have solved a lot of issues with TinyMCE to make it working as we were wanted.
 
-#### How to set the callbacks on tinymce events, without setup
+#### How to set the callbacks on TinyMCE events, without setup
 
 ```javascript
 const editor = tinymce.get(editorId);
@@ -48,9 +48,9 @@ if (editor) {
 }
 ```
 
-#### How to set the callback on tinymce onKeyDown event to have a possibility to prevent the event
+#### How to set the callback on TinyMCE onKeyDown event to have a possibility to prevent the event
 
-`onKeyDown` tinymce event has no possibility to prevent the event. This problem can be solved with additional javascript code
+`onKeyDown` tinymce event has no possibility to prevent the event. This problem can be solved with additional javascript code (the example below contains jQuery)
 
 ```javascript
 const $edContainer = $(editor.getContainer());
@@ -61,11 +61,10 @@ if ($edContainer.length) {
   iframeDocument.addEventListener('keydown', (e) => {
     return this.beforeTinyMCEEditorKeyDown(editor, e);
   }, true);
-  $iframe.css('height', 'calc(100vh - 226px)');
 }
 ```
 
-beforeTinyMCEEditorKeyDown can be look like this
+beforeTinyMCEEditorKeyDown can look like this
 
 ```javascript
 beforeTinyMCEEditorKeyDown(editor: TinyMceEditor, e: KeyboardEvent) {
