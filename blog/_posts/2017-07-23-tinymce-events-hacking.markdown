@@ -80,6 +80,26 @@ beforeTinyMCEEditorKeyDown(editor: TinyMceEditor, e: KeyboardEvent) {
 }
 ```
 
+#### How to change the TinyMCE id on the fly (hackable)
+
+```javascript
+/* currentEditorId - is our searching editor's id */
+tinymce.editors.forEach((editor) => {
+  const newId = 'qwerty';
+  if (editor.targetElm && editor.targetElm.id 
+    && editor.targetElm.id === currentEditorId
+  ) {
+    editor.id = newId; // id of editor object
+    editor.settings.id = newId; // id in tinymce settings
+    editor.getContainer().firstElementChild
+      .children[2].firstElementChild.id = newId + '_ifr'; // id of iframe
+    editor.render(); // will rebuild the editors object
+  
+    // ... here can be some after-render function
+  }
+});
+```
+
 #### How to remove the TinyMCE correctly
 
 ```javascript
