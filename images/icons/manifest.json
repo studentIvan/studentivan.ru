@@ -12,7 +12,10 @@
 			"type": "image\/png"
 		}
 	],
-	"theme_color": "#ffffff",
-	"start_url": "http:\/\/studentivan.ru",
+	"theme_color": "#000000",
+	"background_color": "#ffffff",
+	"start_url": "https:\/\/studentivan.ru",
+	"short_name": "studentivan.ru",
+	"name": "Ivan Maslov - Senior Web Engineer",
 	"display": "standalone"
 }
