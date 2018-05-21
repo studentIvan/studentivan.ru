@@ -31,13 +31,26 @@
     {% include navbar.html %}
     <div class="page-content-container">
         <div class="page-content-container__summary-column">
-            <div class="summary">
+            <div class="summary" id="summary">
               <p>
-                <img src="/images/nicely.png" class="summary__avatar" alt="Ivan Maslov">
+                <script>
+                  var hdImg = new Image();
+                  hdImg.src = '/images/nicely.png';
+                  hdImg.addEventListener('load', function () {
+                    var avatarImg = document.getElementById('avatar');
+                    avatarImg.src = hdImg.src;
+                  });
+                </script>
+                <img id="avatar" src="/images/nicely-min.png" width="436px" height="421px" class="summary__avatar" alt="Ivan Maslov">
+                <script>
+                  var avatarImg = document.getElementById('avatar');
+                  var summaryDiv = document.getElementById('summary');
+                  avatarImg.style.height = ((summaryDiv.offsetWidth - 64) * (421 / 436)) + 'px';
+                </script>
               </p>
               <p class="summary__accent">
                 <strong>Ivan Maslov</strong>, 26 years<br>
-                <i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> Russia, Saint-Petersburg
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Saint-Petersburg
               </p>
               <hr class="summary__horizontal-line">
               <p>

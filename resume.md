@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Resume
+title: Curriculum vitae
 permalink: /resume/
 ---
 
@@ -36,7 +36,7 @@ And the BackEnd skills:
 - MongoDB, MySQL, PostgreSQL, Redis.
 - PHP.
 
-Thanks for reading, let’s work together!
-Best Regards, 
+Thanks for reading, let’s work together!<br>
+Best Regards, <br>
 Ivan.
 
