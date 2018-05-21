@@ -4,7 +4,7 @@ description: >
   Ivan Maslov: Full-Stack Web Engineer Personal Site.
 baseurl: "" 
 blogurl: "/blog"
-url: "http://studentivan.ru"
+url: "https://studentivan.ru"
 
 host: 0.0.0.0
 port: 4000
@@ -75,7 +75,7 @@ pgp_public_key: "E69E1D98.asc"
 # Build settings
 markdown: kramdown
 theme: minima
-timezone: Europe/Samara
+timezone: Europe/Moscow
 # highlighter: pygments 
 
 menu:
