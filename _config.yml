@@ -1,7 +1,7 @@
 
-title: "Ivan Maslov: Full-Stack Web Engineer"
+title: "Ivan Maslov: Lead To Fly"
 description: > 
-  Ivan Maslov: Full-Stack Web Engineer Personal Site.
+  Ivan Maslov: Lead To Fly Personal Site.
 baseurl: "" 
 blogurl: "/blog"
 url: "https://studentivan.ru"
@@ -15,6 +15,15 @@ disqus:
 # Contacts
 
 public_profiles:
+  - title: twitter
+    username: IvanTranquility
+    url: https://twitter.com/
+    color: "#00aced"
+  - title: instagram
+    username: studentivan
+    url: http://instagram.com/
+    visible: false
+    color: "#517fa4"
   - title: github
     username: studentIvan
     url: https://github.com/
@@ -33,35 +42,6 @@ public_profiles:
     username: ivan.tranquility
     url: https://www.facebook.com/
     color: "#3b5998"
-  - title: linkedin
-    username: drtranquility
-    url: https://www.linkedin.com/in/
-    color: "#007bb6"
-    visible: false
-  - title: twitter
-    username: IvanTranquility
-    url: https://twitter.com/
-    color: "#00aced"
-  - title: moikrug
-    username: studentivan
-    url: https://moikrug.ru/
-    icon: certificate
-    color: "#b3b3b3"
-  - title: instagram
-    username: studentivan
-    url: http://instagram.com/
-    visible: false
-    color: "#517fa4"
-  - title: duolingo
-    username: IvanTranqu1
-    url: https://www.duolingo.com/
-    icon: comments-o
-    color: "#71b200"
-  - title: upwork
-    username: ivanmaslov
-    url: https://www.upwork.com/fl/
-    icon: desktop
-    color: "#5bbc2e"
 
 skype_username:  radio.coder  # skype:radio.coder?call
 facetime_number:  "79992284007"  # facetime:79995643839
@@ -82,7 +62,6 @@ menu:
   - home
   - portfolio
   - resume
-  - samples
 
 defaults:
   -
