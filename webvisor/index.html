@@ -1,17 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title></title>
+  <link rel="stylesheet" href="./test.css" />
 </head>
 <body>
-<h1>Экспериментальная страница для проверки возможности записи данных с формы</h1>
-<form>
-<label>Вот тут моя банковская карта</label>
-<input>
-<label>Вот тут CVV</label>
-<input size="3">
-<input type="submit" value="Отправить" />
-</form>
+  <main>
+  <h1>Экспериментальная страница для проверки возможности записи данных с формы</h1>
+   <br />
+  <h2>Тест формы №1 - просто форма</h2>
+  <br />
+  <form>
+  <label>Вот тут моя банковская карта</label><br />
+  <input><br />
+  <label>Вот тут CVV</label><br />
+  <input size="3"><br /><br />
+  <input type="submit" value="Отправить" />
+  </form>
+  <br />
+  <h2>Тест формы №2 - оплата сбербанк (скопированная форма)</h2>
+  <section class="browser-autofill-reset" style="display: none;"><input type="email" name="autofillemail" id="autofillemail" value=""><input type="password" name="autofillpassword" id="autofillpassword" value=""><input type="tel" name="rautofilltel" id="autofilltel" value=""><input type="text" name="autofilltext" id="autofilltext" value=""></section>
+  <section class="sbersafe-header"><div class="sbersafe-container"><div class="sbersafe-header__logos"><div class="sbersafe-header__bank-logo"><img src="./svg-sprite.svg?1.185.1#sberbank" alt="Сбербанк" aria-hidden="true"></div></div><section class="sb_sbersafe-profile-controls sb_sbersafe-profile-enter"><div class="sb_sbersafe-profile-controls__user-profile"><button><span class="btn__content" tabindex="-1">Профиль пользователя</span></button></div></section></div></section>
+  <section class="sb_sbersafe-new-card clearfix">
+      <div class="col-sm-6">
+          <div class="row">
+              <div class="new-card ui-card ui-card_active" role="section" aria-expanded="true" aria-label="Оплатить с помощью новой карты" style="color: rgb(213, 213, 213);">
+                  <div class="new-card__ps">
+                      <div class="card-payment-system"></div>
+                  </div>
+                  <div class="new-card__header">
+                      <div class="h2">Новая карта</div>
+                  </div>
+                  <div class="new-card__row">
+                      <div class="input"><input tabindex="0" id="cardnumber" autocomplete="cc-number" type="tel" autocorrect="off" spellcheck="off" aria-label="Поле ввода номера карты. Обязательное." name="cardnumber" maxlength="23" value=""><label for="cardnumber">Номер карты</label></div>
+                  </div>
+                  <div class="new-card__row">
+                      <div class="row">
+                          <div class="col-xs-6">
+                              <div class="input"><input autocomplete="cc-exp" autocorrect="off" spellcheck="off" name="expdate" aria-label="Поле ввода срока действия карты. Обязательное." id="expiry" maxlength="5" type="tel" value=""><label for="expiry">Месяц/год</label></div>
+                          </div>
+                          <div class="col-xs-6">
+                              <div class="input"><input tabindex="0" id="cvc" autocomplete="off" aria-label="Поле ввода CVC2 CVV2 кода. Обязательное." type="password" maxlength="3" value=""><label for="cvc">CVC2/CVV2</label></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-5 col-sm-push-1">
+          <div role="" class="error-txt"></div>
+          <div role="" class="info-txt"></div>
+      </div>
+  </section>
+  <section class="sb_sbersafe-save-card container-fluid"><div class="custom-checkbox"><label class="custom-checkbox__label" for="saveCard"><input class="custom-checkbox__input" type="checkbox" tabindex="0" id="saveCard" aria-label="Запомнить карту" checked=""><div class="custom-checkbox__fake-input"></div><div class="custom-checkbox__text">Запомнить карту</div></label></div></section>
+  <section class="sb_sbersafe-pay clearfix"><div class="col-sm-6"><div tabindex="0"><span class="visually-hidden">Оплата невозможна. Данные введены неверно или не полностью.</span><button tabindex="-1" class="sbersafe-pay-button" disabled="" aria-label="Оплатить 3 283 рублей 00 копеек рубля"><span>Оплатить </span><span class="sbersafe-pay-button__amount">3 283,00</span><span class="sbersafe-pay-button__rouble font_rouble"></span></button></div></div><div class="col-sm-5 col-sm-push-1"><em>Нажимая кнопку «Оплатить», вы соглашаетесь с <a href="offer/safe_offer.pdf" target="_blank">договором оферты</a>.</em><div class="sb_sbersafe-pay__ps" alt="logo"></div></div></section>
+</main>
 <!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(23791573, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/23791573" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 </body>
 </html>
