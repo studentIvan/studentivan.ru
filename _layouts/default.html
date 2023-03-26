@@ -21,10 +21,103 @@
     <meta name="msapplication-config" content="/images/icons/browserconfig.xml?v=WGaE89omgm">
     <meta name="theme-color" content="#ffffff">
     <!-- /favicons -->
+
+    <style>
+      /* Set some basic styles for the page */
+      html {
+        font-size: 16px;
+        line-height: 1.5;
+        font-family: system-ui, Arial, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      h1, h2, p, a {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      /* Set styles for the headings */
+      h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-top: 1rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-top: 2rem;
+      }
+
+      /* Set styles for the paragraphs */
+      p {
+        font-size: 1rem;
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      /* Set styles for the links */
+      a {
+        color: #0f2682;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 1rem;
+        display: block;
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      address {
+        font-style: normal;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      /* Set styles for the contact email */
+      a[href^="mailto:"]::before {
+        content: "\1F4E7";
+        margin-right: 0.5rem;
+      }
+
+      /* Set styles for the contact Twitter link */
+      /* a[href^="https://twitter.com/"]::before {
+        content: "\1F426";
+        margin-right: 0.5rem;
+      } */
+
+      /* Set styles for the contact Telegram link */
+      a[href^="https://t.me/"]::before {
+        content: "\1F4E1";
+        margin-right: 0.5rem;
+      }
+    </style>
 </head>
 
 <body>
-    Nice to meet you
+    <h1>Ivan Maslov</h1>
+
+    <p>Senior developer at <strong>Ridestore</strong></p>
+
+    <h2>About</h2>
+    <p>JavaScript (Web/SSR/CDN), Web Vitals, DevOps, SRE, Tech Lead</p>
+    
+
+    <h2>Hobbies</h2>
+    <p>Coffee, Mafia, IoT, Architecture, Languages, AI</p>
+    
+    <h2>Contacts</h2>
+    <address>
+      <a href="mailto:ivan@ridestore.com">ivan@ridestore.com</a>
+      <!-- <a href="https://twitter.com/dr_lemontea">twitter:dr_lemontea</a> -->
+      <a href="https://t.me/chaislemonomm">telegram:chaislemonomm</a>
+    </address>
 
     {% if jekyll.environment == "production" %}   
       {% include metrika.html %}   
